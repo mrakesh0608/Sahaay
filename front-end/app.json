@@ -1,0 +1,45 @@
+{
+    "expo": {
+        "name": "Sahaay",
+        "slug": "Sahaay",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/icon.png",
+        "userInterfaceStyle": "automatic",
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "assetBundlePatterns": [
+            "**/*"
+        ],
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "com.mrakesh0608.Sahaay",
+            "googleServicesFile": "./configs/GoogleService-Info.plist"
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#ffffff"
+            },
+            "package": "com.mrakesh0608.Sahaay",
+            "googleServicesFile": "./configs/google-services.json"
+        },
+        "web": {
+            "favicon": "./assets/favicon.png"
+        },
+        "plugins": [
+            "@react-native-firebase/app",
+            "@react-native-firebase/auth",
+            "@react-native-google-signin/google-signin",
+            "expo-image-picker"
+        ],
+        "extra": {
+            "eas": {
+                "projectId": "e1f1dc59-4298-4d64-916c-c2bf926d830f"
+            }
+        }
+    }
+}
