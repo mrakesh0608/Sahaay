@@ -9,6 +9,7 @@
 - Install dependencies `npm i`
 
 ### Development Build - Android App
+<hr />
 - Run locally to start the metro bundler
   ```
   npm start
