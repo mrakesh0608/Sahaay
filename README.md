@@ -10,8 +10,7 @@
 
 ## Development Build - Android App
 - Run locally to start the metro bundler
-  ```
-  npm start
+  ```npm start
   ```
 - Run locally to start the metro bundler with empty cache 
   ```
@@ -27,7 +26,6 @@
 ## Production Build - Android App
 - To generate production ready apk
   ```
-  npm run build-apk 
-  ``` 
+  npm run build-apk ``` 
 - Download apk from [Expo dev](https://expo.dev/)
 - Install and open app in your Android device.
