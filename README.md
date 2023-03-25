@@ -12,11 +12,11 @@
 - Run locally `npm start`
 - Run locally with empty bundler cache `npm run start-c`
 
-- Run `npm run build-apk-dev` to create development build apk
+- Run `npm run build-apk-dev` to build development apk
 - Download development build apk from [Expo dev](https://expo.dev/)
-- Install and open development build apk in your Android device.
+- Install and open development build app in your Android device.
 
 ## Production Build - Android App
-- Run `npm run build-apk` to create development build apk
-- Download build apk from [Expo dev](https://expo.dev/)
-- Install and apk in your Android device.
+- Run `npm run build-apk` to generate production apk
+- Download apk from [Expo dev](https://expo.dev/)
+- Install and open app in your Android device.
