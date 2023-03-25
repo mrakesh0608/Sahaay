@@ -3,15 +3,21 @@
   <h3>Sahaay</h3>
 </div>
 
-## Build App Locally
+## Cloning Repo
 
 - Clone the repo `git clone https://github.com/mrakesh0608/Sahaay.git` or `gh repo clone mrakesh0608/Sahaay`
 - Change directory into front-end using `cd Sahaay/front-end`
 - Install dependecies using `npm i`
 
+## Developemt Build - Android App
 - Run locally `npm run start`
 - Run locally with empty bundler cache `npm run start-c`
 
 - Run `npm run build-apk-dev` to create development build apk
-- Download development build apk from Expo dev [Expo dev](https://expo.dev/)
-- Open development build apk in your system.
+- Download development build apk from [Expo dev](https://expo.dev/)
+- Install and open development build apk in your Android device.
+
+## Build Standlone - Android App
+- Run `npm run build-apk-dev` to create development build apk
+- Download build apk from [Expo dev](https://expo.dev/)
+- Install and apk in your Android device.
