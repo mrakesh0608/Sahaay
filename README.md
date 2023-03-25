@@ -13,5 +13,5 @@
 - Run locally with empty bundler cache `npm run start-c`
 
 - Run `npm run build-apk-dev` to create development build apk
-- Download development build apk from Expo dev [https://expo.dev/](Expo dev)
+- Download development build apk from Expo dev [Expo dev](https://expo.dev/)
 - Open development build apk in your system.
