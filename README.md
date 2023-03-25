@@ -3,7 +3,7 @@
   <h3>Sahaay</h3>
 </div>
 
-## Repo Clone
+## Cloning The Repo
 - Clone the repo `git clone https://github.com/mrakesh0608/Sahaay.git` or `gh repo clone mrakesh0608/Sahaay`
 - Change directory into front-end `cd Sahaay/front-end`
 - Install dependencies `npm i`
