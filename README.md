@@ -10,7 +10,8 @@
 
 ## Development Build - Android App
 - Run locally to start the metro bundler
-  ```npm start
+  ```
+  npm start
   ```
 - Run locally to start the metro bundler with empty cache 
   ```
