@@ -3,12 +3,12 @@
   <h3>Sahaay</h3>
 </div>
 
-## Cloning Repo
+## Setup
 - Clone the repo `git clone https://github.com/mrakesh0608/Sahaay.git` or `gh repo clone mrakesh0608/Sahaay`
 - Change directory into front-end `cd Sahaay/front-end`
 - Install dependencies `npm i`
 
-## Development Build - Android App
+### Development Build - Android App
 - Run locally to start the metro bundler
   ```
   npm start
@@ -24,7 +24,7 @@
 - Download development build apk from [Expo dev](https://expo.dev/)
 - Install and open development build app in your Android device.
 
-## Production Build - Android App
+### Production Build - Android App
 - To generate production ready apk
   ```
   npm run build-apk
