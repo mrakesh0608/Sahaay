@@ -9,7 +9,13 @@
 - Install dependencies `npm i`
 
 ## Development Build - Android App
-- Run locally ``` npm start ```
+- Run locally 
+- ``` npm start ```
+- ``` npm start 
+- ```
+- ```
+  npm start 
+  ```
 - Run locally with empty bundler cache `npm run start-c`
 
 - Run `npm run build-apk-dev` to build development apk
