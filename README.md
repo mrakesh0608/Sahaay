@@ -8,7 +8,7 @@
 - Change directory into front-end `cd Sahaay/front-end`
 - Install dependencies `npm i`
 
-## Developemt Build - Android App
+## Development Build - Android App
 - Run locally `npm start`
 - Run locally with empty bundler cache `npm run start-c`
 
@@ -17,6 +17,6 @@
 - Install and open development build app in your Android device.
 
 ## Production Build - Android App
-- Run `npm run build-apk` to generate production apk
+- Run `npm run build-apk` to generate apk
 - Download apk from [Expo dev](https://expo.dev/)
 - Install and open app in your Android device.
