@@ -20,3 +20,7 @@
 - Run `npm run build-apk` to generate apk
 - Download apk from [Expo dev](https://expo.dev/)
 - Install and open app in your Android device.
+
+```
+npm i
+```
