@@ -10,16 +10,19 @@
 
 ## Development Build - Android App
 - To build development apk
+  
   ```
   npm run build-apk-dev
   ```
 - Download development build apk from [Expo dev](https://expo.dev/)
 - Install development build apk in your Android device.
 - Start metro bundler
+  
   ```
   npm start
   ```
 - Start metro bundler with empty cache 
+  
   ```
   npm run start-c
   ```
@@ -27,6 +30,7 @@
 
 ## Production Build - Android App
 - To generate production ready apk
+  
   ```
   npm run build-apk
   ```
