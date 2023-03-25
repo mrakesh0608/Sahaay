@@ -1,3 +1,4 @@
 <div id="top" align="center">
-  <img src="front-end/assets/icon.png" alt="app-logo"/> 
+  <img src="front-end/assets/icon.png" alt="app-logo"/>
+  <h2>Sahaay</h2>
 </div>
