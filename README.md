@@ -23,7 +23,7 @@
   ```
   npm run start-c
   ```
-- To open the app, scan the QR code from Metro Bundler with [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent)(Android).
+- To open the app, scan the QR code from Metro Bundler with [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent) (Android).
 
 ## Production Build - Android App
 - To generate production ready apk
