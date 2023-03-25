@@ -29,5 +29,5 @@
   ```
   npm run build-apk
   ```
-  - Download apk from [Expo dev](https://expo.dev/)
+- Download apk from [Expo dev](https://expo.dev/)
 - Install and open app in your Android device.
