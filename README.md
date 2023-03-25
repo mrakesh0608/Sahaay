@@ -14,8 +14,8 @@
   npm run build-apk-dev
   ```
 - Download development build apk from [Expo dev](https://expo.dev/)
-- Install development build app in your Android device.
-- - Start metro bundler
+- Install development build apk in your Android device.
+- Start metro bundler
   ```
   npm start
   ```
