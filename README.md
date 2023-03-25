@@ -23,7 +23,7 @@
   ```
   npm run start-c
   ```
-- Scan the QR code from Metro Bundler with Expo Go (Android) or the Camera app (iOS)
+- To open the app, scan the QR code from Metro Bundler with Expo Go (Android).
 
 ## Production Build - Android App
 - To generate production ready apk
