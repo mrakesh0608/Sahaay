@@ -5,8 +5,8 @@
 
 ## Cloning Repo
 - Clone the repo `git clone https://github.com/mrakesh0608/Sahaay.git` or `gh repo clone mrakesh0608/Sahaay`
-- Change directory into front-end using `cd Sahaay/front-end`
-- Install dependecies using `npm i`
+- Change directory into front-end `cd Sahaay/front-end`
+- Install dependencies `npm i`
 
 ## Developemt Build - Android App
 - Run locally `npm start`
