@@ -9,20 +9,21 @@
 - Install dependencies `npm i`
 
 ## Development Build - Android App
-- Run locally to start the metro bundler
-  ```
-  npm start
-  ```
-- Run locally to start the metro bundler with empty cache 
-  ```
-  npm run start-c
-  ```
 - To build development apk
   ```
   npm run build-apk-dev
   ```
 - Download development build apk from [Expo dev](https://expo.dev/)
-- Install and open development build app in your Android device.
+- Install development build app in your Android device.
+- - Start metro bundler
+  ```
+  npm start
+  ```
+- Start metro bundler with empty cache 
+  ```
+  npm run start-c
+  ```
+- Scan the QR code from Metro Bundler with Expo Go (Android) or the Camera app (iOS)
 
 ## Production Build - Android App
 - To generate production ready apk
