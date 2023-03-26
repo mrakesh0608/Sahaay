@@ -27,11 +27,11 @@ Contributions, issues and feature requests are welcome.<br />
 Feel free to check [issues page](https://github.com/mrakesh0608/Sahaay/issues) if you want to contribute.<br />
 [Check the contributing guide](./CONTRIBUTING.md).<br />
 
-## Show your support
+## 💖 Show your support
 
 Please ⭐️ this repository if this project helped you!
 
 ## 📝 License
 
-Copyright © 2023 [Merugu Rakesh](https://github.com/mrakesh0608).<br />
+<!-- Copyright © 2023 [Merugu Rakesh](https://github.com/mrakesh0608).<br /> -->
 This project is [MIT](./LICENSE.md) licensed.
