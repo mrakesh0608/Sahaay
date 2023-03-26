@@ -2,7 +2,7 @@
 
 👍🎉 First off, thanks for taking the time to contribute! 🎉👍
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. 
+If you have a suggestion that would make this better, please fork the repo and create a pull request. Please go through existing issues and pull requests to check if somebody else is already working on it.
 
 ### Steps to Contribute
 
