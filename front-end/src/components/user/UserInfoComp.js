@@ -1,5 +1,5 @@
-import { StyleSheet, View, Image, Pressable } from 'react-native';
-import { FontAwesome, Feather } from '@expo/vector-icons';
+import { StyleSheet, View, Pressable } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import * as utils from '@utils';
@@ -9,9 +9,10 @@ import useAuthContext from '@hooks/context/useAuthContext';
 
 import EmailVerifComp from '@components/user/EmailVerifComp';
 import CardContainer from '@components/cards/CardContainer';
-import Text from '@components/elements/Text';
+import { Text } from '@components/elements';
+import UserImg from './UserImg';
 
-export default function UserInfoCard() {
+export default function UserInfoComp() {
 
     const { colors } = useThemeContext();
     const styles = makeStyles(colors);
@@ -19,7 +20,7 @@ export default function UserInfoCard() {
     const { navigate } = useNavigation();
     const { user, age } = useAuthContext();
 
-    const { email, displayName, phoneNumber, photoURL, metadata } = user;
+    const { email, displayName, phoneNumber, metadata } = user;
 
     return (
         <CardContainer style={styles.container}>
@@ -34,18 +35,14 @@ export default function UserInfoCard() {
             >
                 <Feather name="edit" size={14} color={colors.text} />
             </Pressable>
-
-            <View style={styles.userImg}>
-                {photoURL ?
-                    <Image
-                        source={{ uri: photoURL }}
-                        style={{
-                            width: 80,
-                            height: 80,
-                            borderRadius: 14,
-                        }}
-                    /> : <FontAwesome name={'user-o'} size={80} color={colors.text} />
-                }
+            <View
+                style={{
+                    flexGrow: 1,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}
+            >
+                <UserImg />
             </View>
 
             <View style={styles.userInfo}>

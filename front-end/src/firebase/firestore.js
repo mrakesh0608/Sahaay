@@ -19,7 +19,6 @@ export async function initNewUser(payload) {
         })
         .catch(error => {
             utils.ToastErrorOfFirebase(error);
-            console.log(error);
         })
 }
 
@@ -36,7 +35,6 @@ export async function getUserFields(reqArray, cb) {
         })
         .catch(error => {
             utils.ToastErrorOfFirebase(error);
-            // console.log(error);
             cb(error, null);
         })
 }
@@ -50,6 +48,5 @@ export function updateUser(payload) {
         .update(payload)
         .catch(error => {
             utils.ToastErrorOfFirebase(error);
-            console.log(error);
         })
 }

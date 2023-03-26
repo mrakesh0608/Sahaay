@@ -1,28 +1,38 @@
-import { ScrollView, View } from 'react-native';
+import CardContainer from '@components/cards/CardContainer';
+import React from 'react';
+import {
+    FlatList,
+    RefreshControl,
+} from 'react-native';
 
-import useThemeContext from '@hooks/context/useThemeContext';
-
-import CenterView from '@components/elements/CenterView';
-import Text from "@components/elements/Text";
+import { Text } from '@components/elements';
 
 export default function RecordsScreen() {
-    const { colors } = useThemeContext();
+    const [refreshing, setRefreshing] = React.useState(false);
 
-    const list = [];
-
-    if (!list.length) return <CenterView><Text style={{ padding: 20, backgroundColor: colors.card, borderRadius: 10 }} >Records that you save appear here</Text></CenterView>
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        setTimeout(() => {
+            setRefreshing(false);
+        }, 2000);
+    }, []);
 
     return (
-        <ScrollView contentContainerStyle={{ alignSelf: 'center', justifyContent: 'center' }}>
-            <View style={{
+        <FlatList
+            data={[]}
+            contentContainerStyle={{
                 flex: 1,
-                backgroundColor: 'lightcoral',
-                justifyContent: 'center',
                 alignItems: 'center',
-                padding: 20
-            }}>
-
-            </View>
-        </ScrollView>
+                justifyContent: 'center',
+            }}
+            refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
+            ListEmptyComponent={
+                <CardContainer>
+                    <Text>Records that you save appear here</Text>
+                </CardContainer>
+            }
+        />
     );
-}
+};

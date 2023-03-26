@@ -3,10 +3,10 @@ import { StyleSheet, Image, TouchableOpacity } from 'react-native';
 import useThemeContext from '@hooks/context/useThemeContext';
 
 import CardContainer from '@components/cards/CardContainer';
-import Text from "@components/elements/Text";
+import { Text } from '@components/elements';
 
 export default function ModelCard({ title, imgSource, onPress, backgroundColor }) {
-    
+
     const { colors } = useThemeContext();
     const styles = makeStyles({ colors });
 
@@ -17,7 +17,7 @@ export default function ModelCard({ title, imgSource, onPress, backgroundColor }
                 // backgroundColor && { backgroundColor: backgroundColor },
             ]}>
                 <Image source={imgSource} style={{ width: 80, height: 80 }} resizeMode={'contain'} />
-                <Text style={styles.text}>{title}</Text>
+                <Text style={styles.title}>{title}</Text>
             </CardContainer>
         </TouchableOpacity>
     )
@@ -28,13 +28,13 @@ const makeStyles = ({ colors }) => StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: 24,
         backgroundColor: colors.card,
+        padding: 24,
     },
-    text: {
-        fontWeight: 'bold',
+    title: {
         fontSize: 18,
-        marginLeft: 20,
+        fontWeight: 'bold',
         textAlign: 'center',
+        marginLeft: 20,
     }
 })

@@ -1,11 +1,11 @@
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import useThemeContext from "@hooks/context/useThemeContext";
 
-import Text from "@components/elements/Text";
+import { Text } from "./Text";
 
-export default function Option({ title, selectedVal, onPress, disabled }) {
+export function OptionWithIcon({ title, selectedVal, onPress, disabled, Icon }) {
 
     const { colors } = useThemeContext();
 
@@ -14,38 +14,39 @@ export default function Option({ title, selectedVal, onPress, disabled }) {
             onPress={onPress}
             disabled={disabled}
             style={[
-                // { backgroundColor: colors.nearBackground },
-                styles.button,
+                styles.optionC,
                 disabled && styles.disabled
             ]}
         >
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Icon />
+                <Text style={styles.optionText}>{title}</Text>
+            </View>
             <MaterialCommunityIcons
-                name={selectedVal === title ? 'circle-slice-8' : 'circle-outline'}
+                name={selectedVal === title ? 'radiobox-marked' : 'radiobox-blank'}
                 size={24}
                 color={selectedVal === title ? 'tomato' : colors.text}
             />
-            <Text style={[colors.text, styles.buttonText]}>{title}</Text>
         </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     disabled: {
-        opacity: 0.6,
+        opacity: 0.8,
     },
-    button: {
+    optionC: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        borderRadius: 25,
-        paddingHorizontal: 24,
-        paddingVertical: 10,
 
-        marginVertical: 10,
+        paddingHorizontal: 16,
+        paddingVertical: 10,
+        marginVertical: 6,
     },
-    buttonText: {
-        textAlign: 'center',
+    optionText: {
         fontWeight: 'bold',
-        letterSpacing: 1.2,
+        letterSpacing: 1,
         marginHorizontal: 10,
     },
 })

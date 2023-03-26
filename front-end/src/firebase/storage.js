@@ -10,12 +10,11 @@ export async function uploadFile({ path, file }) {
         const reference = storage().ref(path);
 
         await reference.putFile(file);
+
         const url = await reference.getDownloadURL();
         // console.log(url);
-
         return url;
     } catch (error) {
         utils.ToastErrorOfFirebase(error);
-        console.log(error);
     }
 }

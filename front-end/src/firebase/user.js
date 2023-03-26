@@ -6,8 +6,7 @@ export async function reloadUser() {
     try {
         await auth().currentUser?.reload()
     } catch (error) {
-        console.log(error);
-            utils.ToastErrorOfFirebase(error);
+        utils.ToastErrorOfFirebase(error);
     }
 }
 
@@ -22,8 +21,8 @@ export async function sendEmailVerification() {
         .then(() => {
             console.log('Email sent');
             utils.Toast('Email sent');
-        }).catch(error => {
-            console.log(error);
+        })
+        .catch(error => {
             utils.ToastErrorOfFirebase(error);
         })
 }

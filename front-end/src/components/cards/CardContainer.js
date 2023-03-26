@@ -10,7 +10,7 @@ export default function CardContainer(props) {
     return (
         <View style={[
             styles.container,
-            props.style
+            props.style,
         ]}>
             {props.children}
         </View>
@@ -20,9 +20,11 @@ export default function CardContainer(props) {
 const makeStyles = (colors) => StyleSheet.create({
     container: {
         backgroundColor: colors.card,
-        padding: 20,
         borderRadius: 10,
+        padding: 20,
         marginVertical: 10,
-        // marginHorizontal: 20, //required if parent does'nt not set the padding
+        borderWidth: 0.4,
+        borderColor: colors.border,
+        // marginHorizontal: 20, //required if parent doesn't set the padding
     }
 })

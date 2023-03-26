@@ -4,15 +4,19 @@ import {
     TextProps
 } from "react-native";
 
-export default function ErrorText(
+export function ErrorText(
     { style, ...rest }: React.PropsWithChildren<TextProps>
 ) {
 
     if (rest.children) {
         return (
             <RNText
-                style={[
-                    { color: 'red', textAlign: 'justify' },
+                style={[{
+                    color: 'red',
+                    fontWeight: 'bold',
+                    textAlign: 'center',
+                    marginBottom: 10
+                },
                     style
                 ]}
                 {...rest}

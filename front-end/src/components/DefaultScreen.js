@@ -13,7 +13,7 @@ export default function DefaultScreen(props) {
 const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        // paddingTop: StatusBar.currentHeight,
         paddingHorizontal: 20,
+        // paddingTop: StatusBar.currentHeight,
     },
 })

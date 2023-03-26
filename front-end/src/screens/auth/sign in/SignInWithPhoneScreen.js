@@ -1,64 +1,82 @@
 import usePhoneAuth from '@hooks/auth/usePhoneAuth';
 
+import { SubmitBtn, TransparentBtn, Text, TextInput } from '@components/elements';
 import FormContainer from '@components/forms/FormContainer';
-import SubmitBtn from '@components/elements/btn/SubmitBtn';
-import { TextInput } from '@components/elements/TextInput';
-import ErrorText from '@components/elements/ErrorText';
-
-import formStyles from '@styles/formStyles';
 
 export default function SignInWithPhoneScreen() {
 
     const {
-        isPending, phone, code, isCodeSent, countryCode, error,
-        setPhone, setCode, setCountryCode, sendCode, confirmCode
+        countryCode, phone, code,
+        isCodeSent, isCodeSending, isVerifying,
+        error, optTime,
+        setPhone, setCode, setIsCodeSent, setCountryCode, sendCode,
+        verifyCode, resendCode,
     } = usePhoneAuth();
 
     return (
         <FormContainer>
-            <TextInput
-                style={formStyles.input}
-                value={countryCode}
-                onChangeText={text => setCountryCode(text)}
-                placeholder="Country Code"
-                egText="e.g. +91 for India"
-                keyboardType='phone-pad'
-            />
-            <TextInput
-                style={formStyles.input}
-                value={phone}
-                onChangeText={text => setPhone(text)}
-                placeholder="Phone"
-                egText="e.g. 9876543210"
-                keyboardType='number-pad'
-            />
-            <SubmitBtn
-                title={(isPending && !isCodeSent) ? 'Sending the Code ...' : 'Send Code'}
-                onPress={sendCode}
-                disabled={isPending}
-            />
-            {isCodeSent &&
-                <>
-                    <TextInput
-                        style={formStyles.input}
-                        value={code}
-                        onChangeText={text => setCode(text)}
+            {isCodeSent ? <>
+                <Text style={{ textAlign: 'center' }}>
+                    {`We have sent a SMS with a code to\n${countryCode} ${phone}. `}
+                    <Text
+                        style={{ color: 'darkblue' }}
+                        onPress={() => setIsCodeSent(false)}
+                    >Wrong number?</Text></Text>
 
-                        placeholder='OTP'
-                        egText="e.g. 123456"
-                        keyboardType='number-pad'
+                <TextInput
+                    value={code}
+                    onChangeText={text => setCode(text)}
 
-                        textContentType='oneTimeCode'
-                        autoComplete='sms-otp'
-                    />
-                    <SubmitBtn
-                        title={isPending ? 'Verifying ...' : 'Confirm Code'}
-                        onPress={confirmCode}
-                        disabled={isPending}
-                    />
-                </>
-            }
-            <ErrorText>{error}</ErrorText>
+                    placeholder='Code'
+                    egText="Enter 6-digit code"
+
+                    keyboardType='number-pad'
+
+                    textContentType='oneTimeCode'
+                    autoComplete='sms-otp'
+                />
+                <SubmitBtn
+                    title={isVerifying ? 'Verifying' : 'Verify'}
+                    onPress={verifyCode}
+                    isPending={isVerifying}
+
+                    errTxt={error}
+                />
+                <TransparentBtn
+                    title='Did not receive code?'
+                    onPress={resendCode}
+                    isPending={isCodeSending}
+                    disabled={optTime ? true : false}
+                />
+                {optTime &&
+                    <Text
+                        style={{ alignSelf: 'center' }}
+                    >You can request a new code in {optTime} seconds</Text>
+                }
+            </> : <>
+                <TextInput
+                    value={countryCode}
+                    onChangeText={text => setCountryCode(text)}
+                    placeholder="Country Code"
+                    egText="e.g. +91 for India"
+                    keyboardType='phone-pad'
+                />
+                <TextInput
+                    value={phone}
+                    onChangeText={text => setPhone(text)}
+                    placeholder="Phone"
+                    egText="e.g. 9876543210"
+                    keyboardType='number-pad'
+                />
+
+                <SubmitBtn
+                    title={isCodeSending ? 'Sending the Code' : 'Send Code'}
+                    onPress={sendCode}
+                    isPending={isCodeSending}
+
+                    errTxt={error}
+                />
+            </>}
         </FormContainer>
     );
 }

@@ -1,6 +1,6 @@
 import * as Haptics from 'expo-haptics';
 
-function capitalize(text) {
+export function capitalize(text) {
     text = text.toLowerCase();
     return text[0].toUpperCase() + text.slice(1);
 }

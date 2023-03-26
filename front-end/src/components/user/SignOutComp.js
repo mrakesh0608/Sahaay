@@ -1,35 +1,43 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import useThemeContext from '@hooks/context/useThemeContext';
 import useSignOut from '@hooks/auth/useSignOut';
 
-import PopUpConfirm from '@components/pop-ups/PopUpConfirm';
+import DialogCenterWithBtn from '@components/dialogs/DialogCenter';
+import { Text, ZoomBtn, BtnContainer } from '@components/elements';
 import MenuCard from '@components/cards/MenuCard';
 
 export default function SignOutComp() {
 
     const { signOut } = useSignOut();
-    const { colors } = useThemeContext();
 
     return (
-        <PopUpConfirm
-            CallerContent={() => <MenuCard
-                Icon={() => <MaterialCommunityIcons
-                    name='logout'
-                    size={24} color={colors.text}
+        <DialogCenterWithBtn
+            CallerContent={() =>
+                <MenuCard
+                    title='Sign Out'
+                    Icon={({ color }) =>
+                        <MaterialCommunityIcons
+                            name='logout'
+                            size={24} color={color}
+                        />
+                    }
                 />}
-                title='Sign Out'
-            />}
-
-            title='Are you sure you want to sign out?'
-            No={{
-                title: 'Cancel'
-            }}
-            Yes={{
-                title: 'Sign Out',
-                onPress: signOut,
-                style: { backgroundColor: 'red' }
-            }}
+            DialogContent={({ closeDialog }) =>
+                <>
+                    <Text style={{ textAlign: 'center' }}>Are you sure you want to sign out?</Text>
+                    <BtnContainer style={{ marginTop: 20 }}>
+                        <ZoomBtn
+                            title='Cancel'
+                            onPress={closeDialog}
+                        />
+                        <ZoomBtn
+                            title='Sign Out'
+                            onPress={signOut}
+                            style={{ backgroundColor: 'red' }}
+                        />
+                    </BtnContainer>
+                </>
+            }
         />
     );
 }

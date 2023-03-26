@@ -1,12 +1,10 @@
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { Formik } from "formik";
 import * as yup from 'yup';
 
 import FormikPasswordTextInput from '@components/forms/FormikPasswordTextInput';
 import FormikTextInput from '@components/forms/FormikTextInput';
-
-import SubmitBtn from '@components/elements/btn/SubmitBtn';
-import formStyles from '@styles/formStyles';
+import { SubmitBtn } from '@components/elements';
 
 export default function SignUpForm({ isSigningUp, error, onSubmit }) {
     return (
@@ -42,14 +40,13 @@ export default function SignUpForm({ isSigningUp, error, onSubmit }) {
                     />
 
                     <SubmitBtn
-                        title={isSigningUp ? 'Signing Up ...' : 'Sign Up'}
+                        title={isSigningUp ? 'Signing Up' : 'Sign Up'}
                         onPress={props.handleSubmit}
+                        isPending={isSigningUp}
                         disabled={props.dirty && (!props.isValid || isSigningUp)}
-                    />
 
-                    {!isSigningUp && error &&
-                        <Text style={formStyles.errorText}>{error}</Text>
-                    }
+                        errTxt={error}
+                    />
                 </View>
             }
         </Formik>
@@ -58,8 +55,9 @@ export default function SignUpForm({ isSigningUp, error, onSubmit }) {
 
 const validationSchema = yup.object({
     email: yup.string().required().email().matches(/@[^.]*\./, { message: "Invalid email format" }),
-    password: yup.string().required(),
+    password: yup.string().required().min(6),
     confirmPassword: yup.string()
         .required("confirm password is a required field")
+        .min(6)
         .oneOf([yup.ref('password')], "Passwords don't match")
 })

@@ -1,5 +1,5 @@
 import TextInput from '@components/elements/TextInput';
-import formStyles from '@styles/formStyles';
+import formStyles from '@root';
 
 export default function FormikTextInput({ placeholder, formikProps, varName }) {
 

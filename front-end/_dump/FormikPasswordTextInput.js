@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 
 import { TextInput } from '@components/elements/TextInput';
 
-import formStyles from '@styles/formStyles';
+import formStyles from '@root';
 
 export default function FormikPasswordTextInput({ placeholder, formikProps, varName }) {
 

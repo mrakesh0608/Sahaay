@@ -2,10 +2,13 @@ import { Text, Button, ToastAndroid } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 
+import * as utils from '@utils';
+
 import useAuthContext from '@hooks/context/useAuthContext';
+import usePED from '@hooks/usePED';
 
 export default function useGoogleOAuth() {
-
+    const { isPending, setIsPending } = usePED();
     const { user } = useAuthContext();
 
     GoogleSignin.configure({
@@ -14,6 +17,7 @@ export default function useGoogleOAuth() {
 
     async function signIn() {
         try {
+            setIsPending(true);
             // Check if your device supports Google Play
             await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
 
@@ -26,11 +30,14 @@ export default function useGoogleOAuth() {
             // Sign-in the user with the credential
             auth().signInWithCredential(googleCredential).then(user => {
                 // console.log(JSON.stringify({googleCredential,user}, null, 2));
+                utils.haptics('Success');
             })
         } catch (error) {
             console.log(error);
             ToastAndroid.show(error.message, ToastAndroid.SHORT);
             signOut();
+        } finally {
+            setIsPending(false);
         }
     }
 
@@ -44,7 +51,6 @@ export default function useGoogleOAuth() {
     };
 
     function GoogleOAuthSignInBtn() {
-
         if (user) return <Text>User already exist {user.email}</Text>
         return (
             <GoogleSigninButton
@@ -55,10 +61,12 @@ export default function useGoogleOAuth() {
     }
 
     function GoogleOAuthSignOutBtn() {
-
         if (!user) return <Text>User not exist {user.email}</Text>
         return <Button title='signOut' onPress={signOut} />
     }
 
-    return { user, GoogleOAuthSignInBtn, GoogleOAuthSignOutBtn, signIn, signOut }
+    return {
+        user, signIn, signOut, isPending,
+        GoogleOAuthSignInBtn, GoogleOAuthSignOutBtn,
+    }
 }

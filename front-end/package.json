@@ -8,8 +8,8 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "build-apk": "eas build -p android --profile preview",
-    "build-apk-dev": "eas build --profile development --platform android"
+    "build-apk": "eas build -p android -e preview",
+    "build-apk-dev": "eas build -p android -e development"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
@@ -22,21 +22,24 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/stack": "^6.3.16",
     "@types/react": "~18.0.27",
-    "expo": "^48.0.7",
+    "expo": "^48.0.9",
     "expo-haptics": "^12.2.1",
     "expo-image-picker": "^14.1.1",
+    "expo-splash-screen": "~0.18.1",
     "formik": "^2.2.9",
+    "lodash.isequal": "^4.5.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-native": "^0.71.4",
     "react-native-gesture-handler": "^2.9.0",
     "react-native-safe-area-context": "^4.5.0",
     "react-native-screens": "^3.20.0",
-    "typescript": "^4.9.4",
     "yup": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "babel-plugin-module-resolver": "^5.0.0",
-    "expo-dev-client": "^2.1.5"
+    "expo-dev-client": "^2.1.5",
+    "typescript": "^4.9.4"
   }
 }

@@ -1,29 +1,38 @@
 import { View, TouchableOpacity } from 'react-native';
 
-import Text from "@components/elements/Text";
+import useThemeContext from '@hooks/context/useThemeContext';
+
+import CardContainer from '@components/cards/CardContainer';
+import { Text } from '@components/elements';
 
 export default function MenuCard({ Icon, title, desc, onPress }) {
 
-    function K() {
+    const { colors } = useThemeContext();
+
+    function R() {
         return (
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <View style={{ marginRight: 20 }}>
-                    <Icon />
+            <CardContainer>
+                <View style={{
+                    flexDirection: 'row',
+                    alignItems: 'center'
+                }}>
+                    <View style={{ marginRight: 20 }}>
+                        <Icon color={colors.text} />
+                    </View>
+                    <View>
+                        {title && <Text style={{ fontSize: 16 }}>{title}</Text>}
+                        {desc && <Text style={{ color: 'gray' }}>{desc}</Text>}
+                    </View>
                 </View>
-                <View>
-                    <Text style={{ fontSize: 16 }}>{title}</Text>
-                    {desc && <Text style={{ color: 'gray' }}>{desc}</Text>}
-                </View>
-            </View>
+            </CardContainer>
         )
     }
 
-    if (typeof onPress === 'function') {
-        return (
-            <TouchableOpacity onPress={onPress}>
-                <K />
-            </TouchableOpacity>
-        )
-    }
-    return <K />;
+    //when its not used as a dialog CallerContent
+    if (typeof onPress === 'function') return (
+        <TouchableOpacity onPress={onPress}>
+            <R />
+        </TouchableOpacity>
+    )
+    return <R />;
 }

@@ -6,56 +6,41 @@ import AppDarkTheme from '@utils/theme/appDarkTheme';
 
 import useAuthContext from '@hooks/context/useAuthContext';
 
-const initialTheme = {
+const LightTheme = {
     theme: AppLightTheme,
-    get isDark() {
-        return this.theme.dark;
-    },
-    get colors() {
-        return this.theme.colors;
-    }
+    isDark: AppLightTheme.dark,
+    colors: AppLightTheme.colors,
 }
 
-function stateWithGetters(state) {
-    return {
-        ...state,
-        get isDark() {
-            return this.theme.dark;
-        },
-        get colors() {
-            return this.theme.colors;
-        }
-    }
+const DarkTheme = {
+    theme: AppDarkTheme,
+    isDark: AppDarkTheme.dark,
+    colors: AppDarkTheme.colors,
 }
 
 export const ThemeContext = createContext();
 
 export const authReducer = (state, action) => {
     switch (action.type) {
-        case 'INIT': {
-            state = { ...initialTheme }
-            return stateWithGetters({ ...state });
-        }
+        case 'INIT':
         case 'SET_LIGHT': {
-            state.theme = AppLightTheme;
-            return stateWithGetters({ ...state });
+            return { ...LightTheme };
         }
         case 'SET_DARK': {
-            state.theme = AppDarkTheme;
-            return stateWithGetters({ ...state });
+            return { ...DarkTheme };
         }
         case 'TOGGLE_THEME': {
-            state.theme = state.isDark ? AppLightTheme : AppDarkTheme;
-            return stateWithGetters({ ...state });
+            state = state.isDark ? LightTheme : DarkTheme;
+            return { ...state };
         }
         default:
-            return stateWithGetters({ ...state });
+            return { ...state };
     }
 }
 
 export const ThemeContextProvider = ({ children }) => {
 
-    const [state, dispatch] = useReducer(authReducer, initialTheme);
+    const [state, dispatch] = useReducer(authReducer, LightTheme);
 
     const colorScheme = useColorScheme();
     const { Theme } = useAuthContext();

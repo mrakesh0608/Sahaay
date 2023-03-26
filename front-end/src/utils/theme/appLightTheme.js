@@ -10,6 +10,7 @@ export default {
         border: '#9F9F9F',
         primary: '#333333',
         background: '#FFFFFF',
+
         placeholder: 'gray',
         nearBackground: 'lightgray',
         focusColor: '#1e90ff',

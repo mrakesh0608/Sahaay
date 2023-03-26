@@ -1,13 +1,12 @@
 import { View } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
 import useAuthContext from '@hooks/context/useAuthContext';
 import useThemeContext from '@hooks/context/useThemeContext';
 
-import PopUpContainer from '@components/pop-ups/PopUpContainer';
-import Option from '@components/elements/Option';
-import MenuCard from '../cards/MenuCard';
-import Text from '../elements/Text';
+import DialogTitleCloseDesc from '@components/dialogs/DialogTitleCloseDesc';
+import { OptionWithIcon } from '@components/elements';
+import MenuCard from '@components/cards/MenuCard';
 
 export default function ThemeComp() {
 
@@ -15,34 +14,45 @@ export default function ThemeComp() {
     const { colors } = useThemeContext();
 
     return (
-        <PopUpContainer
+        <DialogTitleCloseDesc
             CallerContent={() =>
                 <MenuCard
+                    title='Theme'
                     Icon={() => <MaterialCommunityIcons
                         name="circle-half-full"
                         size={24} color={colors.text}
                     />}
-                    title='Theme'
                     desc={Theme}
                 />
             }
-            PopUpContent={({ hideModel, mStyles, PopUpBtn }) =>
-                <View style={{}}>
-                    <Text style={{ alignSelf: 'center' }}>Choose Theme</Text>
-                    <Option
+
+            DialogTitle='Choose Theme'
+
+            DialogContent={() =>
+                <View>
+                    <OptionWithIcon
                         title={'System Default'}
                         onPress={() => dispatch({ type: 'SET_THEME', payload: 'System Default' })}
                         selectedVal={Theme}
+
+                        Icon={() => <MaterialCommunityIcons
+                            name="circle-half-full"
+                            size={24} color={colors.text}
+                        />}
                     />
-                    <Option
+                    <OptionWithIcon
                         title={'Light'}
                         onPress={() => dispatch({ type: 'SET_THEME', payload: 'Light' })}
                         selectedVal={Theme}
+
+                        Icon={() => <Ionicons name="sunny" size={24} color={colors.text} />}
                     />
-                    <Option
+                    <OptionWithIcon
                         title={'Dark'}
                         onPress={() => dispatch({ type: 'SET_THEME', payload: 'Dark' })}
                         selectedVal={Theme}
+
+                        Icon={() => <Ionicons name="moon" size={24} color={colors.text} />}
                     />
                 </View>
             }

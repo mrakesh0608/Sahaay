@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import auth from '@react-native-firebase/auth'
 import { Formik } from "formik";
 import * as yup from 'yup';
-import auth from '@react-native-firebase/auth'
 
+import useAuthContext from '@hooks/context/useAuthContext';
 import useUploadImg from '@hooks/useUploadImg';
 
 import FormikTextInput from '@components/forms/FormikTextInput';
-import MyButton from '@components/elements/btn/SubmitBtn';
-
-import formStyles from '@styles/formStyles';
-import useAuthContext from '@hooks/context/useAuthContext';
+import { SubmitBtn } from '@components/elements';
 
 export default function NewUserForm({ isPending, error, onSubmit }) {
 
@@ -83,11 +81,14 @@ export default function NewUserForm({ isPending, error, onSubmit }) {
                         egText="e.g. 28"
                     />
 
-                    <MyButton title={isPending ? 'Saving ...' : 'Continue'} onPress={props.handleSubmit} disabled={isPending || !props.isValid} />
+                    <SubmitBtn
+                        title={isPending ? 'Saving ...' : 'Continue'}
+                        onPress={props.handleSubmit}
+                        disabled={isPending || !props.isValid}
 
-                    {!isPending && error &&
-                        <Text style={formStyles.errorText}>{error}</Text>
-                    }
+                        isPending={isPending}
+                        errTxt={error}
+                    />
                 </View>
             }
         </Formik>

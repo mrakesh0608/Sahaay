@@ -1,26 +1,26 @@
-import { createStackNavigator } from '@react-navigation/stack';
 import { useEffect } from 'react'
-import HomeTabs from '@navigation/tabs/HomeTabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
+
+import useAuthContext from '@hooks/context/useAuthContext';
+
 import UserStack from '@navigation/stacks/UserStack';
-import About from '@screens/protected/About';
+import HomeTabs from '@navigation/tabs/HomeTabs';
+import AppInfo from '@screens/protected/AppInfo';
 
 import PrescriptionDigit from '@screens/protected/models/PrescriptionDigit';
-import PrescriptionDigitRes from '@screens/protected/models/PrescriptionDigitRes';
-import BrainTumorDet from '@screens/protected/models/BrainTumorDet';
-import BrainTumorDetRes from '@screens/protected/models/BrainTumorDetRes';
-import KidneyStoneDet from '@screens/protected/models/KidneyStoneDet';
-import KidneyStoneDetRes from '@screens/protected/models/KidneyStoneDetRes';
 import SkinInfectionDet from '@screens/protected/models/SkinInfectionDet';
-import SkinInfectionDetRes from '@screens/protected/models/SkinInfectionDetRes';
-import useAuthContext from '@hooks/context/useAuthContext';
-import { useNavigation } from '@react-navigation/native';
+import KidneyStoneDet from '@screens/protected/models/KidneyStoneDet';
+import BrainTumorDet from '@screens/protected/models/BrainTumorDet';
+import ModelRes from '@screens/protected/models/ModelRes';
 
 const Stack = createStackNavigator();
 
 export default function ProtectedStack() {
 
-    const { isNewUser } = useAuthContext();
     const navigation = useNavigation();
+    const { isNewUser } = useAuthContext();
+
     useEffect(() => {
         if (isNewUser) {
             navigation.reset({
@@ -55,20 +55,11 @@ export default function ProtectedStack() {
                 title: 'Skin Infection Detection'
             }} />
 
-            <Stack.Screen name='PrescriptionDigitRes' component={PrescriptionDigitRes} options={{
-                title: 'Prescription Digitization Result'
-            }} />
-            <Stack.Screen name='BrainTumorDetRes' component={BrainTumorDetRes} options={{
-                title: 'Brain Tumor Detection Result'
-            }} />
-            <Stack.Screen name='KidneyStoneDetRes' component={KidneyStoneDetRes} options={{
-                title: 'Kidney Stone Detection Result'
-            }} />
-            <Stack.Screen name='SkinInfectionDetRes' component={SkinInfectionDetRes} options={{
-                title: 'Skin Infection Detection Result'
+            <Stack.Screen name='ModelRes' component={ModelRes} options={{
+                title: 'Model Result'
             }} />
 
-            <Stack.Screen name='About' component={About} />
+            <Stack.Screen name='App info' component={AppInfo} />
         </Stack.Navigator>
     );
 }

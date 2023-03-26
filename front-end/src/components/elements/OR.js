@@ -1,38 +1,39 @@
 import { StyleSheet, View } from 'react-native';
 
-import Text from "@components/elements/Text";
 import useThemeContext from '@hooks/context/useThemeContext';
 
-export default function OR() {
+import { Text } from "@components/elements/Text";
+
+export function OR() {
 
     const { colors } = useThemeContext();
+    const styles = makeStyles(colors);
 
     return (
         <View style={styles.container}>
-            <View style={[
-                styles.hr,
-                { borderColor: colors.nearBackground }
-            ]}></View>
-            <Text style={[
-                { color: colors.text },
-                styles.orText,
-                { backgroundColor: colors.background }
-            ]} >or</Text>
+            <View style={styles.hr} />
+            <Text style={styles.orText}>or</Text>
         </View>
     );
 }
-const styles = StyleSheet.create({
+const makeStyles = (colors) => StyleSheet.create({
     container: {
         position: 'relative',
-        marginVertical: 20,
+        marginVertical: 18,
     },
     hr: {
         borderBottomWidth: 1,
+        borderColor: colors.nearBackground
     },
     orText: {
+        backgroundColor: colors.background,
+        color: colors.text,
+
+        alignSelf: 'center',
+
         paddingHorizontal: 10,
+
         position: 'absolute',
         top: -10,
-        alignSelf: 'center',
     },
 })

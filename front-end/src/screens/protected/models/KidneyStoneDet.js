@@ -2,19 +2,16 @@ import { View, ScrollView } from 'react-native';
 
 import useUploadImg from '@hooks/useUploadImg';
 
-import TransparentBtn from '@components/elements/btn/TransparentBtn';
-import SubmitBtn from '@components/elements/btn/SubmitBtn';
-import Text from "@components/elements/Text";
-import OR from '@components/elements/OR';
+import { OR, SubmitBtn, Text, TransparentBtn } from '@components/elements';
 
-const intro = require('@configs/model.intros').KidneyStoneDet;
+const intro = 'The Kidney stones are a hard collection of salt and minerals, often calcium and uric acid that form in the kidneys.'
 
 export default function KidneyStoneDet({ navigation }) {
 
     const { uploadImg, UploadImgComp } = useUploadImg();
 
     async function getRes() {
-        navigation.navigate('KidneyStoneDetRes', { data: 'KidneyStoneDet Result' });
+        if (uploadImg) navigation.navigate('ModelRes', { data: 'Kidney Stone Detetection Result' });
     }
 
     return (
@@ -25,12 +22,12 @@ export default function KidneyStoneDet({ navigation }) {
         }}>
             <View style={{ justifyContent: 'center', alignSelf: 'center', padding: 20 }}>
                 <Text style={{ textAlign: 'justify' }}>{intro}</Text>
+
                 <UploadImgComp />
                 <OR />
-
                 <TransparentBtn title='Try with sample image' />
 
-                <SubmitBtn title={'Get Result'} onPress={getRes} />
+                <SubmitBtn title={'Get Result'} onPress={getRes} disabled={!uploadImg} />
             </View>
         </ScrollView>
     );

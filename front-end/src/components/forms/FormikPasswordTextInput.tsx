@@ -4,7 +4,6 @@ import { Feather } from '@expo/vector-icons';
 
 import { TextInput, TextInputProps } from '@components/elements/TextInput';
 
-import formStyles from '@styles/formStyles';
 import useThemeContext from "@hooks/context/useThemeContext";
 
 interface myProps extends TextInputProps {
@@ -29,7 +28,7 @@ export default function FormikPasswordTextInput({
                 value={formikProps.values[varName]}
                 onBlur={formikProps.handleBlur(varName)}
 
-                style={[formStyles.input, { paddingRight: 60 }]}
+                style={{ paddingRight: 60 }}
 
                 errTxt={formikProps.touched[varName] && formikProps.errors[varName]}
 

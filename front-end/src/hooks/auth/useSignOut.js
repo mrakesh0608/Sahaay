@@ -15,8 +15,9 @@ export default function useSignOut() {
         auth()
             .signOut()
             .then(() => {
-                utils.Toast('Signed Out !!');
                 console.log('User signed out!');
+                utils.haptics('Medium');
+                utils.Toast('Signed Out !!');
             })
             .catch((error) => {
                 console.log(error);

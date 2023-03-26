@@ -1,16 +1,15 @@
-import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 
 import * as myfirebase from '@myfirebase';
 import * as utils from '@utils';
+import usePED from './usePED';
 
 export default function useNewUser() {
 
     const { navigate } = useNavigation();
 
-    const [error, setError] = useState(null);
-    const [isPending, setIsPending] = useState(false);
+    const { isPending, setIsPending, error, setError } = usePED();
 
     async function handleEmail({ email }) {
         if (!email || email === auth().currentUser.email) return;
@@ -65,7 +64,7 @@ export default function useNewUser() {
         }
         catch (error) {
             console.log(error);
-            setError(utils.showableErrorText(error));
+            setError(await utils.showableErrorText(error));
             utils.haptics('Error');
         }
         finally { setIsPending(false); }

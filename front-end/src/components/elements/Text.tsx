@@ -6,7 +6,7 @@ import {
 
 import useThemeContext from '@hooks/context/useThemeContext';
 
-export default function Text(
+export function Text(
     { style, ...rest }: React.PropsWithChildren<TextProps>
 ) {
 

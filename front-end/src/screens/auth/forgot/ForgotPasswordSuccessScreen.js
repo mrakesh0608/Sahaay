@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { View } from 'react-native';
-import Text from "@components/elements/Text";
+import { CenterView, Text } from '@components/elements';
 
 import gStyles from '@styles/gStyles';
 
@@ -17,11 +16,10 @@ export default function ForgotPasswordSuccessScreen({ navigation }) {
     }, [time]);
 
     return (
-        <View style={gStyles.centerView}>
+        <CenterView>
             <Text style={gStyles.txtSuccess}>Success</Text>
-            <Text>Check your email for a reset link</Text>
-            <View style={{ marginVertical: 20 }}></View>
+            <Text style={{ marginBottom: 20 }}>Check your email for a reset link</Text>
             <Text>Redirecting to Sign In page in {time} sec</Text>
-        </View>
+        </CenterView>
     );
 }

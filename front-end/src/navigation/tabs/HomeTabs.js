@@ -15,14 +15,15 @@ export default function ProtectedTabs() {
                 return <Ionicons
                     name={focused ? 'ios-home' : 'ios-home-outline'}
                     size={size} color={color}
-                    style={{ fontWeight: 'bold' }}
                 />;
             case 'Records':
-                return <Fontisto name="prescription" size={size} color={color}/>
+                return <Fontisto name="prescription"
+                    size={size - 2} color={color}
+                />
             case 'User':
                 return <FontAwesome
                     name={focused ? 'user' : 'user-o'}
-                    size={focused ? size : size - 4} color={color}
+                    size={focused ? size + 2 : size - 2} color={color}
                 />
             default:
                 return <FontAwesome name="fonticons" size={size} color={color} />;

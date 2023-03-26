@@ -1,30 +1,8 @@
 import * as ImagePicker from 'expo-image-picker';
-import { Alert } from 'react-native';
 
-export async function uploadImage() {
+export async function uploadImage(type) {
 
-    const AsyncAlert = () => {
-        return new Promise((resolve, reject) => {
-            Alert.alert(`Upload Image`, '', [
-                {
-                    text: 'Choose From Gallery',
-                    onPress: () => { resolve('launchImageLibraryAsync') }
-                },
-                {
-                    text: 'Take a Photo',
-                    onPress: () => { resolve('launchCameraAsync') }
-                },
-            ],
-                {
-                    cancelable: true,
-                    onDismiss: () => { resolve(null) }
-                }
-            );
-        })
-    }
-
-    const type = await AsyncAlert();
-    // console.log(type);
+    if (!['launchImageLibraryAsync', 'launchCameraAsync'].includes(type)) type = 'launchImageLibraryAsync'
 
     if (!type) return { canceled: true };
 
@@ -34,6 +12,7 @@ export async function uploadImage() {
         aspect: [1, 1],
         quality: 1,
     });
+    // console.log(result);
 
     return {
         canceled: result.canceled,

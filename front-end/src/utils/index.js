@@ -7,9 +7,8 @@ export const serverAPI = 'http://192.168.0.115:8080';
 export const windowWidth = Dimensions.get('window').width;
 export const windowHeight = Dimensions.get('window').height;
 
-export * from '@utils/alert';
-export * from '@utils/haptics';
-export * from '@utils/openUrl';
-export * from '@utils/time';
-export * from '@utils/toast';
-export * from '@utils/uploadImage';
+export * from './haptics';
+export * from './openUrl';
+export * from './time';
+export * from './toast';
+export * from './uploadImage';

@@ -1,21 +1,16 @@
-import { AntDesign, FontAwesome } from '@expo/vector-icons';
-
-import useGoogleOAuth from "@hooks/auth/useGoogleOAuth";
 import useSignIn from "@hooks/auth/useSignIn";
 
-import TransparentBtn from '@components/elements/btn/TransparentBtn';
-import BtnWithImg from "@components/elements/btn/BtnWithImg";
+import { TransparentBtn, Text, OR } from '@components/elements';
 import FormContainer from '@components/forms/FormContainer';
 import SignInForm from '@components/forms/SignInForm';
-import Text from '@components/elements/Text';
-import OR from '@components/elements/OR';
 
 import gStyles from '@styles/gStyles';
+import GoogleBtn from '@components/auth/GoogleBtn';
+import PhoneBtn from '@components/auth/PhoneBtn';
 
 export default function SignInScreen({ navigation }) {
 
     const { signin, error, isPending } = useSignIn();
-    const { signIn } = useGoogleOAuth();
 
     return (
         <FormContainer>
@@ -23,16 +18,8 @@ export default function SignInScreen({ navigation }) {
             <SignInForm isSigningIn={isPending} error={error} onSubmit={signin} navigation={navigation} />
 
             <OR />
-            <BtnWithImg
-                title="Sign in with Google"
-                Image={({ color }) => <AntDesign name="google" size={24} color={color} />}
-                onPress={signIn}
-            />
-            <BtnWithImg
-                title="Sign in with Phone Number"
-                onPress={() => navigation.navigate('Sign In With Phone')}
-                Image={({ color }) => <FontAwesome name="phone" size={24} color={color} />}
-            />
+            <GoogleBtn />
+            <PhoneBtn />
 
             <TransparentBtn title={"Don't have an account? Sign Up"} onPress={() => navigation.navigate('Sign Up')} />
         </FormContainer>

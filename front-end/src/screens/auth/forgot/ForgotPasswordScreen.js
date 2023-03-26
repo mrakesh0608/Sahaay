@@ -1,56 +1,67 @@
-import { useState } from 'react';
-import { View } from 'react-native';
 import auth from '@react-native-firebase/auth';
+import { Formik } from "formik";
+import * as yup from 'yup';
 
+import { showableErrorText } from '@utils/toast';
+import usePED from '@hooks/usePED';
+
+import FormikTextInput from '@components/forms/FormikTextInput';
 import FormContainer from '@components/forms/FormContainer';
-import SubmitBtn from '@components/elements/btn/SubmitBtn';
-import { TextInput } from '@components/elements/TextInput';
-import Text from '@components/elements/Text';
+import { SubmitBtn, Text } from '@components/elements';
 
-import formStyles from '@styles/formStyles';
 import gStyles from '@styles/gStyles';
-import ErrorText from '@components/elements/ErrorText';
 
 export default function ForgotPasswordScreen({ navigation }) {
 
-    const [errorMessage, setErrorMessage] = useState('');
-    const [emailValue, setEmailValue] = useState('');
-
-    const onSubmitClicked = async () => {
-        auth()
-            .sendPasswordResetEmail(emailValue)
-            .then(() => {
-                navigation.navigate('Forgot Password Success')
-            })
-            .catch((error) => {
-                console.log(error);
-                setErrorMessage(error.message);
-            });
-    }
+    const { isPending, setIsPending, error, setError } = usePED();
 
     return (
         <FormContainer>
             <Text style={[gStyles.h2, gStyles.txtCenter]}>Forgot Password</Text>
             <Text style={[gStyles.txtCenter, { marginBottom: 26 }]}>Enter your email and we'll send you a reset link</Text>
 
-            <TextInput
-                value={emailValue}
-                onChangeText={e => setEmailValue(e)}
-                
-                placeholder='Email'
-                egText="example@email.com"
-                
-                style={formStyles.input}
-                keyboardType='email-address'
-            />
+            <Formik
+                initialValues={{ email: '' }}
+                validationSchema={validationSchema}
+                onSubmit={async (val, actions) => {
+                    // actions.resetForm();
+                    setIsPending(true);
+                    auth()
+                        .sendPasswordResetEmail(val.email)
+                        .then(() => {
+                            navigation.navigate('Forgot Password Success')
+                        })
+                        .catch(async (error) => {
+                            console.log(error);
+                            setError(await showableErrorText(error));
+                        })
+                        .finally(() => { setIsPending(false) })
+                }}
+            >
+                {props => <>
+                    <FormikTextInput
+                        formikProps={{ ...props }}
+                        varName='email'
 
-            {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+                        placeholder='Email'
+                        keyboardType='email-address'
+                        egText={'e.g. example@email.com'}
+                    />
+                    <SubmitBtn
+                        title={isPending ? 'Checking' : "Send Reset Link"}
+                        isPending={isPending}
+                        disabled={props.dirty && (!props.isValid || isPending)}
+                        onPress={props.handleSubmit}
 
-            <SubmitBtn
-                title="Send Reset Link"
-                disabled={!emailValue}
-                onPress={onSubmitClicked}
-            />
+                        errTxt={error}
+                    />
+                </>}
+            </Formik>
+
         </FormContainer>
     )
 }
+
+const validationSchema = yup.object({
+    email: yup.string().required().email().matches(/@[^.]*\./, { message: "Invalid email format" }),
+})

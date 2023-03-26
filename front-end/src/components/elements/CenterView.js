@@ -2,7 +2,7 @@ import { View, StyleSheet } from 'react-native';
 
 import useThemeContext from '@hooks/context/useThemeContext';
 
-export default function CenterView({ style, ...rest }) {
+export function CenterView({ style, ...rest }) {
 
     const { colors } = useThemeContext();
     const styles = makeStyles(colors);

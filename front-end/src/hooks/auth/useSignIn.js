@@ -1,13 +1,12 @@
-import { useState } from 'react'
 import auth from '@react-native-firebase/auth';
 
 import * as myfirebase from '@myfirebase';
 import * as utils from '@utils';
+import usePED from '@hooks/usePED';
 
 export default function useSignIn() {
 
-    const [error, setError] = useState(null);
-    const [isPending, setIsPending] = useState(null);
+    const { isPending, setIsPending, error, setError } = usePED();
 
     const signin = async ({ email, password }) => {
         console.log(email, password);
@@ -20,16 +19,14 @@ export default function useSignIn() {
                 const user = userCredential.user;
                 console.log('User Logged in with email ', user.email);
 
+                utils.haptics('Success');
                 myfirebase.sendEmailVerification();
             })
-            .catch(error => {
+            .catch(async error => {
                 console.log(error);
-                setError(utils.showableErrorText(error));
-                utils.haptics('Heavy')
+                setError(await utils.showableErrorText(error));
             })
-            .finally(() => {
-                setIsPending(false)
-            })
+            .finally(() => { setIsPending(false) })
     }
     return { signin, isPending, error }
 }

@@ -2,19 +2,17 @@ import { View, ScrollView } from 'react-native';
 
 import useUploadImg from '@hooks/useUploadImg';
 
-import TransparentBtn from '@components/elements/btn/TransparentBtn';
-import SubmitBtn from '@components/elements/btn/SubmitBtn';
-import Text from "@components/elements/Text";
-import OR from '@components/elements/OR';
+import { OR, SubmitBtn, Text, TransparentBtn } from '@components/elements';
 
-const intro = require('@configs/model.intros').BrainTumorDet;
+
+const intro = '\t\t\t\tA brain tumor is a growth of abnormal cells in the brain. Deep learning models are used to detect the brain tumor by taking the images of magnetic resonance imaging.'
 
 export default function BrainTumorDet({ navigation }) {
 
     const { uploadImg, UploadImgComp } = useUploadImg();
 
     async function getRes() {
-        navigation.navigate('BrainTumorDetRes', { data: 'BrainTumorD Result' });
+        if (uploadImg) navigation.navigate('ModelRes', { data: 'Brain Tumor Detection Result' });
     }
 
     return (
@@ -28,7 +26,7 @@ export default function BrainTumorDet({ navigation }) {
                 <UploadImgComp />
                 <OR />
                 <TransparentBtn title='Try with sample image' />
-                <SubmitBtn title={'Get Result'} onPress={getRes} />
+                <SubmitBtn title={'Get Result'} onPress={getRes} disabled={!uploadImg}/>
             </View>
         </ScrollView>
     );

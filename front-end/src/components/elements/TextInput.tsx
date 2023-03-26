@@ -5,18 +5,12 @@ import {
     TextInputFocusEventData,
     TextInputProps as RNTextInputProps,
     View,
-    Platform,
-    UIManager,
     LayoutAnimation
 } from "react-native";
 
 import useThemeContext from '@hooks/context/useThemeContext';
 
-import Text from '@components/elements/Text'
-
-if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
-    UIManager.setLayoutAnimationEnabledExperimental(true);
-}
+import { Text } from './Text';
 
 interface optinalProps {
     egText: any,
@@ -73,6 +67,15 @@ export function TextInput({
 
                 style={[
                     { color: colors.text },
+                    {
+                        marginTop: 10,
+                        marginBottom: 5,
+                        paddingVertical: 10,
+                        paddingHorizontal: 16,
+                        borderWidth: 1,
+                        borderColor: '#ddd',
+                        borderRadius: 6,
+                    },
                     style,
                     isFocused && { borderColor: colors.focusColor },
                     errTxt && errTxtColor && { borderColor: errTxtColor },
