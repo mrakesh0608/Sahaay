@@ -17,6 +17,6 @@
 - To open the app, scan the QR code from Metro Bundler with [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent) (Android).
 
 ## Production Build - Android App
-- To generate production ready apk `npm run build-apk`
+- To build production ready apk `npm run build-apk`
 - Download apk from [Expo dev](https://expo.dev/)
 - Install and run the Android build on your device.
