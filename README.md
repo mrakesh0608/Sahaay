@@ -1,5 +1,5 @@
 <div id="top" align="center">
-  <img src="front-end/assets/icon.png" alt="app-logo"/>
+  <img src="frontEnd/assets/icon.png" alt="app-logo"/>
   <h3>Sahaay</h3>
 </div>
 
