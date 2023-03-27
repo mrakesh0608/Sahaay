@@ -1,5 +1,5 @@
 Flask
 opencv-python
-tensorflow
+keras
 scikit-image
 firebase-admin
