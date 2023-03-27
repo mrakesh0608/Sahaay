@@ -1,10 +1,5 @@
 Flask
 firebase-admin
-
 opencv-python
 scikit-image
-# only tensorflow is required but due to limited space of 512 MB onrender.com, so include only required libs only
-keras
-keras-models
-keras-utils
-# Ends
+tensorflow
