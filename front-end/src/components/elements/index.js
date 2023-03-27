@@ -6,6 +6,7 @@ export * from './btn/SubmitBtn';
 export * from './btn/TransparentBtn';
 export * from './btn/ZoomBtn';
 
+export * from './Image';
 export * from './Text';
 export * from './TextInput';
 export * from './ErrorText';

@@ -7,15 +7,29 @@ export const time = {
 }
 
 export const timeHourMin = (time) => {
+   
     time = new Date(time)
     return time.toLocaleString('en-IN', {
         hour: 'numeric',
         minute: 'numeric',
-        hour12: true
+        hour12: true,
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
     })
 }
 
-export const timer = ({time,limit}) => {
+export const timeHourMinSec = (time) => {
+    
+    time = new Date(time)
+    return time.toLocaleString('en-IN', {
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true,
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+    })
+}
+
+export const timer = ({ time, limit }) => {
 
     time = new Date(time)
 
@@ -40,7 +54,8 @@ export const getDate = (time) => {
     return (new Date(time)).toLocaleString('en-IN', {
         day: 'numeric',
         month: 'short',
-        year: 'numeric'
+        year: 'numeric',
+        timeZone: 'Asia/Kolkata'
     });
 }
 

@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { MaterialIcons, MaterialCommunityIcons, Entypo, FontAwesome } from '@expo/vector-icons';
 
 import * as util from '@utils/index';
 import useThemeContext from '@hooks/context/useThemeContext';
 
 import DialogTitleCloseDesc from '@components/dialogs/DialogTitleCloseDesc';
-import { CapsuleBtn, BorderBtn } from '@components/elements';
+import { CapsuleBtn, BorderBtn, Image } from '@components/elements';
 
 export default function useUploadImg(props) {
 
@@ -26,13 +26,13 @@ export default function useUploadImg(props) {
 
     const UploadImgComp = () => (
         <View style={styles.container}>
-            {uploadImg &&
+            {uploadImg && <>
                 <Image
                     source={{ uri: uploadImg.uri }}
                     style={styles.uploadImgPreview}
                     resizeMode='contain'
                 />
-            }
+            </>}
             <DialogTitleCloseDesc
                 CallerContent={({ showDialog }) =>
                     <CapsuleBtn
@@ -81,7 +81,7 @@ export default function useUploadImg(props) {
             />
         </View>
     );
-    return ({ uploadImg, UploadImgComp });
+    return ({ uploadImg, setUploadImg, UploadImgComp });
 }
 
 const makeStyles = (colors) => StyleSheet.create({

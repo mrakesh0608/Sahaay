@@ -56,7 +56,7 @@ export default function ProtectedStack() {
             }} />
 
             <Stack.Screen name='ModelRes' component={ModelRes} options={{
-                title: 'Model Result'
+                title: 'Report',
             }} />
 
             <Stack.Screen name='App info' component={AppInfo} />

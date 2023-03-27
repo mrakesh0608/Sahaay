@@ -3,7 +3,7 @@
   <h3>Sahaay</h3>
 </div>
 
-## Cloning The Repo
+## Clone The Repo
 - Clone the repo `git clone https://github.com/mrakesh0608/Sahaay.git` or `gh repo clone mrakesh0608/Sahaay`
 - Change directory into front-end `cd Sahaay/front-end`
 - Install dependencies `npm i`
@@ -23,9 +23,7 @@
 
 ## 🤝 Contributing 
 
-Contributions, issues and feature requests are welcome.<br />
-Feel free to check [issues page](https://github.com/mrakesh0608/Sahaay/issues) if you want to contribute.<br />
-[Check the contributing guide](./CONTRIBUTING.md).<br />
+Contributions, issues and feature requests are welcome. Feel free to check [issues page](https://github.com/mrakesh0608/Sahaay/issues) if you want to contribute. Check the [contributing guide](./CONTRIBUTING.md).
 
 ## 💖 Show your support
 

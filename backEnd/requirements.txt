@@ -2,3 +2,4 @@ Flask
 opencv-python
 tensorflow
 scikit-image
+firebase-admin

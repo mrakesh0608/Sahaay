@@ -13,6 +13,7 @@ export default {
 
         placeholder: 'gray',
         nearBackground: 'lightgray',
+        nearBg: 'lightgray',
         focusColor: '#1e90ff',
     }
 }
