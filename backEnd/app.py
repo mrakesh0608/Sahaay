@@ -18,4 +18,4 @@ app.add_url_rule('/kidney-stone-detection', 'KSD',
 
 if __name__ == "__main__":
     myfirebase.init()
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    app.run()

@@ -8,13 +8,13 @@
 - Change directory into front-end `cd Sahaay/front-end`
 - Install dependencies `npm i`
 
-## Development Build - Android App
+## Development Build
 - To build development apk `npm run build-apk-dev`
 - Download development build apk from [Expo dev](https://expo.dev/)
 - Install development build apk in your Android device.
 - Start metro bundler `npm start`
 - Start metro bundler with empty cache `npm run start-c`
-- To open the app, scan the QR code from Metro Bundler with [Expo Go](https://play.google.com/store/apps/details?id=host.exp.exponent) (Android).
+- To open the app, scan the QR code from Metro Bundler with Expo Go [(Android)](https://play.google.com/store/apps/details?id=host.exp.exponent) or Camera app [(iOS)](https://apps.apple.com/in/app/expo-go/id982107779).
 
 ## Production Build - Android App
 - To build production ready apk `npm run build-apk`
@@ -23,11 +23,12 @@
 
 ## 🤝 Contributing 
 
-Contributions, issues and feature requests are welcome. Feel free to check [issues page](https://github.com/mrakesh0608/Sahaay/issues) if you want to contribute. Check the [contributing guide](./CONTRIBUTING.md).
+Contributions, issues and feature requests are welcome. Feel free to check [issues page](https://github.com/mrakesh0608/Sahaay/issues) if you want to contribute. <br />
+Check the [contributing guide](./CONTRIBUTING.md).
 
 ## 💖 Show your support
 
-Please ⭐️ this repository if this project helped you!
+Please ⭐️ this repository if this project helped you !
 
 ## 📝 License
 
