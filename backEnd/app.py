@@ -16,6 +16,6 @@ def main():
 app.add_url_rule('/kidney-stone-detection', 'KSD',
                  view_func=KSD.main, methods=['POST'])
 
-if __name__ == "__main__":
-    myfirebase.init()
-    app.run()
+# if __name__ == "__main__":
+#     myfirebase.init()
+#     app.run()

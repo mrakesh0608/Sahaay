@@ -12,7 +12,7 @@ export default function WhatsThis({ desc }) {
             CallerContent={() =>
                 <Entypo
                     name="info-with-circle"
-                    size={16} color={colors.text}
+                    size={16} color={'gray'}
                     style={{ marginHorizontal: 10 }}
                 />
             }
@@ -21,7 +21,7 @@ export default function WhatsThis({ desc }) {
                 <>
                     <Text style={{ alignSelf: 'center', fontSize: 20, marginBottom: 20 }}>What's This !</Text>
                     <Text style={{ textAlign: 'justify' }}>{`    "Try with sample image" takes a random sample image from server's storage which contains more than 500 images to demostrate how this model works.`}</Text>
-                    <BtnContainer style={{marginTop:20}}>
+                    <BtnContainer style={{ marginTop: 20 }}>
                         <ZoomBtn
                             title={'Ok'}
                             onPress={closeDialog}
