@@ -30,7 +30,6 @@ export default function useUploadImg(props) {
                 <Image
                     source={{ uri: uploadImg.uri }}
                     style={styles.uploadImgPreview}
-                    resizeMode='contain'
                 />
             </>}
             <DialogTitleCloseDesc

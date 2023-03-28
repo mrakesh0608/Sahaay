@@ -9,13 +9,12 @@ def init():
 
 
 def saveReport(uid, payload):
-    db = firestore.client()
-
-    coll_ref = db.collection('Users').document(uid).collection('Reports')
-
     payload['uid'] = uid
     payload['createdAt'] = firestore.SERVER_TIMESTAMP
-    
+
+    db = firestore.client()
+    coll_ref = db.collection('Users').document(uid).collection('Reports')
+
     res = coll_ref.add(payload)
 
     return (res[1].id)

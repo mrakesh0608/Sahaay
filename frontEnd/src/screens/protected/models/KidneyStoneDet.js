@@ -1,11 +1,15 @@
 import { useEffect } from 'react'
 import { View, ScrollView } from 'react-native';
-import useUploadImg from '@hooks/useUploadImg';
-import { OR, SubmitBtn, Text, TransparentBtn } from '@components/elements';
+
 import { randomNumBetween, serverAPI } from '@utils/index';
-import WhatsThis from '@components/WhatsThis';
-import useFetch from '@hooks/useFetch';
+
 import useAuthContext from '@hooks/context/useAuthContext';
+import * as myfirebase from '@myfirebase/storage';
+import useUploadImg from '@hooks/useUploadImg';
+import useFetch from '@hooks/useFetch';
+
+import { OR, SubmitBtn, Text, TransparentBtn } from '@components/elements';
+import WhatsThis from '@components/WhatsThis';
 
 const intro = 'The Kidney stones are a hard collection of salt and minerals, often calcium and uric acid that form in the kidneys.';
 
@@ -22,16 +26,26 @@ export default function KidneyStoneDet({ navigation }) {
     const { user } = useAuthContext();
 
     const { uploadImg, setUploadImg, UploadImgComp } = useUploadImg();
-    const { isPending, error, fetchData, data } = useFetch();
+    const { isPending, error, fetchData, data, setIsPending } = useFetch();
 
     async function getRes() {
 
+        setIsPending(true);
+
         if (!(uploadImg?.uri)) return;
+
+        let img_url = uploadImg.uri
+        if (uploadImg.type) {
+            img_url = await myfirebase.uploadFile({
+                path: `report-img/${user.uid}/${new Date()}`,
+                file: img_url
+            })
+        }
 
         fetchData({
             path: `${serverAPI}/kidney-stone-detection`,
             method: 'POST',
-            body: { img_url: uploadImg.uri, uid: user.uid }
+            body: { uid: user.uid, img_url }
         });
     }
 

@@ -19,7 +19,9 @@ app.add_url_rule('/kidney-stone-detection', 'KSD',
 
 myfirebase.init()
 
+# For Development
 # if __name__ == "__main__":
-#     app.run()
+#     app.run(host="0.0.0.0", port=8080, debug=True)
+# Then, run python app.py
 
-# waitress-serve app:app
+# For Development or Production , run waitress-serve app:app

@@ -43,5 +43,5 @@ export default function useFetch() {
         }
         finally { setIsPending(false); }
     }
-    return { fetchData, data, isPending, error };
+    return { fetchData, data, isPending, error, setIsPending };
 }

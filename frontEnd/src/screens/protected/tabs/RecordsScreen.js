@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, FlatList, ActivityIndicator, RefreshControl } from 'react-native';
+import { TouchableOpacity, SectionList, ActivityIndicator, RefreshControl, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import firestore from '@react-native-firebase/firestore';
@@ -10,7 +10,7 @@ import useThemeContext from '@hooks/context/useThemeContext';
 import CardContainer from '@components/cards/CardContainer';
 import { CenterView, Text } from '@components/elements';
 import RecordCard from '@components/cards/RecordCard';
-
+import { getDate, todayDate } from '@utils/time';
 
 export default function RecordsScreen() {
 
@@ -20,7 +20,7 @@ export default function RecordsScreen() {
     const [data, setData] = useState([]);
 
     const [order, setOrder] = useState('desc');
-    const [refreshing, setRefreshing] = React.useState(false);
+    const [refreshing, setRefreshing] = useState(false);
 
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
@@ -37,16 +37,36 @@ export default function RecordsScreen() {
             .doc(auth().currentUser.uid)
             .collection('Reports')
             .orderBy('createdAt', order)
-            .onSnapshot(querySnapshot => {
-                const data = [];
+            .onSnapshot(querySnap => {
 
-                querySnapshot.forEach(documentSnapshot => {
-                    data.push({
-                        id: documentSnapshot.id,
-                        ...documentSnapshot.data(),
+                const processedData = {};
+
+                if (!querySnap) return;
+
+                querySnap.forEach(docSnap => {
+
+                    const val = docSnap.data()
+
+                    let date = getDate(val.createdAt.toDate());
+
+                    if (date === todayDate()) date = 'Today';
+                    else if (date === getDate(new Date(Date.now() - 864e5))) date = 'Yesterday';
+
+                    if (!processedData[date]) processedData[date] = [];
+
+                    processedData[date].push({
+                        id: docSnap.id,
+                        ...val,
                     });
                 });
 
+                const data = []
+                Object.keys(processedData).forEach(item => {
+                    data.push({
+                        date: item,
+                        data: processedData[item]
+                    })
+                })
                 setData(data);
                 setLoading(false);
             });
@@ -69,13 +89,13 @@ export default function RecordsScreen() {
     }
 
     return (
-        <FlatList
+        <SectionList
             ListHeaderComponent={
                 <TouchableOpacity
                     style={{
                         flexDirection: 'row',
                         justifyContent: 'flex-end',
-                        marginVertical: 20
+                        marginTop: 20
                     }}
 
                     onPress={() => setOrder(order === 'desc' ? 'asc' : 'desc')}
@@ -89,15 +109,30 @@ export default function RecordsScreen() {
                 </TouchableOpacity>
             }
 
-            data={data}
-            keyExtractor={item => item.id}
-
-            renderItem={({ item }) => <RecordCard record={item} />}
+            sections={data}
+            keyExtractor={(item, index) => item + index}
 
             contentContainerStyle={{ paddingHorizontal: 20 }}
 
+            renderSectionHeader={({ section: { date } }) => (
+                <Text style={{ fontSize: 20, marginVertical: 10 }}>{date}</Text>
+            )}
+
+            renderItem={({ item }) => <RecordCard record={item} />}
+
             refreshControl={
                 <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
+
+            ListFooterComponent={
+                <View style={{
+                    alignSelf: 'center',
+                    backgroundColor: 'gray',
+                    paddingHorizontal: 50,
+                    paddingVertical: 0.6,
+                    marginTop: 30,
+                    marginBottom: 40,
+                }}></View>
             }
         />
     );
