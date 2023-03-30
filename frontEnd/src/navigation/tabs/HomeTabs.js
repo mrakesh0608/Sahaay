@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons, FontAwesome, Fontisto } from '@expo/vector-icons';
+import { Ionicons, FontAwesome, Fontisto, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import HomeScreen from '@screens/protected/tabs/HomeScreen';
 import RecordsScreen from '@screens/protected/tabs/RecordsScreen';
 import UserScreen from '@screens/protected/tabs/UserScreen';
+import Chat from '@screens/protected/Chat';
 
 const Tab = createBottomTabNavigator();
 
@@ -25,6 +26,8 @@ export default function ProtectedTabs() {
                     name={focused ? 'user' : 'user-o'}
                     size={focused ? size + 2 : size - 2} color={color}
                 />
+            case 'Chat':
+                return <MaterialCommunityIcons name={focused ? 'message-reply-text' : 'message-reply-text-outline'} size={size} color={color} />
             default:
                 return <FontAwesome name="fonticons" size={size} color={color} />;
         }
@@ -43,6 +46,7 @@ export default function ProtectedTabs() {
         >
             <Tab.Screen name="Home" component={HomeScreen} />
             <Tab.Screen name="Records" component={RecordsScreen} />
+            <Tab.Screen name="Chat" component={Chat} options={{ tabBarHideOnKeyboard: true }} />
             <Tab.Screen name="User" component={UserScreen} />
         </Tab.Navigator>
     );

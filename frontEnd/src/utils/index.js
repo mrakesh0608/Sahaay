@@ -12,6 +12,7 @@ export function randomNumBetween(min, max) {
     return min + Math.floor(Math.random() * (1 + max - min))
 }
 
+export * from './chatGPT';
 export * from './haptics';
 export * from './openUrl';
 export * from './time';

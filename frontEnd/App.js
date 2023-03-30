@@ -1,5 +1,6 @@
 import 'react-native-gesture-handler';
-import 'expo-dev-client';
+import 'expo-dev-client'; //for Expo Development
+import 'react-native-url-polyfill/auto'; //For ChatGPT
 
 import {
     TouchableWithoutFeedback, Keyboard

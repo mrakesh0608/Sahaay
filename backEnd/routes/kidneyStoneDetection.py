@@ -7,7 +7,7 @@ from skimage import io
 import numpy as np
 import cv2
 
-model = load_model('models/kidney_stone_CNN.h5')
+model = load_model('models/kidney_stone.h5')
 
 
 def img_preprocess(path):

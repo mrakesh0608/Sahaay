@@ -35,6 +35,8 @@ export default function KidneyStoneDet({ navigation }) {
         if (!(uploadImg?.uri)) return;
 
         let img_url = uploadImg.uri
+
+        //temp sol to identify sample or custom img
         if (uploadImg.type) {
             img_url = await myfirebase.uploadFile({
                 path: `report-img/${user.uid}/${new Date()}`,
