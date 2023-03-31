@@ -3,7 +3,6 @@ import { View, TextInput } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 
 import useThemeContext from '@hooks/context/useThemeContext';
-import LoadingDots from 'rn-loading-dots';
 
 export default function ChatInput({ handleSend }) {
 
@@ -20,7 +19,6 @@ export default function ChatInput({ handleSend }) {
             borderTopColor: colors.nearBg,
             borderTopWidth: 0.4,
         }}>
-            <LoadingDots />
             <TextInput
                 placeholder='Send a message...'
                 placeholderTextColor='gray'

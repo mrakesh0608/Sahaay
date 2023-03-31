@@ -22,7 +22,9 @@ module.exports = function (api) {
                 },
             },
         ], [
-            "module:react-native-dotenv"
+            "module:react-native-dotenv",{
+                "path":'./configs/.env'
+            }
         ]]
     }
 };

@@ -1,12 +1,12 @@
 import { View, TouchableOpacity } from 'react-native'
 import Clipboard from '@react-native-clipboard/clipboard';
+import LoadingDots from 'rn-loading-dots';
 
 import useThemeContext from '@hooks/context/useThemeContext';
 import { timeHourMin, windowWidth } from '@utils/index';
 
 import { Text } from '@components/elements'
 import { useMemo } from 'react';
-import { LoadingDots } from '../dots/LoadingDots';
 
 function ChatContainer({ align, txt, createdAt }) {
 
@@ -50,9 +50,7 @@ function ChatContainer({ align, txt, createdAt }) {
     );
 }
 
-
 export default function ChatComp({ chat }) {
-    console.log(chat);
     return (
         <>
             <ChatContainer align='right' {...chat.req} />
