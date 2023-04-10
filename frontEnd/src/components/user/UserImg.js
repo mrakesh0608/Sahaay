@@ -21,7 +21,7 @@ export default function UserImg() {
                         height: 80,
                         borderRadius: 14,
                     }}
-                /> : <FontAwesome name={'user-o'} size={80} color={colors.text} />
+                /> : <FontAwesome name='user-o' size={80} color={colors.text} />
             }
         </>
     )

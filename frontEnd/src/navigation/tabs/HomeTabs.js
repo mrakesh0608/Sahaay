@@ -1,53 +1,94 @@
+import React, { useEffect, useRef } from 'react'
+import { StyleSheet, TouchableWithoutFeedback} from 'react-native'
+import * as Animatable from 'react-native-animatable';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons, FontAwesome, Fontisto, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
+
+import Icon, { Icons } from './Icons';
 
 import HomeScreen from '@screens/protected/tabs/HomeScreen';
 import RecordsScreen from '@screens/protected/tabs/RecordsScreen';
 import UserScreen from '@screens/protected/tabs/UserScreen';
-import Chat from '@screens/protected/Chat';
+import ChatScreen from '@screens/protected/Chat';
+
+const TabArr = [
+    {
+        route: 'Home', label: 'Home',
+        type: Icons.Ionicons, activeIcon: 'ios-home', inActiveIcon: 'ios-home-outline',
+        component: HomeScreen
+    },
+    {
+        route: 'Chat', label: 'Chat',
+        type: Icons.CustomIcons, activeIcon: 'chat-o', inActiveIcon: 'chat',
+        component: ChatScreen
+    },
+    {
+        route: 'Records', label: 'Records',
+        type: Icons.CustomIcons, activeIcon: 'lab-profile-o', inActiveIcon: 'lab-profile',
+        component: RecordsScreen
+    },
+    {
+        route: 'User', label: 'User',
+        type: Icons.FontAwesome, activeIcon: 'user', inActiveIcon: 'user-o',
+        component: UserScreen
+    },
+];
 
 const Tab = createBottomTabNavigator();
 
-export default function ProtectedTabs() {
+const TabButton = (props) => {
+    const { item, onPress, accessibilityState } = props;
+    const focused = accessibilityState.selected;
+    const viewRef = useRef(null);
 
-    const handleTabBarIcons = ({ focused, color, size, route }) => {
-        switch (route.name) {
-            case 'Home':
-                return <Ionicons
-                    name={focused ? 'ios-home' : 'ios-home-outline'}
-                    size={size} color={color}
-                />;
-            case 'Records':
-                return <Fontisto name="prescription"
-                    size={size - 2} color={color}
-                />
-            case 'User':
-                return <FontAwesome
-                    name={focused ? 'user' : 'user-o'}
-                    size={focused ? size + 2 : size - 2} color={color}
-                />
-            case 'Chat':
-                return <MaterialCommunityIcons name={focused ? 'message-reply-text' : 'message-reply-text-outline'} size={size} color={color} />
-            default:
-                return <FontAwesome name="fonticons" size={size} color={color} />;
+    useEffect(() => {
+        if (focused) {
+            viewRef.current.animate({ 0: { scale: 0.8, color: 'gray' }, 1: { scale: 1.2, color: 'tomato' } });
+        } else {
+            viewRef.current.animate({ 0: { scale: 1.2, color: 'tomato' }, 1: { scale: 1, color: 'gray' } });
         }
-    }
+    }, [focused])
 
     return (
-        <Tab.Navigator
-            screenOptions={({ route }) => ({
-                headerShown: false,
-                tabBarActiveTintColor: 'tomato',
-                tabBarInactiveTintColor: 'gray',
-                tabBarStyle: { height: 56 },
-                tabBarLabelStyle: { fontSize: 12, marginBottom: 4 },
-                tabBarIcon: (props) => handleTabBarIcons({ ...props, route }),
-            })}
-        >
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Records" component={RecordsScreen} />
-            <Tab.Screen name="Chat" component={Chat} options={{ tabBarHideOnKeyboard: true }} />
-            <Tab.Screen name="User" component={UserScreen} />
-        </Tab.Navigator>
-    );
+        <TouchableWithoutFeedback
+            onPress={onPress}
+            style={styles.container}>
+            <Animatable.View
+                ref={viewRef}
+                duration={400}
+                style={styles.container}>
+                <Icon type={item.type} name={focused ? item.activeIcon : item.inActiveIcon} color={focused ? 'tomato' : 'gray'} />
+            </Animatable.View>
+        </TouchableWithoutFeedback>
+    )
 }
+
+export default function HomeTabs() {
+    return (
+        <Tab.Navigator
+            screenOptions={{
+                headerShown: false,
+                tabBarStyle: {
+                    height: 50,
+                }
+            }}
+        >
+            {TabArr.map((item, index) => {
+                return (
+                    <Tab.Screen key={index} name={item.route} component={item.component}
+                        options={{
+                            tabBarButton: (props) => <TabButton {...props} item={item} />
+                        }}
+                    />
+                )
+            })}
+        </Tab.Navigator>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+})

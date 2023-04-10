@@ -7,6 +7,7 @@ import SignInForm from '@components/forms/SignInForm';
 import gStyles from '@styles/gStyles';
 import GoogleBtn from '@components/auth/GoogleBtn';
 import PhoneBtn from '@components/auth/PhoneBtn';
+import AppIcon from "@components/AppIcon";
 
 export default function SignInScreen({ navigation }) {
 
@@ -14,6 +15,7 @@ export default function SignInScreen({ navigation }) {
 
     return (
         <FormContainer>
+            <AppIcon />
             <Text style={gStyles.h2}>Sign in</Text>
             <SignInForm isSigningIn={isPending} error={error} onSubmit={signin} navigation={navigation} />
 

@@ -15,5 +15,7 @@ export default {
         nearBackground: 'lightgray',
         nearBg: 'lightgray',
         focusColor: '#1e90ff',
+        error:'red',
+        success:'green' 
     }
 }

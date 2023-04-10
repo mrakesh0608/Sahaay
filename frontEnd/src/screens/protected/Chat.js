@@ -54,8 +54,9 @@ export default function Chat() {
                 backgroundColor: 'gray',
                 padding: 8
             }}>
-                <Text style={{ alignSelf: 'center' }}>Chat with an assistant</Text>
+                <Text style={{ alignSelf: 'center', color: 'white' }}>Chat with an assistant</Text>
             </View>
+            <Text style={{ alignSelf: 'center', marginVertical: 6, padding: 4, color: 'lightblue' }}>This chat history will be cleared when you close the app.</Text>
             <View style={{ flex: 0.8, flexGrow: 1 }}>
                 <FlatList
 

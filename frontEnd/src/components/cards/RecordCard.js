@@ -19,7 +19,7 @@ export default function RecordCard({ record }) {
             <CardContainer>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{record.title}</Text>
-                    <Text style={{ color: record.range > 0.5 ? 'red' : 'green', fontWeight: 'bold' }}>{record.range > 0.5 ? 'Detected' : 'Not Detected'}</Text>
+                    <Text style={{ color: record.range > 0.5 ? colors.error : colors.success, fontWeight: 'bold' }}>{record.range > 0.5 ? 'Detected' : 'Not Detected'}</Text>
                     {/* <Octicons name="dot-fill" size={16} color={record.range > 0.5 ? 'red' : 'green'} /> */}
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>

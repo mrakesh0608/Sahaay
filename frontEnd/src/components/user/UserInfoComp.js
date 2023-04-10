@@ -35,13 +35,7 @@ export default function UserInfoComp() {
             >
                 <Feather name="edit" size={14} color={colors.text} />
             </Pressable>
-            <View
-                style={{
-                    flexGrow: 1,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-            >
+            <View style={styles.userImg}>
                 <UserImg />
             </View>
 
@@ -71,7 +65,6 @@ const makeStyles = (colors) => StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-
         // backgroundColor: '#FFD580',
     },
     userImg: {

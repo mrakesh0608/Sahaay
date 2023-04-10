@@ -6,10 +6,6 @@ export default function FormContainer(props) {
             contentContainerStyle={styles.container}
             keyboardShouldPersistTaps='handled'
         >
-            <Image
-                source={require('@assets/icon.png')}
-                style={{ alignSelf: 'center' }}
-            />
             {props.children}
         </ScrollView>
     );

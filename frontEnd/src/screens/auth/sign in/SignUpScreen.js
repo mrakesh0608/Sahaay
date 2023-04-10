@@ -7,6 +7,7 @@ import SignUpForm from '@components/forms/SignUpForm';
 import gStyles from "@styles/gStyles";
 import PhoneBtn from '@components/auth/PhoneBtn';
 import GoogleBtn from '@components/auth/GoogleBtn';
+import AppIcon from "@components/AppIcon";
 
 export default function SignUpScreen({ navigation }) {
 
@@ -14,6 +15,7 @@ export default function SignUpScreen({ navigation }) {
 
     return (
         <FormContainer>
+            <AppIcon />
             <Text style={gStyles.h2}>Sign up</Text>
             <SignUpForm isSigningUp={isPending} error={error} onSubmit={signup} />
 

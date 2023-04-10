@@ -37,6 +37,9 @@ export const LoaderContextProvider = ({ children }) => {
                 await Font.loadAsync(MaterialIcons.font);
                 await Font.loadAsync(MaterialCommunityIcons.font);
                 await Font.loadAsync(Octicons.font);
+                await Font.loadAsync({
+                    IcoMoon: require('../../assets/icons/icomoon.ttf'),
+                });
             }
             catch (e) { console.warn(e); }
             finally { dispatch({ type: 'SET_FONTS_LOADED' }); }

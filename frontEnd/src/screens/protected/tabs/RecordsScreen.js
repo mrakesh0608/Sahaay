@@ -115,7 +115,7 @@ export default function RecordsScreen() {
             contentContainerStyle={{ paddingHorizontal: 20 }}
 
             renderSectionHeader={({ section: { date } }) => (
-                <Text style={{ fontSize: 20, marginVertical: 10 }}>{date}</Text>
+                <Text style={{ fontSize: 18, marginVertical: 10 }}>{date}</Text>
             )}
 
             renderItem={({ item }) => <RecordCard record={item} />}
