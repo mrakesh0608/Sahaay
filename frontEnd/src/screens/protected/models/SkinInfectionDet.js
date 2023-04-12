@@ -1,32 +1,18 @@
-import { View, ScrollView } from 'react-native';
+import { randomNumBetween } from '#src/utils';
+import { ModelContainer } from '#src/components/model/ModelContainer';
 
-import useUploadImg from '@hooks/useUploadImg';
+async function randomImgUrl() {
+    return 'https://raw.githubusercontent.com/Praneet9/Skin_Disease/master/Bot/scripts/imgs/03DermatitisArm.jpg';
+}
 
-import { OR, SubmitBtn, Text, TransparentBtn } from '@components/elements';
-
-const intro = '';
-
-export default function SkinInfectionDet({ navigation }) {
-
-    const { uploadImg, UploadImgComp } = useUploadImg();
-
-    async function getRes() {
-        navigation.navigate('ModelRes', { data: 'Skin Infection Detection Result' });
-    }
+export default function SkinInfectionDet() {
 
     return (
-        <ScrollView contentContainerStyle={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-        }}>
-            <View style={{ justifyContent: 'center', alignSelf: 'center', padding: 20 }}>
-                <Text style={{ textAlign: 'justify' }}>{intro}</Text>
-                <UploadImgComp />
-                <OR />
-                <TransparentBtn title='Try with sample image' />
-                <SubmitBtn title={'Get Result'} onPress={getRes} />
-            </View>
-        </ScrollView>
+        <ModelContainer
+            introTxt={'\t\t\t\tSkin diseases are more common than other diseases. Skin diseases may be caused by fungal infection, bacteria, allergy, or viruses, etc. This model can be used for detection, extraction and classification of skin diseases images using deep learning.'}
+            randomImgUrl={randomImgUrl}
+
+            serverPath={'/skin-infection-detection'}
+        />
     );
 }

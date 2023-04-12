@@ -1,11 +1,7 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import UserInfoComp from '@components/user/UserInfoComp';
-import SignOutComp from '@components/user/SignOutComp';
-import DefaultScreen from '@components/DefaultScreen';
-import ThemeComp from '@components/user/ThemeComp';
-import MenuCard from '@components/cards/MenuCard';
+import { UserInfoComp, DefaultScreen, SignOutComp, ThemeComp, MenuCard } from '#src/components';
 
 export default function UserScreen() {
 

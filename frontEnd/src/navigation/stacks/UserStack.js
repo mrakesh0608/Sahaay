@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
-import UserEditScreen from '@screens/protected/UserEditScreen';
+import UserEditScreen from '#src/screens/protected/UserEditScreen';
 
 const Stack = createStackNavigator();
 

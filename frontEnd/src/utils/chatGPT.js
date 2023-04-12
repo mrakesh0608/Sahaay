@@ -1,21 +1,19 @@
-const { Configuration, OpenAIApi } = require("openai");
-
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY
-});
-
-const openai = new OpenAIApi(configuration);
+import remoteConfig from '@react-native-firebase/remote-config';
+import { Configuration, OpenAIApi } from 'openai';
 
 export async function chatGPT({ txt }) {
-
     try {
+        const openai = new OpenAIApi(new Configuration({
+            apiKey: remoteConfig().getValue('OPENAI_API_KEY').asString()
+        }));
+
         const completion = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: txt,
             max_tokens: 2048,
         });
 
-        console.log(completion.data.choices);
+        // console.log(JSON.stringify(completion,null,2));
         return (completion.data.choices[0].text).trim();
     } catch (error) {
         if (error.response) {

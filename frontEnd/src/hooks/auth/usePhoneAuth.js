@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import auth from '@react-native-firebase/auth';
 
-import * as utils from '@utils';
+import * as utils from '#src/utils';
 
-import useAuthContext from '@hooks/context/useAuthContext';
+import { useAuthContext } from '#src/context/AuthContext';
 
-export default function usePhoneAuth() {
+export function usePhoneAuth() {
 
     const { otpLastTime, dispatch } = useAuthContext();
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function usePED() {
+export function usePED() {
 
     const [isPending, setIsPending] = useState(false);
     const [error, setError] = useState(null);

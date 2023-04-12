@@ -1,6 +1,6 @@
-import usePED from "./usePED";
+import { usePED } from "#src/hooks/usePED";
 
-export default function useFetch() {
+export function useFetch() {
 
     const {
         isPending, error, data,

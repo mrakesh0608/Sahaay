@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 
-import useLoaderContext from '@hooks/context/useLoaderContext';
-import useThemeContext from '@hooks/context/useThemeContext';
-import useAuthContext from '@hooks/context/useAuthContext';
+import { useLoaderContext } from '#src/context/LoaderContext';
+import { useThemeContext } from '#src/context/ThemeContext';
+import { useAuthContext } from '#src/context/AuthContext';
 
-import ProtectedStack from '@navigation/stacks/ProtectedStack';
-import AuthStack from "@navigation/stacks/AuthStack";
+import ProtectedStack from '#src/navigation/stacks/ProtectedStack';
+import AuthStack from "#src/navigation/stacks/AuthStack";
 
-import LoadingComp from '@components/LoadingComp';
+import { LoadingComp } from '#src/elements';
 
 export default function Navigator() {
 

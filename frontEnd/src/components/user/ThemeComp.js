@@ -1,20 +1,19 @@
 import { View } from 'react-native';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-import useAuthContext from '@hooks/context/useAuthContext';
-import useThemeContext from '@hooks/context/useThemeContext';
+import { useAuthContext } from '#src/context/AuthContext';
+import { useThemeContext } from '#src/context/ThemeContext';
 
-import DialogTitleCloseDesc from '@components/dialogs/DialogTitleCloseDesc';
-import { OptionWithIcon } from '@components/elements';
-import MenuCard from '@components/cards/MenuCard';
+import { MenuCard } from '#src/components/cards/MenuCard';
+import { DialogBottom, OptionWithIcon } from '#src/elements';
 
-export default function ThemeComp() {
+export function ThemeComp() {
 
     const { Theme, dispatch } = useAuthContext();
     const { colors } = useThemeContext();
 
     return (
-        <DialogTitleCloseDesc
+        <DialogBottom
             CallerContent={() =>
                 <MenuCard
                     title='Theme'

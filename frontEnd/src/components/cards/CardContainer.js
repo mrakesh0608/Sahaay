@@ -1,8 +1,8 @@
 import { View, StyleSheet } from 'react-native';
 
-import useThemeContext from '@hooks/context/useThemeContext';
+import { useThemeContext } from '#src/context/ThemeContext';
 
-export default function CardContainer(props) {
+export function CardContainer(props) {
 
     const { colors } = useThemeContext();
     const styles = makeStyles(colors);

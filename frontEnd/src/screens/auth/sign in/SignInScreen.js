@@ -1,13 +1,12 @@
-import useSignIn from "@hooks/auth/useSignIn";
+import { useSignIn } from "#src/hooks";
 
-import { TransparentBtn, Text, OR } from '@components/elements';
-import FormContainer from '@components/forms/FormContainer';
-import SignInForm from '@components/forms/SignInForm';
+import FormContainer from '#src/forms/FormContainer';
+import SignInForm from '#src/forms/SignInForm';
 
-import gStyles from '@styles/gStyles';
-import GoogleBtn from '@components/auth/GoogleBtn';
-import PhoneBtn from '@components/auth/PhoneBtn';
-import AppIcon from "@components/AppIcon";
+import { AppIcon, GoogleBtn, PhoneBtn } from "#src/components";
+import { TransparentBtn, Text, OR } from '#src/elements';
+
+import gStyles from '#src/styles/gStyles';
 
 export default function SignInScreen({ navigation }) {
 

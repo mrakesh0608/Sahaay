@@ -2,17 +2,18 @@ import { useEffect } from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 
-import useAuthContext from '@hooks/context/useAuthContext';
+import { useAuthContext } from '#src/context/AuthContext';
 
-import UserStack from '@navigation/stacks/UserStack';
-import HomeTabs from '@navigation/tabs/HomeTabs';
-import AppInfo from '@screens/protected/AppInfo';
+import UserStack from '#src/navigation/stacks/UserStack';
+import HomeTabs from '#src/navigation/tabs/HomeTabs';
 
-import PrescriptionDigit from '@screens/protected/models/PrescriptionDigit';
-import SkinInfectionDet from '@screens/protected/models/SkinInfectionDet';
-import KidneyStoneDet from '@screens/protected/models/KidneyStoneDet';
-import BrainTumorDet from '@screens/protected/models/BrainTumorDet';
-import ModelRes from '@screens/protected/models/ModelRes';
+import PrescriptionDigit from '#src/screens/protected/models/PrescriptionDigit';
+import SkinInfectionDet from '#src/screens/protected/models/SkinInfectionDet';
+import KidneyStoneDet from '#src/screens/protected/models/KidneyStoneDet';
+import BrainTumorDet from '#src/screens/protected/models/BrainTumorDet';
+import ModelRes from '#src/screens/protected/models/ModelRes';
+
+import AppInfoScreen from '#src/screens/protected/AppInfoScreen';
 
 const Stack = createStackNavigator();
 
@@ -59,7 +60,7 @@ export default function ProtectedStack() {
                 title: 'Report',
             }} />
 
-            <Stack.Screen name='App info' component={AppInfo} />
+            <Stack.Screen name='App info' component={AppInfoScreen} />
         </Stack.Navigator>
     );
 }

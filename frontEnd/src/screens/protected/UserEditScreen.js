@@ -1,7 +1,7 @@
-import useNewUser from '@hooks/useNewUser'
+import { useNewUser } from '#src/hooks'
 
-import FormContainer from '@components/forms/FormContainer'
-import NewUserForm from '@components/forms/NewUserForm'
+import FormContainer from '#src/forms/FormContainer'
+import NewUserForm from '#src/forms/NewUserForm'
 
 export default function UserEditScreen() {
 

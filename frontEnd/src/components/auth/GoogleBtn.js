@@ -1,10 +1,10 @@
 import React from 'react'
 import { AntDesign } from '@expo/vector-icons';
 
-import useGoogleOAuth from "@hooks/auth/useGoogleOAuth";
-import { CapsuleBtn } from '@components/elements';
+import { useGoogleOAuth } from "#src/hooks";
+import { CapsuleBtn } from '#src/elements';
 
-export default function GoogleBtn({
+export function GoogleBtn({
     title = 'Sign in with Google'
 }) {
     const { signIn, isPending } = useGoogleOAuth();

@@ -2,9 +2,9 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { FontAwesome } from '@expo/vector-icons'
 
-import { CapsuleBtn } from '@components/elements'
+import { CapsuleBtn } from '#src/elements';
 
-export default function PhoneBtn({
+export function PhoneBtn({
     title = 'Sign in with Phone Number'
 }) {
 

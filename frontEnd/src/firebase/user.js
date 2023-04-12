@@ -1,6 +1,6 @@
-import * as utils from '@utils';
-
 import auth from '@react-native-firebase/auth';
+
+import * as utils from '#src/utils';
 
 export async function reloadUser() {
     try {

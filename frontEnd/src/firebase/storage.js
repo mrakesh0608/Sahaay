@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import storage from '@react-native-firebase/storage';
 
-import * as utils from '@utils';
+import * as utils from '#src/utils';
 
 export async function uploadFile({ path, file }) {
     if (!auth().currentUser) return;

@@ -1,9 +1,8 @@
-import { createContext, useReducer, useEffect } from 'react'
+import { createContext, useContext, useReducer, useEffect } from 'react'
 import auth from '@react-native-firebase/auth';
 
-import * as myfirebase from '@myfirebase';
-
-import useInitUser from '@hooks/useInitUser';
+import * as firebase from '#src/firebase';
+import { useInitUser } from '#src/hooks/useInitUser';
 
 const initialValues = {
     user: null,
@@ -12,6 +11,15 @@ const initialValues = {
 }
 
 export const AuthContext = createContext();
+
+export function useAuthContext() {
+
+    const context = useContext(AuthContext)
+
+    if (!context) throw Error('useAuthContext must be used inside an AuthContextProvider')
+
+    return context
+}
 
 export const authReducer = (state, action) => {
     switch (action.type) {
@@ -24,7 +32,7 @@ export const authReducer = (state, action) => {
         case 'SET_IS_NEW_USER':
             return { ...state, isNewUser: action.payload }
         case 'SET_THEME':
-            myfirebase.updateUser({ Theme: action.payload });
+            firebase.updateUser({ Theme: action.payload });
             return { ...state, Theme: action.payload }
         case 'SET_OTP_TIME':
             return { ...state, otpLastTime: new Date() }

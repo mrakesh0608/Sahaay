@@ -2,14 +2,14 @@ import auth from '@react-native-firebase/auth';
 import { Formik } from "formik";
 import * as yup from 'yup';
 
-import { showableErrorText } from '@utils/toast';
-import usePED from '@hooks/usePED';
+import { showableErrorText } from '#src/utils';
+import { usePED } from '#src/hooks';
 
-import FormikTextInput from '@components/forms/FormikTextInput';
-import FormContainer from '@components/forms/FormContainer';
-import { SubmitBtn, Text } from '@components/elements';
+import FormikTextInput from '#src/forms/FormikTextInput';
+import FormContainer from '#src/forms/FormContainer';
+import { SubmitBtn, Text } from '#src/elements';
 
-import gStyles from '@styles/gStyles';
+import gStyles from '#src/styles/gStyles';
 
 export default function ForgotPasswordScreen({ navigation }) {
 

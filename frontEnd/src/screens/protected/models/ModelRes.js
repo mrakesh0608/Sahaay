@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { getDate, timeHourMinSec, windowWidth } from '@utils/index';
-import useThemeContext from '@hooks/context/useThemeContext';
-import * as myfirebase from '@myfirebase';
-import usePED from '@hooks/usePED';
+import { getDate, timeHourMinSec, windowWidth } from '#src/utils';
+import { useThemeContext } from '#src/context/ThemeContext';
+import * as myfirebase from '#src/firebase';
+import { usePED } from '#src/hooks';
 
-import { Text, Image } from '@components/elements';
-import MoreOptions from '@components/MoreOptions';
+import { Text, Image } from '#src/elements';
+import { MoreOptions } from '#src/components';
 
 export default function ModelRes({ route }) {
 
@@ -74,9 +74,8 @@ export default function ModelRes({ route }) {
                     </View>
                     <View style={styles.propValContainer}>
                         <Text style={styles.prop}>Result : </Text>
-                        <Text style={[styles.val, { color: data.range > 0.5 ? 'red' : 'green' }]}>{data.result}</Text>
+                        <Text style={[styles.val, { color: data.isDetected ? 'red' : 'green' }]}>{data.result}</Text>
                     </View>
-
                 </>
             }
             <Text style={{ alignSelf: 'center', marginVertical: 40, letterSpacing: 1.2 }}>----------  End of Report  ----------</Text>
@@ -87,7 +86,6 @@ export default function ModelRes({ route }) {
 const makeStyles = (colors) => StyleSheet.create({
     propValContainer: {
         flexDirection: 'row',
-        alignItems: 'center'
     },
     prop: {
         fontSize: 16
@@ -96,6 +94,7 @@ const makeStyles = (colors) => StyleSheet.create({
         marginLeft: 10,
         fontSize: 16,
         fontWeight: 'bold',
+        flexShrink: 1, //to wrap text to next line
     },
     uploadImgPreview: {
         marginTop: 20,

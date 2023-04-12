@@ -1,7 +1,7 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-import * as utils from '@utils';
+import * as utils from '#src/utils';
 
 export async function initNewUser(payload) {
     if (!auth().currentUser) return;

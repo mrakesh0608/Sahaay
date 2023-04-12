@@ -2,10 +2,10 @@ import React from 'react'
 import { Image } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
-import useAuthContext from '@hooks/context/useAuthContext'
-import useThemeContext from '@hooks/context/useThemeContext';
+import { useThemeContext } from '#src/context/ThemeContext';
+import { useAuthContext } from '#src/context/AuthContext';
 
-export default function UserImg() {
+export function UserImg({ width = 80, height = 80, borderRadius = 14 }) {
     const { colors } = useThemeContext();
 
     const { user } = useAuthContext();
@@ -17,9 +17,9 @@ export default function UserImg() {
                 <Image
                     source={{ uri: photoURL }}
                     style={{
-                        width: 80,
-                        height: 80,
-                        borderRadius: 14,
+                        width,
+                        height,
+                        borderRadius
                     }}
                 /> : <FontAwesome name='user-o' size={80} color={colors.text} />
             }

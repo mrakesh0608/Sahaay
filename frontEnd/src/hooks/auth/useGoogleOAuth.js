@@ -2,12 +2,12 @@ import { Text, Button, ToastAndroid } from 'react-native';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 
-import * as utils from '@utils';
+import * as utils from '#src/utils';
 
-import useAuthContext from '@hooks/context/useAuthContext';
-import usePED from '@hooks/usePED';
+import { useAuthContext } from '#src/context/AuthContext';
+import { usePED } from '#src/hooks/usePED';
 
-export default function useGoogleOAuth() {
+export function useGoogleOAuth() {
     const { isPending, setIsPending } = usePED();
     const { user } = useAuthContext();
 

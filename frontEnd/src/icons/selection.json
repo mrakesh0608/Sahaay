@@ -1,0 +1,224 @@
+{
+    "IcoMoonType": "selection",
+    "icons": [
+        {
+            "icon": {
+                "paths": [
+                    "M341.333 501.333h341.333v-64h-341.333v64zM341.333 330.667h341.333v-64h-341.333v64zM851.2 891.733l-181.333-236.8q-17.067-21.333-41.6-34.133t-52.267-12.8h-405.333v-458.667q0-25.6 19.2-44.8t44.8-19.2h554.667q25.6 0 44.8 19.2t19.2 44.8v725.333q0 4.267-0.533 8.533t-1.6 8.533zM234.667 938.667q-25.6 0-44.8-19.2t-19.2-44.8v-202.667h405.333q12.8 0 24 5.867t19.733 16.533l185.6 242.133q-4.267 1.067-8 1.6t-8 0.533h-554.667z"
+                ],
+                "attrs": [
+                    {}
+                ],
+                "isMulticolor": false,
+                "isMulticolor2": false,
+                "grid": 0,
+                "tags": [
+                    "lab_profile_FILL1_wght400_GRAD0_opsz48"
+                ]
+            },
+            "attrs": [
+                {}
+            ],
+            "properties": {
+                "order": 15,
+                "id": 5,
+                "name": "lab-profile-o",
+                "prevSize": 32,
+                "code": 59648
+            },
+            "setIdx": 0,
+            "setId": 0,
+            "iconIdx": 0
+        },
+        {
+            "icon": {
+                "paths": [
+                    "M341.333 501.333v-64h341.333v64h-341.333zM341.333 330.667v-64h341.333v64h-341.333zM234.667 608h341.333q28.192 0 52.496 12.8t41.371 34.133l119.467 155.733v-661.333h-554.667v458.667zM234.667 874.667h522.667l-137.6-180.267q-8.069-10.541-19.502-16.47-11.431-5.93-24.231-5.93h-341.333v202.667zM789.333 938.667h-554.667q-25.6 0-44.8-19.2t-19.2-44.8v-725.333q0-25.6 19.2-44.8t44.8-19.2h554.667q25.6 0 44.8 19.2t19.2 44.8v725.333q0 25.6-19.2 44.8t-44.8 19.2zM234.667 874.667v0zM234.667 672v0z"
+                ],
+                "attrs": [
+                    {}
+                ],
+                "isMulticolor": false,
+                "isMulticolor2": false,
+                "grid": 0,
+                "tags": [
+                    "lab_profile_FILL0_wght400_GRAD0_opsz48"
+                ]
+            },
+            "attrs": [
+                {}
+            ],
+            "properties": {
+                "order": 16,
+                "id": 4,
+                "name": "lab-profile",
+                "prevSize": 32,
+                "code": 59649
+            },
+            "setIdx": 0,
+            "setId": 0,
+            "iconIdx": 1
+        },
+        {
+            "icon": {
+                "paths": [
+                    "M234.667 832h160v-266.667h234.667v266.667h160v-416l-277.333-208-277.333 208v416zM170.667 896v-512l341.333-256 341.333 256v512h-288v-266.667h-106.667v266.667h-288z"
+                ],
+                "attrs": [
+                    {}
+                ],
+                "isMulticolor": false,
+                "isMulticolor2": false,
+                "grid": 0,
+                "tags": [
+                    "home_FILL0_wght400_GRAD0_opsz48"
+                ]
+            },
+            "attrs": [
+                {}
+            ],
+            "properties": {
+                "order": 17,
+                "id": 3,
+                "name": "home",
+                "prevSize": 32,
+                "code": 59650
+            },
+            "setIdx": 0,
+            "setId": 0,
+            "iconIdx": 2
+        },
+        {
+            "icon": {
+                "paths": [
+                    "M541.284 184.114l-380.080 336.566v480.922c0 12.436 10.033 22.399 22.445 22.399h237.544v-210.876c0-12.413 9.963-22.445 22.399-22.445h195.173c12.436 0 22.399 10.033 22.399 22.445v210.876h237.614c12.413 0 22.399-9.963 22.399-22.399v-481.062z",
+                    "M539.091 0l-539.089 477.352 56.786 64.047 484.491-429.031 484.398 429.031 56.674-64.047-538.972-477.352-2.1 2.427-2.193-2.427z",
+                    "M161.204 68.713h136.656l-1.19 80.939-135.466 122.377v-203.316z"
+                ],
+                "attrs": [
+                    {},
+                    {},
+                    {}
+                ],
+                "width": 1082,
+                "isMulticolor": false,
+                "isMulticolor2": false,
+                "grid": 0,
+                "tags": [
+                    "dynnamitt_home"
+                ]
+            },
+            "attrs": [
+                {},
+                {},
+                {}
+            ],
+            "properties": {
+                "order": 18,
+                "id": 2,
+                "name": "home-o",
+                "prevSize": 32,
+                "code": 59651
+            },
+            "setIdx": 0,
+            "setId": 0,
+            "iconIdx": 3
+        },
+        {
+            "icon": {
+                "paths": [
+                    "M256 598.4h333.867v-64h-333.867v64zM256 459.733h512v-64h-512v64zM256 321.067h512v-64h-512v64zM85.333 938.667v-789.333q0-24.533 19.2-44.267t44.8-19.733h725.333q24.533 0 44.267 19.733t19.733 44.267v554.667q0 24.533-19.733 44.267t-44.267 19.733h-618.667l-170.667 170.667z"
+                ],
+                "attrs": [
+                    {}
+                ],
+                "isMulticolor": false,
+                "isMulticolor2": false,
+                "grid": 0,
+                "tags": [
+                    "chat_FILL1_wght400_GRAD0_opsz48"
+                ]
+            },
+            "attrs": [
+                {}
+            ],
+            "properties": {
+                "order": 19,
+                "id": 1,
+                "name": "chat-o",
+                "prevSize": 32,
+                "code": 59652
+            },
+            "setIdx": 0,
+            "setId": 0,
+            "iconIdx": 4
+        },
+        {
+            "icon": {
+                "paths": [
+                    "M256 598.4h333.867v-64h-333.867v64zM256 459.733h512v-64h-512v64zM256 321.067h512v-64h-512v64zM85.333 938.667v-789.333q0-24.533 19.2-44.267t44.8-19.733h725.333q24.533 0 44.267 19.733t19.733 44.267v554.667q0 24.533-19.733 44.267t-44.267 19.733h-618.667l-170.667 170.667zM149.333 784l80-80h645.333v-554.667h-725.333v634.667zM149.333 149.333v0z"
+                ],
+                "attrs": [
+                    {}
+                ],
+                "isMulticolor": false,
+                "isMulticolor2": false,
+                "grid": 0,
+                "tags": [
+                    "chat_FILL0_wght400_GRAD0_opsz48"
+                ]
+            },
+            "attrs": [
+                {}
+            ],
+            "properties": {
+                "order": 21,
+                "id": 0,
+                "name": "chat",
+                "prevSize": 32,
+                "code": 59653
+            },
+            "setIdx": 0,
+            "setId": 0,
+            "iconIdx": 5
+        }
+    ],
+    "height": 1024,
+    "metadata": {
+        "name": "icomoon"
+    },
+    "preferences": {
+        "showGlyphs": true,
+        "showQuickUse": true,
+        "showQuickUse2": true,
+        "showSVGs": true,
+        "fontPref": {
+            "prefix": "icon-",
+            "metadata": {
+                "fontFamily": "icomoon",
+                "majorVersion": 1,
+                "minorVersion": 0
+            },
+            "metrics": {
+                "emSize": 1024,
+                "baseline": 6.25,
+                "whitespace": 50
+            },
+            "embed": false
+        },
+        "imagePref": {
+            "prefix": "icon-",
+            "png": true,
+            "useClassSelector": true,
+            "color": 0,
+            "bgColor": 16777215,
+            "classSelector": ".icon",
+            "name": "icomoon"
+        },
+        "historySize": 50,
+        "showCodes": true,
+        "gridSize": 16,
+        "showGrid": true,
+        "showLiga": true
+    }
+}

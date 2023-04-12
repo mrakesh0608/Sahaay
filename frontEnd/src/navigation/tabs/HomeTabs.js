@@ -1,51 +1,31 @@
 import React, { useEffect, useRef } from 'react'
-import { StyleSheet, TouchableWithoutFeedback} from 'react-native'
-import * as Animatable from 'react-native-animatable';
+import { StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as Animatable from 'react-native-animatable';
 
-import Icon, { Icons } from './Icons';
+import * as Icons from '#src/icons';
 
-import HomeScreen from '@screens/protected/tabs/HomeScreen';
-import RecordsScreen from '@screens/protected/tabs/RecordsScreen';
-import UserScreen from '@screens/protected/tabs/UserScreen';
-import ChatScreen from '@screens/protected/Chat';
-
-const TabArr = [
-    {
-        route: 'Home', label: 'Home',
-        type: Icons.Ionicons, activeIcon: 'ios-home', inActiveIcon: 'ios-home-outline',
-        component: HomeScreen
-    },
-    {
-        route: 'Chat', label: 'Chat',
-        type: Icons.CustomIcons, activeIcon: 'chat-o', inActiveIcon: 'chat',
-        component: ChatScreen
-    },
-    {
-        route: 'Records', label: 'Records',
-        type: Icons.CustomIcons, activeIcon: 'lab-profile-o', inActiveIcon: 'lab-profile',
-        component: RecordsScreen
-    },
-    {
-        route: 'User', label: 'User',
-        type: Icons.FontAwesome, activeIcon: 'user', inActiveIcon: 'user-o',
-        component: UserScreen
-    },
-];
+import HomeScreen from '#src/screens/protected/tabs/HomeScreen';
+import ChatScreen from '#src/screens/protected/tabs/ChatScreen';
+import RecordsScreen from '#src/screens/protected/tabs/RecordsScreen';
+import UserScreen from '#src/screens/protected/tabs/UserScreen';
 
 const Tab = createBottomTabNavigator();
 
-const TabButton = (props) => {
-    const { item, onPress, accessibilityState } = props;
+const TabButton = ({ Icon, activeIcon, inActiveIcon, onPress, accessibilityState }) => {
+
     const focused = accessibilityState.selected;
     const viewRef = useRef(null);
 
     useEffect(() => {
-        if (focused) {
-            viewRef.current.animate({ 0: { scale: 0.8, color: 'gray' }, 1: { scale: 1.2, color: 'tomato' } });
-        } else {
-            viewRef.current.animate({ 0: { scale: 1.2, color: 'tomato' }, 1: { scale: 1, color: 'gray' } });
-        }
+        if (focused) viewRef.current.animate({
+            0: { scale: 0.8, color: 'gray' },
+            1: { scale: 1.2, color: 'tomato' }
+        });
+        else viewRef.current.animate({
+            0: { scale: 1.2, color: 'tomato' },
+            1: { scale: 1, color: 'gray' }
+        });
     }, [focused])
 
     return (
@@ -54,9 +34,9 @@ const TabButton = (props) => {
             style={styles.container}>
             <Animatable.View
                 ref={viewRef}
-                duration={400}
+                duration={280}
                 style={styles.container}>
-                <Icon type={item.type} name={focused ? item.activeIcon : item.inActiveIcon} color={focused ? 'tomato' : 'gray'} />
+                <Icon Icon={Icon} size={24} name={focused ? activeIcon : inActiveIcon} color={focused ? 'tomato' : 'gray'} />
             </Animatable.View>
         </TouchableWithoutFeedback>
     )
@@ -66,21 +46,54 @@ export default function HomeTabs() {
     return (
         <Tab.Navigator
             screenOptions={{
-                headerShown: false,
-                tabBarStyle: {
-                    height: 50,
-                }
+                headerShown: false
             }}
         >
-            {TabArr.map((item, index) => {
-                return (
-                    <Tab.Screen key={index} name={item.route} component={item.component}
-                        options={{
-                            tabBarButton: (props) => <TabButton {...props} item={item} />
-                        }}
-                    />
-                )
-            })}
+            <Tab.Screen
+                name={'Home'} component={HomeScreen}
+                options={{
+                    tabBarButton: (props) =>
+                        <TabButton
+                            {...props}
+                            Icon={Icons.Ionicons}
+                            activeIcon='ios-home' inActiveIcon='ios-home-outline'
+                        />
+                }}
+            />
+            <Tab.Screen
+                name={'Chat'} component={ChatScreen}
+                options={{
+                    tabBarButton: (props) =>
+                        <TabButton
+                            {...props}
+                            Icon={Icons.CustomIcons}
+                            activeIcon='chat-o' inActiveIcon='chat'
+                        />,
+                    tabBarHideOnKeyboard: true
+                }}
+            />
+            <Tab.Screen
+                name={'Records'} component={RecordsScreen}
+                options={{
+                    tabBarButton: (props) =>
+                        <TabButton
+                            {...props}
+                            Icon={Icons.CustomIcons}
+                            activeIcon='lab-profile-o' inActiveIcon='lab-profile'
+                        />
+                }}
+            />
+            <Tab.Screen
+                name={'User'} component={UserScreen}
+                options={{
+                    tabBarButton: (props) =>
+                        <TabButton
+                            {...props}
+                            Icon={Icons.FontAwesome}
+                            activeIcon='user' inActiveIcon='user-o'
+                        />
+                }}
+            />
         </Tab.Navigator>
     )
 }

@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { TouchableOpacity, SectionList, ActivityIndicator, RefreshControl, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 
-import useThemeContext from '@hooks/context/useThemeContext';
+import { getDate, todayDate } from '#src/utils';
+import { useThemeContext } from '#src/context/ThemeContext';
 
-import CardContainer from '@components/cards/CardContainer';
-import { CenterView, Text } from '@components/elements';
-import RecordCard from '@components/cards/RecordCard';
-import { getDate, todayDate } from '@utils/time';
+import { CardContainer, RecordCard } from '#src/components';
+import { CenterView, Text } from '#src/elements';
 
 export default function RecordsScreen() {
 
@@ -22,7 +21,7 @@ export default function RecordsScreen() {
     const [order, setOrder] = useState('desc');
     const [refreshing, setRefreshing] = useState(false);
 
-    const onRefresh = React.useCallback(() => {
+    const onRefresh = useCallback(() => {
         setRefreshing(true);
         setTimeout(() => {
             setRefreshing(false);

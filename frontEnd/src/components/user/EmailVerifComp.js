@@ -2,19 +2,19 @@ import { View } from 'react-native';
 import { Octicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import auth from '@react-native-firebase/auth';
 
-import * as myfirebase from '@myfirebase';
-import useThemeContext from '@hooks/context/useThemeContext';
+import * as myfirebase from '#src/firebase';
 
-import DialogCenterWithBtn from '@components/dialogs/DialogCenter';
-import { Text, ZoomBtn, BtnContainer } from '@components/elements';
+import { useThemeContext } from '#src/context/ThemeContext';
 
-export default function EmailVerifComp() {
+import { Text, ZoomBtn, BtnContainer,DialogCenter } from '#src/elements';
+
+export function EmailVerifComp() {
 
     const { colors } = useThemeContext();
     const { emailVerified } = auth().currentUser;
 
     return (
-        <DialogCenterWithBtn
+        <DialogCenter
             CallerContent={() =>
                 <Octicons
                     name={emailVerified ? "verified" : "unverified"}

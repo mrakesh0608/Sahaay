@@ -1,11 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 
-import * as myfirebase from '@myfirebase';
-import * as utils from '@utils';
-import usePED from './usePED';
+import * as firebase from '#src/firebase';
+import * as utils from '#src/utils';
+import { usePED } from './usePED';
 
-export default function useNewUser() {
+export function useNewUser() {
 
     const { navigate } = useNavigation();
 
@@ -15,7 +15,7 @@ export default function useNewUser() {
         if (!email || email === auth().currentUser.email) return;
 
         await auth().currentUser.updateEmail(email);
-        await myfirebase.sendEmailVerification()
+        await firebase.sendEmailVerification()
     }
 
     async function handlePhoneNumber({ phoneNumber }) {
@@ -33,7 +33,7 @@ export default function useNewUser() {
 
         if (photoURL?.uri && photoURL.uri !== auth().currentUser.photoURL) {
 
-            const url = await myfirebase.uploadFile({
+            const url = await firebase.uploadFile({
                 path: `photoURL/${auth().currentUser.uid}`,
                 file: photoURL.uri
             })
@@ -56,9 +56,9 @@ export default function useNewUser() {
             await handleEmail({ email });
             await handlePhoneNumber({ phoneNumber });
             await handleProfile({ displayName, photoURL });
-            await myfirebase.updateUser({ age: values.age });
+            await firebase.updateUser({ age: values.age });
 
-            await myfirebase.reloadUser();
+            await firebase.reloadUser();
             utils.haptics('Success');
             navigate('HomeTabs')
         }

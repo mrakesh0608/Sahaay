@@ -1,32 +1,15 @@
-import { View, ScrollView } from 'react-native';
+import { randomNumBetween } from '#src/utils';
+import { ModelContainer } from '#src/components/model/ModelContainer';
 
-import useUploadImg from '@hooks/useUploadImg';
+async function randomImgUrl() { }
 
-import { OR, SubmitBtn, Text, TransparentBtn } from '@components/elements';
-
-const intro = '';
-
-export default function PrescriptionDigit({ navigation }) {
-
-    const { uploadImg, UploadImgComp } = useUploadImg();
-
-    async function getRes() {
-        navigation.navigate('ModelRes', { data: 'Prescription Digitization Result' });
-    }
-
+export default function PrescriptionDigit() {
     return (
-        <ScrollView contentContainerStyle={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-        }}>
-            <View style={{ justifyContent: 'center', alignSelf: 'center', padding: 20 }}>
-                <Text style={{ textAlign: 'justify' }}>{intro}</Text>
-                <UploadImgComp />
-                <OR />
-                <TransparentBtn title='Try with sample image' />
-                <SubmitBtn title={'Get Result'} onPress={getRes} />
-            </View>
-        </ScrollView>
+        <ModelContainer
+            introTxt={'\t\t\t\t..'}
+            randomImgUrl={randomImgUrl}
+
+            serverPath={'/prescription-digitization'}
+        />
     );
 }

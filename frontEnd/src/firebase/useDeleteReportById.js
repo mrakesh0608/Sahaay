@@ -1,10 +1,11 @@
-import usePED from '@hooks/usePED';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-import * as utils from '@utils';
+import * as utils from '#src/utils';
 
-export default function useDeleteReportById() {
+import { usePED } from '#src/hooks/usePED';
+
+export function useDeleteReportById() {
 
     const {
         isPending, error, data,
@@ -26,7 +27,7 @@ export default function useDeleteReportById() {
             .doc(id)
             .delete()
             .then(async res => {
-                setError(null); 
+                setError(null);
                 setData(1); //ok
             })
             .catch(async error => {

@@ -1,10 +1,10 @@
 import auth from '@react-native-firebase/auth';
 
-import * as utils from '@utils';
+import * as utils from '#src/utils';
 
-import useGoogleOAuth from '@hooks/auth/useGoogleOAuth';
+import { useGoogleOAuth } from '#src/hooks/auth/useGoogleOAuth';
 
-export default function useSignOut() {
+export function useSignOut() {
 
     const { signOut: GSignOut } = useGoogleOAuth();
 

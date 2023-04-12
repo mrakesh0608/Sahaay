@@ -1,17 +1,16 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import useSignOut from '@hooks/auth/useSignOut';
+import { useSignOut } from '#src/hooks';
 
-import DialogCenterWithBtn from '@components/dialogs/DialogCenter';
-import { Text, ZoomBtn, BtnContainer } from '@components/elements';
-import MenuCard from '@components/cards/MenuCard';
+import { Text, ZoomBtn, BtnContainer, DialogCenter } from '#src/elements';
+import { MenuCard } from '#src/components/cards/MenuCard';
 
-export default function SignOutComp() {
+export function SignOutComp() {
 
     const { signOut } = useSignOut();
 
     return (
-        <DialogCenterWithBtn
+        <DialogCenter
             CallerContent={() =>
                 <MenuCard
                     title='Sign Out'

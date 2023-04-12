@@ -1,10 +1,10 @@
 import auth from '@react-native-firebase/auth';
 
-import * as myfirebase from '@myfirebase';
-import * as utils from '@utils';
-import usePED from '@hooks/usePED';
+import * as firebase from '#src/firebase';
+import * as utils from '#src/utils';
+import { usePED } from '#src/hooks/usePED';
 
-export default function useSignIn() {
+export function useSignIn() {
 
     const { isPending, setIsPending, error, setError } = usePED();
 
@@ -20,7 +20,7 @@ export default function useSignIn() {
                 console.log('User Logged in with email ', user.email);
 
                 utils.haptics('Success');
-                myfirebase.sendEmailVerification();
+                firebase.sendEmailVerification();
             })
             .catch(async error => {
                 console.log(error);

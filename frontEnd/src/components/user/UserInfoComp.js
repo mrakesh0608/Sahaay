@@ -2,17 +2,18 @@ import { StyleSheet, View, Pressable } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import * as utils from '@utils';
+import * as utils from '#src/utils';
 
-import useThemeContext from '@hooks/context/useThemeContext';
-import useAuthContext from '@hooks/context/useAuthContext';
+import { useThemeContext } from '#src/context/ThemeContext';
+import { useAuthContext } from '#src/context/AuthContext';
 
-import EmailVerifComp from '@components/user/EmailVerifComp';
-import CardContainer from '@components/cards/CardContainer';
-import { Text } from '@components/elements';
-import UserImg from './UserImg';
+import { EmailVerifComp } from '#src/components/user/EmailVerifComp';
+import { CardContainer } from '#src/components/cards/CardContainer';
+import { UserImg } from '#src/components/user/UserImg';
 
-export default function UserInfoComp() {
+import { Text } from '#src/elements';
+
+export function UserInfoComp() {
 
     const { colors } = useThemeContext();
     const styles = makeStyles(colors);

@@ -1,9 +1,9 @@
 import auth from '@react-native-firebase/auth';
 
-import * as utils from '@utils';
-import usePED from '@hooks/usePED';
+import * as utils from '#src/utils';
+import { usePED } from '#src/hooks/usePED';
 
-export default function useSignUp() {
+export function useSignUp() {
 
     const { isPending, setIsPending, error, setError } = usePED();
 

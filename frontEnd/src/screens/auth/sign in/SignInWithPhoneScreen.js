@@ -1,7 +1,7 @@
-import usePhoneAuth from '@hooks/auth/usePhoneAuth';
+import { usePhoneAuth } from '#src/hooks';
 
-import { SubmitBtn, TransparentBtn, Text, TextInput } from '@components/elements';
-import FormContainer from '@components/forms/FormContainer';
+import { SubmitBtn, TransparentBtn, Text, TextInput } from '#src/elements';
+import FormContainer from '#src/forms/FormContainer';
 
 export default function SignInWithPhoneScreen() {
 

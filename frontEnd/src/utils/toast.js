@@ -1,6 +1,6 @@
 import { ToastAndroid } from 'react-native';
 
-import { haptics } from '@utils/haptics';
+import { haptics } from './haptics';
 
 export async function Toast(text) {
     ToastAndroid.show(text, ToastAndroid.LONG);

@@ -1,15 +1,15 @@
 import React from 'react'
-import { View, TouchableOpacity, } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Octicons } from '@expo/vector-icons';
 
-import { timeHourMin } from '@utils/time';
-import useThemeContext from '@hooks/context/useThemeContext';
+import { timeHourMin } from '#src/utils';
 
-import CardContainer from '@components/cards/CardContainer';
-import { Text } from '@components/elements';
+import { useThemeContext } from '#src/context/ThemeContext';
 
-export default function RecordCard({ record }) {
+import { CardContainer } from '#src/components/cards/CardContainer';
+import { Text } from '#src/elements';
+
+export function RecordCard({ record }) {
 
     const { colors } = useThemeContext();
     const { navigate } = useNavigation();
@@ -17,16 +17,30 @@ export default function RecordCard({ record }) {
     return (
         <TouchableOpacity onPress={() => navigate('ModelRes', { id: record.id, data: { ...record } })}>
             <CardContainer>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <View style={styles.container}>
                     <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{record.title}</Text>
-                    <Text style={{ color: record.range > 0.5 ? colors.error : colors.success, fontWeight: 'bold' }}>{record.range > 0.5 ? 'Detected' : 'Not Detected'}</Text>
-                    {/* <Octicons name="dot-fill" size={16} color={record.range > 0.5 ? 'red' : 'green'} /> */}
+                    <Text style={{
+                        color: record.isDetected ? colors.error : colors.success,
+                        fontWeight: 'bold'
+                    }}>{record.isDetected ? 'Detected' : 'Normal'}</Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 12, color: 'gray', }}>{record.id}</Text>
-                    <Text style={{ fontSize: 12, color: 'gray' }}>{timeHourMin(record.createdAt.toDate())}</Text>
+                <View style={styles.container}>
+                    <Text style={styles.txt2}>{record.id}</Text>
+                    <Text style={styles.txt2}>{timeHourMin(record.createdAt.toDate())}</Text>
                 </View>
             </CardContainer>
         </TouchableOpacity>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    txt2: {
+        color: 'gray',
+        fontSize: 12
+    }
+})

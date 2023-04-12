@@ -1,10 +1,10 @@
-import { createContext, useEffect, useReducer } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
 import { useColorScheme, StatusBar } from 'react-native';
 
-import AppLightTheme from '@utils/theme/appLightTheme';
-import AppDarkTheme from '@utils/theme/appDarkTheme';
+import { useAuthContext } from '#src/context/AuthContext';
 
-import useAuthContext from '@hooks/context/useAuthContext';
+import AppLightTheme from '#src/styles/theme/appLightTheme';
+import AppDarkTheme from '#src/styles/theme/appDarkTheme';
 
 const LightTheme = {
     theme: AppLightTheme,
@@ -19,6 +19,12 @@ const DarkTheme = {
 }
 
 export const ThemeContext = createContext();
+
+export function useThemeContext() {
+    const context = useContext(ThemeContext)
+    if (!context) throw Error('useThemeContext must be used inside an ThemeContextProvider')
+    return context
+}
 
 export const authReducer = (state, action) => {
     switch (action.type) {

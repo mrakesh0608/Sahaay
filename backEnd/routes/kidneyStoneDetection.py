@@ -20,8 +20,8 @@ def img_preprocess(path):
 
 def main():
     try:
-        img_url = request.json['img_url']
         uid = request.json['uid']
+        img_url = request.json['img_url']
 
         label_prediction = ''
 
@@ -34,10 +34,11 @@ def main():
             label_prediction = "No Kidney Stone Detected"
 
         doc_id = myfirebase.saveReport(uid, {
-            "title" : "Kidney Stone Detection",
+            "title": "Kidney Stone Detection",
             "result": label_prediction,
             "img_url": img_url,
-            "range": 1 if result[0][0] == 1 else 0,
+            "isDetected": True if result[0][0] == 1 else False,
+            "percent": result[0][0]*100,
         })
 
         return {

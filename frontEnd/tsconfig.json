@@ -1,42 +1,19 @@
 {
     "compilerOptions": {
+        "allowJs": true,
         "jsx": "react",
         "baseUrl": ".",
         "paths": {
-            "@assets": [
+            "#assets": [
                 "assets/*"
             ],
-            "@configs/*": [
+            "#configs/*": [
                 "configs/*"
             ],
-            "@components/*": [
-                "src/components/*"
+            "#src/*": [
+                "src/*"
             ],
-            "@context/*": [
-                "src/context/*"
-            ],
-            "@hooks/*": [
-                "src/hooks/*"
-            ],
-            "@navigation/*": [
-                "src/navigation/*"
-            ],
-            "@screens/*": [
-                "src/screens/*"
-            ],
-            "@styles/*": [
-                "src/styles/*"
-            ],
-            "@utils/*": [
-                "src/utils/*"
-            ],
-            "@myfirebase/*": [
-                "src/firebase/*"
-            ],
-            "@theme/*": [
-                "src/theme/*"
-            ],
-            "@root": [
+            "#root/*": [
                 "*"
             ],
         }

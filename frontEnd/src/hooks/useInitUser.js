@@ -1,14 +1,14 @@
-import * as myfirebase from '@myfirebase';
+import * as firebase from '#src/firebase';
 
-export default function useInitUser() {
+export function useInitUser() {
     async function initUser({ user, Theme, dispatch }) {
 
         if (!user) return;
 
         //init initial fields of user in cloud if not exits
-        await myfirebase.initNewUser({ Theme });
+        await firebase.initNewUser({ Theme });
 
-        await myfirebase.getUserFields([], (err, data) => {
+        await firebase.getUserFields([], (err, data) => {
             // console.log(err, data);
             if (err || !data) return;
             if (data.Theme) dispatch({ type: 'SET_INFO', payload: data })

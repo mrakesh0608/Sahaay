@@ -7,26 +7,12 @@ module.exports = function (api) {
             {
                 root: ['.'],
                 alias: {
-                    "@assets": "./assets",
-                    "@configs": "./configs",
-                    '@components': './src/components',
-                    '@context': './src/context',
-                    '@hooks': './src/hooks',
-                    '@navigation': './src/navigation',
-                    '@screens': './src/screens',
-                    '@styles': './src/styles',
-                    '@utils': './src/utils',
-                    '@myfirebase': './src/firebase',
-                    '@theme': './src/utils/theme',
-                    "@root": "./",
+                    "#assets": "./assets",
+                    "#configs": "./configs",
+                    "#src": "./src",
+                    "#root": "./",
                 },
             },
-        ], [
-            "module:react-native-dotenv",{
-                "path":'./configs/.env'
-            }
-        ],[
-            "react-native-reanimated/plugin",
         ]]
     }
 };

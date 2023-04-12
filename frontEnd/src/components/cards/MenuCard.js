@@ -1,11 +1,11 @@
 import { View, TouchableOpacity } from 'react-native';
 
-import useThemeContext from '@hooks/context/useThemeContext';
+import { useThemeContext } from '#src/context/ThemeContext';
 
-import CardContainer from '@components/cards/CardContainer';
-import { Text } from '@components/elements';
+import { CardContainer } from '#src/components/cards/CardContainer';
+import { Text } from '#src/elements';
 
-export default function MenuCard({ Icon, title, desc, onPress }) {
+export function MenuCard({ Icon, title, desc, onPress }) {
 
     const { colors } = useThemeContext();
 

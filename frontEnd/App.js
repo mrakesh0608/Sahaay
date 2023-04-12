@@ -7,11 +7,11 @@ import {
     , Platform, UIManager,
 } from 'react-native';
 
-import { LoaderContextProvider } from '@context/LoaderContext';
-import { AuthContextProvider } from '@context/AuthContext';
-import { ThemeContextProvider } from '@context/ThemeContext';
+import { LoaderContextProvider } from '#src/context/LoaderContext';
+import { AuthContextProvider } from '#src/context/AuthContext';
+import { ThemeContextProvider } from '#src/context/ThemeContext';
 
-import Navigator from "@navigation/Navigator";
+import Navigator from "#src/navigation/Navigator";
 
 //to animate TextInput, etc.
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {

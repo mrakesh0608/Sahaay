@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { CenterView, Text } from '@components/elements';
+import { CenterView, Text } from '#src/elements';
 
-import gStyles from '@styles/gStyles';
+import gStyles from '#src/styles/gStyles';
 
 export default function ForgotPasswordSuccessScreen({ navigation }) {
 
