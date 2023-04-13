@@ -10,7 +10,8 @@ export default {
         border: '#444859',
         primary: '#f9f9f9',
         background: '#121212',
-
+        
+        card2: '#176b5b',
         placeholder: 'gray',
         nearBg: 'gray',
         focusColor: '#1e90ff',

@@ -5,7 +5,7 @@ import { MaterialIcons, MaterialCommunityIcons, Entypo, FontAwesome } from '@exp
 import * as util from '#src/utils';
 import { useThemeContext } from '#src/context/ThemeContext';
 
-import { CapsuleBtn, BorderBtn, Image, DialogBottom } from '#src/elements';
+import { CapsuleBtn, BorderBtn, ImageViewer, DialogBottom } from '#src/elements';
 
 export function useUploadImg(props) {
 
@@ -26,7 +26,7 @@ export function useUploadImg(props) {
     const UploadImgComp = () => (
         <View style={styles.container}>
             {uploadImg && <>
-                <Image
+                <ImageViewer
                     source={{ uri: uploadImg.uri }}
                     style={styles.uploadImgPreview}
                 />

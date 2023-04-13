@@ -2,28 +2,42 @@ import React, { useState } from 'react';
 import {
     StyleProp, ViewStyle,
     View, Modal,
-    Pressable, TouchableOpacity, TouchableWithoutFeedback,
+    Pressable, TouchableOpacity, TouchableWithoutFeedback, Animated
 } from 'react-native';
 
 export interface DialogProps {
-    animationType: 'fade' | 'none' | 'slide',
+    animationType?: 'fade' | 'none' | 'slide',
     CallerContent: any,
     DialogContent: any,
-    dialogPosition: 'top' | 'center' | 'bottom',
-    dialogContainerStyle: StyleProp<ViewStyle>,
+    dialogPosition?: 'top' | 'center' | 'bottom',
+    dialogContainerStyle?: StyleProp<ViewStyle>,
+    dialogContainerAniStyle?: Animated.AnimatedProps<StyleProp<ViewStyle>>
+    onCloseDialog?: any,
+    onShowDialog?: any
 }
 
 export function Dialog({
     animationType = 'fade',
     CallerContent,
     DialogContent,
-    dialogPosition, dialogContainerStyle,
+    dialogPosition,
+    dialogContainerStyle, dialogContainerAniStyle,
+    onCloseDialog,
+    onShowDialog
 }: React.PropsWithChildren<DialogProps>) {
 
     const [dialogVisible, setDialogVisible] = useState(false);
 
-    function closeDialog() { setDialogVisible(false) }
-    function showDialog() { setDialogVisible(true) }
+    function closeDialog() {
+        if (typeof onShowDialog === 'function') onCloseDialog(() => setDialogVisible(false))
+        else setDialogVisible(false)
+    }
+    function showDialog() {
+        setDialogVisible(true);
+        if (typeof onShowDialog === 'function') onShowDialog();
+    }
+
+    const animatedCardStyle: Animated.Animated = dialogContainerAniStyle;
 
     return (
         <View>
@@ -32,22 +46,23 @@ export function Dialog({
                 visible={dialogVisible}
                 animationType={animationType}
                 onRequestClose={closeDialog}
+                pointerEvents='none'
             >
                 <Pressable
                     onPress={closeDialog}
                     style={{
                         flex: 1,
+                        backgroundColor: 'rgba(0,0,0,0.6)',
                         justifyContent: (dialogPosition === 'top' ?
                             'flex-start' :
                             (dialogPosition === 'bottom' ? 'flex-end' : 'center')
-                        ),
-                        backgroundColor: 'rgba(0,0,0,0.6)',
+                        )
                     }}
                 >
                     <TouchableWithoutFeedback>
-                        <View style={dialogContainerStyle}>
+                        <Animated.View style={[dialogContainerStyle, animatedCardStyle]}>
                             <DialogContent closeDialog={closeDialog} />
-                        </View>
+                        </Animated.View>
                     </TouchableWithoutFeedback>
                 </Pressable>
             </Modal>

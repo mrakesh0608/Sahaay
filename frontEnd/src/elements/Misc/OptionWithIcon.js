@@ -4,10 +4,13 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeContext } from '#src/context/ThemeContext';
 
 import { Text } from "../Text";
+import { useMemo } from "react";
 
 export function OptionWithIcon({ title, selectedVal, onPress, disabled, Icon }) {
 
     const { colors } = useThemeContext();
+
+    const isSelected = useMemo(() => selectedVal === title, [selectedVal, title])
 
     return (
         <TouchableOpacity
@@ -23,9 +26,9 @@ export function OptionWithIcon({ title, selectedVal, onPress, disabled, Icon }) 
                 <Text style={styles.optionText}>{title}</Text>
             </View>
             <MaterialCommunityIcons
-                name={selectedVal === title ? 'radiobox-marked' : 'radiobox-blank'}
+                name={isSelected ? 'radiobox-marked' : 'radiobox-blank'}
                 size={24}
-                color={selectedVal === title ? 'tomato' : colors.text}
+                color={isSelected ? 'tomato' : colors.text}
             />
         </TouchableOpacity>
     )
@@ -33,7 +36,7 @@ export function OptionWithIcon({ title, selectedVal, onPress, disabled, Icon }) 
 
 const styles = StyleSheet.create({
     disabled: {
-        opacity: 0.8,
+        opacity: 0.4,
     },
     optionC: {
         flexDirection: 'row',

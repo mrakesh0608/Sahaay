@@ -9,7 +9,7 @@
 - Install dependencies `npm i`
 
 ## Development Build
-- To build development apk `npm run build-apk-dev`
+- To build development apk `npm run build-dev-apk`
 - Download development build apk from [Expo dev](https://expo.dev/)
 - Install development build apk in your Android device.
 - Start metro bundler `npm start`

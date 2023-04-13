@@ -19,7 +19,7 @@ function ChatContainer({ align, txt, createdAt }) {
         <TouchableOpacity
             style={{
                 alignSelf: align === 'left' ? 'flex-start' : 'flex-end',
-                backgroundColor: colors.card,
+                backgroundColor: align === 'left' ? colors.card2 : colors.card,
 
                 maxWidth: windowWidth * 0.72,
                 marginVertical: 6,

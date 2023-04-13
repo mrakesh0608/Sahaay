@@ -9,6 +9,7 @@ import { usePED } from '#src/hooks';
 
 import { Text, Image } from '#src/elements';
 import { MoreOptions } from '#src/components';
+import { SkinInfectionRes } from '#src/components/model/SkinInfectionRes';
 
 export default function ModelRes({ route }) {
 
@@ -48,7 +49,7 @@ export default function ModelRes({ route }) {
 
     return (
         <ScrollView contentContainerStyle={{
-            padding: 20, flex: 1, justifyContent: 'space-around',
+            padding: 20, flexGrow: 1
         }}>
             {data &&
                 <>
@@ -68,7 +69,7 @@ export default function ModelRes({ route }) {
                         <Text style={styles.prop}>Time : </Text>
                         <Text style={styles.val}>{timeHourMinSec(data.createdAt.toDate())} </Text>
                     </View>
-                    <View>
+                    <View style={{ marginVertical: 20 }}>
                         <Text style={styles.prop}>Examination Image : </Text>
                         <Image source={{ uri: data.img_url }} style={styles.uploadImgPreview} />
                     </View>
@@ -76,6 +77,7 @@ export default function ModelRes({ route }) {
                         <Text style={styles.prop}>Result : </Text>
                         <Text style={[styles.val, { color: data.isDetected ? 'red' : 'green' }]}>{data.result}</Text>
                     </View>
+                    {data.title === 'Skin Infection Detection' && <SkinInfectionRes type={data.result} />}
                 </>
             }
             <Text style={{ alignSelf: 'center', marginVertical: 40, letterSpacing: 1.2 }}>----------  End of Report  ----------</Text>
@@ -86,6 +88,7 @@ export default function ModelRes({ route }) {
 const makeStyles = (colors) => StyleSheet.create({
     propValContainer: {
         flexDirection: 'row',
+        marginVertical: 20
     },
     prop: {
         fontSize: 16
