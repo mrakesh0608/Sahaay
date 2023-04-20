@@ -1,4 +1,6 @@
-from flask import request
+from fastapi import APIRouter
+from pydantic import BaseModel
+
 import myfirebase
 
 from keras.models import load_model
@@ -7,21 +9,25 @@ from skimage import io
 import numpy as np
 import cv2
 
-model = load_model('models/kidney_stone.h5')
+router = APIRouter(
+    prefix="/kidney-stone-detection",
+    tags=["kidney"]
+)
 
 
-def img_preprocess(path):
-    img = io.imread(path)
-    img = cv2.resize(img, (150, 150))
-    img = image.img_to_array(img)
-    img = np.expand_dims(img, axis=0)
-    return img
+class Item(BaseModel):
+    uid: str
+    img_url: str
 
 
-def main():
+model = load_model('src/models/kidney_stone.h5')
+
+
+@router.post("/")
+async def main(item: Item):
     try:
-        uid = request.json['uid']
-        img_url = request.json['img_url']
+        uid = item.uid
+        img_url = item.img_url
 
         label_prediction = ''
 
@@ -53,3 +59,11 @@ def main():
                 "message": e.__str__()
             }
         }
+
+
+def img_preprocess(path):
+    img = io.imread(path)
+    img = cv2.resize(img, (150, 150))
+    img = image.img_to_array(img)
+    img = np.expand_dims(img, axis=0)
+    return img

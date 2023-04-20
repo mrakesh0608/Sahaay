@@ -1,11 +1,26 @@
-from flask import request, jsonify
+from fastapi import APIRouter
+from pydantic import BaseModel
+
 import myfirebase
 
 from keras.models import load_model
 from skimage import io
 import cv2
 
+router = APIRouter(
+    prefix="/skin-infection-detection",
+    tags=["skin"]
+)
+
+
+class Item(BaseModel):
+    uid: str
+    img_url: str
+
+
 global graph, sess
+
+model = load_model('src/models/skin_infection.h5', compile=True)
 
 classes = {0: 'Acne/Rosacea',
            1: 'Actinic Keratosis/Basal Cell Carcinoma/Malignant Lesions',
@@ -15,8 +30,6 @@ classes = {0: 'Acne/Rosacea',
            5: 'Tinea Ringworm/Candidiasis/Fungal Infections',
            6: 'Urticaria/Hives',
            7: 'Nail Fungus/Nail Disease'}
-
-model = load_model('models/skin_infection.h5', compile=True)
 
 
 def predict_class(image):
@@ -40,10 +53,11 @@ def predict_class(image):
     return new_dict
 
 
-def main():
+@router.post("/")
+async def main(item: Item):
     try:
-        uid = request.json['uid']
-        img_url = request.json['img_url']
+        uid = item.uid
+        img_url = item.img_url
 
         result = predict_class(img_url)
 

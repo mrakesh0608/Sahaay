@@ -1,6 +1,0 @@
-Flask
-firebase-admin
-opencv-python
-scikit-image
-tensorflow
-waitress
