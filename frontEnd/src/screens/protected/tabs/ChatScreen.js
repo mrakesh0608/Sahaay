@@ -5,11 +5,14 @@ import { chatGPT } from '#src/utils';
 
 import { CardContainer, ChatMsg, ChatInput } from '#src/components';
 import { Text } from '#src/elements'
+import { useThemeContext } from '#src/context/ThemeContext';
 
 export default function ChatScreen() {
 
     const flatListRef = useRef(null);
     const [chats, setChats] = useState([]);
+
+    const { colors } = useThemeContext();
 
     useEffect(() => {
         chats.forEach(async item => {
@@ -50,10 +53,10 @@ export default function ChatScreen() {
         <View style={{ flex: 1 }}>
             <View style={{
                 justifyContent: 'center',
-                backgroundColor: 'gray',
-                padding: 8
+                backgroundColor: colors.card,
+                padding: 10
             }}>
-                <Text style={{ alignSelf: 'center', color: 'white' }}>Chat with an assistant</Text>
+                <Text style={{ alignSelf: 'center', color: colors.text }}>Chat with an assistant</Text>
             </View>
             <Text style={{ alignSelf: 'center', marginVertical: 6, padding: 4, color: 'coral' }}>This chat history will be cleared when you close the app.</Text>
             <View style={{ flex: 0.8, flexGrow: 1 }}>

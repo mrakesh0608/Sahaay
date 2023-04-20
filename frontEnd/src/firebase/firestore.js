@@ -23,12 +23,16 @@ export async function initNewUser(payload) {
 }
 
 export async function getUserFields(reqArray, cb) {
+    getUserFieldsById(auth().currentUser.uid, cb);
+}
+
+export async function getUserFieldsById(id, cb) {
 
     if (!auth().currentUser) return;
 
     firestore()
         .collection('Users')
-        .doc(auth().currentUser.uid)
+        .doc(id)
         .get()
         .then(res => {
             cb(null, res.data());

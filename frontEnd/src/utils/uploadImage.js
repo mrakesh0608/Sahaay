@@ -9,7 +9,7 @@ export async function uploadImage(type) {
         const result = await ImagePicker[type]({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,
-            // aspect: [1, 1],
+            aspect: [1, 1],
             quality: 1,
         });
         // console.log(result);

@@ -13,7 +13,7 @@ import { SubmitBtn } from '#src/elements';
 
 export default function NewUserForm({ isPending, error, onSubmit }) {
 
-    const { age } = useAuthContext();
+    const { age, bloodgroup } = useAuthContext();
 
     const photo = auth().currentUser.photoURL
     const { uploadImg, UploadImgComp } = useUploadImg({ old: photo ? { uri: photo } : null });
@@ -23,6 +23,7 @@ export default function NewUserForm({ isPending, error, onSubmit }) {
         phoneNumber: '',
         email: '',
         age: age ? age : '',
+        bloodgroup: bloodgroup ? bloodgroup : ''
     });
 
     useEffect(() => {
@@ -41,7 +42,7 @@ export default function NewUserForm({ isPending, error, onSubmit }) {
             onSubmit={(val, actions) => {
                 // actions.resetForm();
                 // console.log(val);
-                onSubmit({ ...val, photoURL: uploadImg });
+                onSubmit({ ...val, photoURL: uploadImg?.uri });
             }}
             enableReinitialize
         >
@@ -80,6 +81,13 @@ export default function NewUserForm({ isPending, error, onSubmit }) {
                         placeholder={'Age'}
                         keyboardType='number-pad'
                         egText="e.g. 28"
+                    />
+                    <FormikTextInput
+                        formikProps={props}
+                        varName={'bloodgroup'}
+
+                        placeholder={'Blood Group'}
+                        egText="e.g. A+"
                     />
 
                     <SubmitBtn

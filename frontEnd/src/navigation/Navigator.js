@@ -10,6 +10,8 @@ import AuthStack from "#src/navigation/stacks/AuthStack";
 
 import { LoadingComp } from '#src/elements';
 
+import { DynamicLinks } from './DynamicLinks';
+
 export default function Navigator() {
 
     const { user } = useAuthContext();
@@ -24,6 +26,7 @@ export default function Navigator() {
 
     return (
         <NavigationContainer theme={theme}>
+            <DynamicLinks />
             {user ? <ProtectedStack /> : <AuthStack />}
         </NavigationContainer>
     );

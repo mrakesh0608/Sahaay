@@ -32,7 +32,8 @@ export function Dialog({
         if (typeof onShowDialog === 'function') onCloseDialog(() => setDialogVisible(false))
         else setDialogVisible(false)
     }
-    function showDialog() {
+    function showDialog(e) {
+        e.preventDefault();
         setDialogVisible(true);
         if (typeof onShowDialog === 'function') onShowDialog();
     }

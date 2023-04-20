@@ -1,19 +1,12 @@
-import { ScrollView, TouchableWithoutFeedback, Keyboard, StyleSheet, StatusBar } from 'react-native';
+import { ScrollView } from 'react-native';
 
+//use this component where no flatlist is required
 export function DefaultScreen(props) {
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <ScrollView contentContainerStyle={styles.container}>
-                {props.children}
-            </ScrollView>
-        </TouchableWithoutFeedback>
+        <ScrollView contentContainerStyle={{
+            padding: 20
+        }}>
+            {props.children}
+        </ScrollView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flexGrow: 1,
-        paddingHorizontal: 20,
-        // paddingTop: StatusBar.currentHeight,
-    },
-})

@@ -1,8 +1,14 @@
-import { View, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, ViewStyle, StyleProp } from 'react-native';
 
 import { useThemeContext } from '#src/context/ThemeContext';
 
-export function CardContainer(props) {
+export function CardContainer({
+    style, children
+}: {
+    children: React.ReactNode,
+    style?: StyleProp<ViewStyle>
+}) {
 
     const { colors } = useThemeContext();
     const styles = makeStyles(colors);
@@ -10,9 +16,9 @@ export function CardContainer(props) {
     return (
         <View style={[
             styles.container,
-            props.style,
+            style,
         ]}>
-            {props.children}
+            {children}
         </View>
     );
 }

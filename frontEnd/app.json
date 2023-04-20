@@ -2,6 +2,7 @@
     "expo": {
         "name": "Sahaay",
         "slug": "Sahaay",
+        "scheme": "sahaay",
         "version": "0.1.0",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
@@ -25,7 +26,23 @@
                 "backgroundColor": "#ffffff"
             },
             "package": "com.mrakesh0608.Sahaay",
-            "googleServicesFile": "./configs/google-services.json"
+            "googleServicesFile": "./configs/google-services.json",
+            "intentFilters": [
+                {
+                    "action": "VIEW",
+                    "autoVerify": true,
+                    "data": [
+                        {
+                            "scheme": "https",
+                            "host": "sahaay.page.link"
+                        }
+                    ],
+                    "category": [
+                        "BROWSABLE",
+                        "DEFAULT"
+                    ]
+                }
+            ]
         },
         "web": {
             "favicon": "./assets/favicon.png"
@@ -34,7 +51,8 @@
             "@react-native-firebase/app",
             "@react-native-firebase/auth",
             "@react-native-google-signin/google-signin",
-            "expo-image-picker"
+            "expo-image-picker",
+            "./configs/withAndroidVerifiedLinksWorkaround"
         ],
         "extra": {
             "eas": {

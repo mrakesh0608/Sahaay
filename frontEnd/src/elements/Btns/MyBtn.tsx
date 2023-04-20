@@ -9,16 +9,16 @@ import { useThemeContext } from '#src/context/ThemeContext';
 import { Text } from "../Text";
 
 export interface MyBtnProps {
-    title: string,
-    onPress: (event: GestureResponderEvent) => void,
-    disabled: boolean,
-    containerStyle: StyleProp<ViewStyle>,
-    textStyle: StyleProp<TextStyle>,
-    isPending: boolean,
-    ActivityIndicatorColor: ColorValue,
+    title?: string,
+    onPress?: (event: GestureResponderEvent) => void,
+    disabled?: boolean,
+    containerStyle?: StyleProp<ViewStyle>,
+    textStyle?: StyleProp<TextStyle>,
+    isPending?: boolean,
+    ActivityIndicatorColor?: ColorValue,
 
-    TextLeftComp: any,
-    TextRightComp: any
+    TextLeftComp?: any,
+    TextRightComp?: any
 }
 
 export function MyBtn({

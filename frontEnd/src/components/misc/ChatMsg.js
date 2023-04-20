@@ -21,7 +21,7 @@ function ChatContainer({ align, txt, createdAt }) {
                 alignSelf: align === 'left' ? 'flex-start' : 'flex-end',
                 backgroundColor: align === 'left' ? colors.card2 : colors.card,
 
-                maxWidth: windowWidth * 0.72,
+                maxWidth: windowWidth * 0.78,
                 marginVertical: 6,
                 paddingVertical: 6,
                 paddingHorizontal: 10,

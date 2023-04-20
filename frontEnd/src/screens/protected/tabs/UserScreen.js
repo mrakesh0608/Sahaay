@@ -1,7 +1,7 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import { UserInfoComp, DefaultScreen, SignOutComp, ThemeComp, MenuCard } from '#src/components';
+import { UserInfoComp, DefaultScreen, SignOutComp, ThemeComp, MenuCard, ShareApp } from '#src/components';
 
 export default function UserScreen() {
 
@@ -12,7 +12,7 @@ export default function UserScreen() {
             <UserInfoComp />
             <ThemeComp />
             <MenuCard
-                title='App info'
+                title='App Info'
                 onPress={() => navigate('App info')}
                 Icon={({ color }) =>
                     <MaterialCommunityIcons
@@ -21,6 +21,7 @@ export default function UserScreen() {
                     />
                 }
             />
+            <ShareApp />
             <SignOutComp />
         </DefaultScreen>
     );

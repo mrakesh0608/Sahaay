@@ -6,7 +6,7 @@ import * as myfirebase from '#src/firebase';
 
 import { useThemeContext } from '#src/context/ThemeContext';
 
-import { Text, ZoomBtn, BtnContainer,DialogCenter } from '#src/elements';
+import { Text, ZoomBtn, BtnContainer, DialogCenter } from '#src/elements';
 
 export function EmailVerifComp() {
 
@@ -19,6 +19,7 @@ export function EmailVerifComp() {
                 <Octicons
                     name={emailVerified ? "verified" : "unverified"}
                     size={20} color={colors.text}
+                    style={{ marginHorizontal: 10 }}
                 />
             }
 

@@ -12,6 +12,7 @@ export function randomNumBetween(min, max) {
 }
 
 export * from './chatGPT';
+export * from './greet';
 export * from './haptics';
 export * from './openUrl';
 export * from './time';

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { View, TextInput } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 
@@ -22,16 +22,18 @@ export function ChatInput({ handleSend }) {
             <TextInput
                 placeholder='Type your message here'
                 placeholderTextColor='gray'
-
                 value={currentTxt}
                 onChangeText={val => setCurrentTxt(val)}
+                multiline={true}
 
                 style={{
                     color: colors.text,
+                    // flex: 1,
                     flex: 0.95,
+                    // borderWidth: 0.5,
+                    fontSize: 16,
                     paddingVertical: 6,
                     paddingHorizontal: 14,
-                    borderWidth: 1,
                     borderColor: colors.text,
                     borderRadius: 16,
                 }}

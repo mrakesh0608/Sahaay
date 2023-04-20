@@ -11,9 +11,12 @@ import PrescriptionDigit from '#src/screens/protected/models/PrescriptionDigit';
 import SkinInfectionDet from '#src/screens/protected/models/SkinInfectionDet';
 import KidneyStoneDet from '#src/screens/protected/models/KidneyStoneDet';
 import BrainTumorDet from '#src/screens/protected/models/BrainTumorDet';
+import CaloriesEstimation from '#src/screens/protected/models/CaloriesEstimation';
+
 import ModelRes from '#src/screens/protected/models/ModelRes';
 
 import AppInfoScreen from '#src/screens/protected/AppInfoScreen';
+import QRCodeScreen from '#src/screens/protected/QRCodeScreen';
 
 const Stack = createStackNavigator();
 
@@ -55,11 +58,20 @@ export default function ProtectedStack() {
             <Stack.Screen name='SkinInfectionDet' component={SkinInfectionDet} options={{
                 title: 'Skin Infection Detection'
             }} />
+            <Stack.Screen name='CaloriesEstimation' component={CaloriesEstimation} options={{
+                title: 'Calories Estimation'
+            }} />
 
             <Stack.Screen name='ModelRes' component={ModelRes} options={{
                 title: 'Report',
             }} />
 
+            <Stack.Screen name='QRCode' component={QRCodeScreen} options={{
+                title: 'QR Code',
+                headerStyle: {
+                    shadowColor: 'transparent',
+                },
+            }} />
             <Stack.Screen name='App info' component={AppInfoScreen} />
         </Stack.Navigator>
     );

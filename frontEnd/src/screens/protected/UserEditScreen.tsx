@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useNewUser } from '#src/hooks'
 
 import FormContainer from '#src/forms/FormContainer'

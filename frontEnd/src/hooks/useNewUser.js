@@ -15,7 +15,7 @@ export function useNewUser() {
         if (!email || email === auth().currentUser.email) return;
 
         await auth().currentUser.updateEmail(email);
-        await firebase.sendEmailVerification()
+        await firebase.sendEmailVerification();
     }
 
     async function handlePhoneNumber({ phoneNumber }) {
@@ -31,11 +31,11 @@ export function useNewUser() {
 
         if (displayName) up.displayName = displayName;
 
-        if (photoURL?.uri && photoURL.uri !== auth().currentUser.photoURL) {
+        if (photoURL !== auth().currentUser.photoURL) {
 
             const url = await firebase.uploadFile({
                 path: `photoURL/${auth().currentUser.uid}`,
-                file: photoURL.uri
+                file: photoURL
             })
             if (url) up.photoURL = url;
         }
@@ -56,9 +56,10 @@ export function useNewUser() {
             await handleEmail({ email });
             await handlePhoneNumber({ phoneNumber });
             await handleProfile({ displayName, photoURL });
-            await firebase.updateUser({ age: values.age });
+            await firebase.updateUser({ ...values });
 
             await firebase.reloadUser();
+
             utils.haptics('Success');
             navigate('HomeTabs')
         }
