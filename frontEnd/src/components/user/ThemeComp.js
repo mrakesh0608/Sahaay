@@ -9,7 +9,7 @@ import { DialogBottom, OptionWithIcon } from '#src/elements';
 
 export function ThemeComp() {
 
-    const { Theme, dispatch } = useAuthContext();
+    const { theme, dispatch } = useAuthContext();
     const { colors } = useThemeContext();
 
     return (
@@ -21,7 +21,7 @@ export function ThemeComp() {
                         name="circle-half-full"
                         size={24} color={colors.text}
                     />}
-                    desc={Theme}
+                    desc={theme}
                 />
             }
 
@@ -32,7 +32,7 @@ export function ThemeComp() {
                     <OptionWithIcon
                         title={'System Default'}
                         onPress={() => dispatch({ type: 'SET_THEME', payload: 'System Default' })}
-                        selectedVal={Theme}
+                        selectedVal={theme}
 
                         Icon={() => <MaterialCommunityIcons
                             name="circle-half-full"
@@ -42,14 +42,14 @@ export function ThemeComp() {
                     <OptionWithIcon
                         title={'Light'}
                         onPress={() => dispatch({ type: 'SET_THEME', payload: 'Light' })}
-                        selectedVal={Theme}
+                        selectedVal={theme}
 
                         Icon={() => <Ionicons name="sunny" size={24} color={colors.text} />}
                     />
                     <OptionWithIcon
                         title={'Dark'}
                         onPress={() => dispatch({ type: 'SET_THEME', payload: 'Dark' })}
-                        selectedVal={Theme}
+                        selectedVal={theme}
 
                         Icon={() => <Ionicons name="moon" size={24} color={colors.text} />}
                     />

@@ -1,7 +1,8 @@
 from fastapi import APIRouter
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
-import myfirebase
+import util.myfirebase as myfirebase
 
 from keras.models import load_model
 import keras.utils as image
@@ -28,7 +29,7 @@ async def main(item: Item):
     try:
         uid = item.uid
         img_url = item.img_url
-
+        print(uid)
         label_prediction = ''
 
         preprocessed_img = img_preprocess(img_url)
@@ -54,11 +55,7 @@ async def main(item: Item):
         }
     except Exception as e:
         print(e)
-        return {
-            "error": {
-                "message": e.__str__()
-            }
-        }
+        return JSONResponse(status_code=500, content={"error": {"message": e.__str__()}})
 
 
 def img_preprocess(path):

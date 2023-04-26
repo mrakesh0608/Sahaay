@@ -6,7 +6,12 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useThemeContext } from '#src/context/ThemeContext';
 import { CapsuleBtn } from './CapsuleBtn';
 
-export function ShareBtn({ ShareOptions, style }: {
+export function ShareBtn({
+    title = 'Share',
+    ShareOptions,
+    style,
+}: {
+    title?: string,
     ShareOptions?: ShareOptions,
     style?: StyleProp<TextStyle>
 }) {
@@ -15,7 +20,7 @@ export function ShareBtn({ ShareOptions, style }: {
 
     return (
         <CapsuleBtn
-            title='Share'
+            title={title}
 
             TextLeftComp={() =>
                 <MaterialIcons

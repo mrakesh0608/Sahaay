@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 
-function processURL(url) {
+function processURL(url: string) {
 
     const k = new URL(url);
 
@@ -28,7 +28,7 @@ export function DynamicLinks() {
 
     const handleDynamicLinks = async (link: any) => {
         if (!link) {
-            console.log('App not opened using dynamic link');
+            // console.log('App not opened using dynamic link');
             return;
         }
 
@@ -44,6 +44,10 @@ export function DynamicLinks() {
         if (pathname === '/code') {
             navigate('UserStack' as never, { screen: 'User Profile', params } as never);
         }
+        else if (pathname === '/report') {
+            alert('This Feature is Under Development')
+            // navigate('ModelRes' as never, { params } as never);
+        }
         else console.log('Invalid Dynamic Link');
 
     }
@@ -54,7 +58,7 @@ export function DynamicLinks() {
         return () => unsubscribe()
     }, []);
 
-    //When app is in a background state or has fully quit
+    //When app is in a background or not in running/opened state 
     useEffect(() => {
         dynamicLinks()
             .getInitialLink()

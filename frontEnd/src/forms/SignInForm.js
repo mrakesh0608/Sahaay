@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import FormikPasswordTextInput from '#src/forms/FormikPasswordTextInput';
 import FormikTextInput from '#src/forms/FormikTextInput';
 
-import { MyBtn, SubmitBtn } from '#src/elements';
+import { MyBtn, SubmitBtn, TransparentBtn } from '#src/elements';
 
 export default function SignInForm({ isSigningIn, error, onSubmit, navigation }) {
     return (
@@ -35,6 +35,7 @@ export default function SignInForm({ isSigningIn, error, onSubmit, navigation })
                 <MyBtn
                     title={"Forgot your password?"}
                     onPress={() => navigation.navigate('Forgot Password')}
+                    containerStyle={{ alignSelf: 'flex-start' }}
                 />
 
                 <SubmitBtn

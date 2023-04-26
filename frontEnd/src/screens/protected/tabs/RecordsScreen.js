@@ -70,12 +70,16 @@ export default function RecordsScreen() {
                 setLoading(false);
             });
 
-        return () => subscriber();
+        return subscriber;
     }, [order]);
 
-    if (loading) return <CenterView>
-        <ActivityIndicator color={colors.text} size='large' />
-    </CenterView>
+    if (loading) {
+        return (
+            <CenterView>
+                <ActivityIndicator color={colors.text} size='large' />
+            </CenterView>
+        );
+    }
 
     if (!data.length) {
         return (

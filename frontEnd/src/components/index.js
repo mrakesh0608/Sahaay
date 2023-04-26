@@ -17,8 +17,11 @@ export * from './model/ModelCard';
 export * from './model/ModelContainer';
 export * from './model/ModelList';
 export * from './model/MoreOptions';
+export * from './model/TryWithImg';
 
+export * from './user/BloodGroupPicker';
 export * from './user/EmailVerifComp';
+export * from './user/GenderPicker';
 export * from './user/SignOutComp';
 export * from './user/ThemeComp';
 export * from './user/UserEdit';

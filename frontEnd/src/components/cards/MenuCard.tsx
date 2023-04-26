@@ -24,10 +24,10 @@ export function MenuCard({ Icon, title, desc, onPress, containerStyle, TitleRigh
                     flexDirection: 'row',
                     alignItems: 'center'
                 }}>
-                    <View style={{ marginRight: 20 }}>
-                        <Icon color={colors.text} />
+                    <View style={{ flex: 0.15 }}>
+                        <Icon color={colors.text} size={24} />
                     </View>
-                    <View>
+                    <View style={{ flex: 0.85 }}>
                         {title &&
                             <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                                 <Text style={{ fontSize: 16 }}>{title}</Text>

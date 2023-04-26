@@ -38,7 +38,7 @@ web:
 # Data and mounts
 
 # The size of the persistent disk of the application (in MB).
-disk: 3072
+disk: 4608
 
 ##########################
 # Internal maintenance

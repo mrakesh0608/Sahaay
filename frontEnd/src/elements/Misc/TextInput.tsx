@@ -5,7 +5,8 @@ import {
     TextInputFocusEventData,
     TextInputProps as RNTextInputProps,
     View,
-    LayoutAnimation
+    LayoutAnimation,
+    ColorValue
 } from "react-native";
 
 import { useThemeContext } from '#src/context/ThemeContext';
@@ -13,20 +14,29 @@ import { useThemeContext } from '#src/context/ThemeContext';
 import { Text } from '../Text';
 
 interface optinalProps {
-    egText: any,
-    errTxt: any,
-    errTxtColor: string
+    egText: string,
+    errTxt: string,
+    errTxtColor: ColorValue,
+    editableColor: ColorValue
 }
 
 export interface TextInputProps extends RNTextInputProps, Partial<optinalProps> { }
 
 export function TextInput({
-    style, onFocus, onBlur, egText, placeholder, errTxt, errTxtColor = 'red', ...rest
-}: React.PropsWithChildren<TextInputProps>) {
+    value,
+    style, onFocus, onBlur,
+    egText, placeholder,
+    errTxt, errTxtColor = 'red',
+    editableColor = 'gray',
+    ...rest
+}: TextInputProps) {
+
+    //to fix null issue with textinput
+    value = value ? value : '';
 
     const { colors } = useThemeContext();
 
-    const inputElement = React.useRef();
+    const inputElement = React.useRef<RNTextInput>();
     const [isFocused, setIsFocused] = React.useState(false);
     const [labelPosTop, selLabelPosTop] = React.useState(25);
 
@@ -41,9 +51,9 @@ export function TextInput({
     function handleBlur(e: NativeSyntheticEvent<TextInputFocusEventData>) {
 
         setIsFocused(false);
-        if (rest.value === '') {
+        if (value === '') {
             selLabelPosTop(25);
-            LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         }
 
         if (typeof onBlur === 'function') onBlur(e);
@@ -56,6 +66,7 @@ export function TextInput({
     return (
         <View style={{ marginVertical: 5 }}>
             <RNTextInput
+                value={value}
                 ref={inputElement}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
@@ -79,7 +90,7 @@ export function TextInput({
                     style,
                     isFocused && { borderColor: colors.focusColor },
                     errTxt && errTxtColor && { borderColor: errTxtColor },
-                    rest.editable === false && { color: 'gray', borderColor: '#ddd' }
+                    rest.editable === false && { color: editableColor, borderColor: '#ddd' }
 
                 ]}
 
@@ -97,9 +108,9 @@ export function TextInput({
                         top: labelPosTop,
                     },
                     isFocused && { color: colors.focusColor },
-                    (isFocused || rest.value !== '') ? { fontSize: 12, top: 1 } : { color: colors.placeholder },
+                    (isFocused || value !== '') ? { fontSize: 12, top: 1 } : { color: colors.text },
                     errTxt && { color: errTxtColor },
-                    rest.editable === false && { color: 'gray' }
+                    rest.editable === false && { color: editableColor }
                 ]}
             >{placeholder}</Text>
             {errTxt && <Text style={{ color: errTxtColor, alignSelf: 'center' }}>{errTxt}</Text>}

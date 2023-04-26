@@ -1,5 +1,4 @@
-import { StyleSheet, View, Pressable, TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import * as utils from '#src/utils';
@@ -20,9 +19,9 @@ export function UserInfoComp() {
     const styles = makeStyles(colors);
 
     const { navigate } = useNavigation();
-    const { user, age } = useAuthContext();
+    const { user, dob } = useAuthContext();
 
-    const { email, displayName, phoneNumber, metadata } = user;
+    const { email, displayName, phoneNumber, metadata, emailVerified } = user;
 
     return (
         <TouchableOpacity onPress={() => navigate('UserStack', { screen: 'User Profile', params: { uid: user.uid } })}>
@@ -40,12 +39,12 @@ export function UserInfoComp() {
                         {email &&
                             <View style={styles.email}>
                                 <Text style={styles.emailText}>{email}</Text>
-                                <EmailVerifComp />
+                                <EmailVerifComp isVerified={emailVerified} isMine={true} />
                             </View>
                         }
                         {phoneNumber && !email && <Text>{phoneNumber}</Text>}
-                        {age ?
-                            <Text style={{ color: 'gray', fontSize: 12 }}>{age} years old</Text> :
+                        {dob ?
+                            <Text style={{ color: 'gray', fontSize: 12 }}>{utils.getAge(dob.toDate())} years old</Text> :
                             <Text style={{ color: 'gray', fontSize: 12 }}>Joined {utils.timeDiff(metadata.creationTime)}</Text>
                         }
                     </View>

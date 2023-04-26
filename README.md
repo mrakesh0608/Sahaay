@@ -1,32 +1,32 @@
 <div id="top" align="center">
-  <img src="frontEnd/assets/icon.png" alt="app-logo"/>
+  <img src="frontEnd/assets/icon.png" alt="app-logo" style="background-color:white;border-radius:100px;"/>
   <h3>Sahaay</h3>
 </div>
 
-## Clone The Repo
-- Clone the repo `git clone https://github.com/mrakesh0608/Sahaay.git` or `gh repo clone mrakesh0608/Sahaay`
-- Change directory into front-end `cd Sahaay/front-end`
-- Install dependencies `npm i`
+## Problem Statement
 
-## Development Build
-- To build development apk `npm run build-dev-apk`
-- Download development build apk from [Expo dev](https://expo.dev/)
-- Install development build apk in your Android device.
-- Start metro bundler `npm start`
-- Start metro bundler with empty cache `npm run start-c`
-- To open the app, scan the QR code from Metro Bundler with Expo Go [(Android)](https://play.google.com/store/apps/details?id=host.exp.exponent) or Camera app [(iOS)](https://apps.apple.com/in/app/expo-go/id982107779).
+At present there is no application , service or platform available which digitizes and analyzes Medical reports and Prescriptions as well as predicts underlying diseases and integrates with existing medical services.
 
-## Production Build - Android App
-- To build production ready apk `npm run build-apk`
-- Download apk from [Expo dev](https://expo.dev/)
-- Install and run the Android build on your device.
+This application provides a solution to analyze and digitize the handwritten prescriptions, lab reports and detect various diseases with close integration to the services already in use.
+
+## Objectives
+
+- To develop an App for analyzing and digitizing the handwritten prescriptions, lab reports and detecting various diseases.
+- To prepare a well organized digital record of the health reports of patients.
+- To analyze the health records and prescriptions using OCR services provided within the application.
+- To predict the underlying diseases using the data from the patient's health reports by applying Deep Learning Techniques.
+
+## 🔧 Tools/Technologies Used
+
+- Frontend : React Native, Firebase
+- Backend : Fast API, Firebase
 
 ## 🤝 Contributing 
 
 Contributions, issues and feature requests are welcome. Feel free to check [issues page](https://github.com/mrakesh0608/Sahaay/issues) if you want to contribute. <br />
 Check the [contributing guide](./CONTRIBUTING.md).
 
-## 💖 Show your support
+## 💖 Show Your Support
 
 Please ⭐️ this repository if this project helped you !
 

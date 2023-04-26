@@ -9,22 +9,25 @@ import HomeScreen from '#src/screens/protected/tabs/HomeScreen';
 import ChatScreen from '#src/screens/protected/tabs/ChatScreen';
 import RecordsScreen from '#src/screens/protected/tabs/RecordsScreen';
 import UserScreen from '#src/screens/protected/tabs/UserScreen';
+import { useThemeContext } from '#src/context/ThemeContext';
 
 const Tab = createBottomTabNavigator();
 
 const TabButton = ({ Icon, activeIcon, inActiveIcon, onPress, accessibilityState }) => {
+
+    const { colors } = useThemeContext();
 
     const focused = accessibilityState.selected;
     const viewRef = useRef(null);
 
     useEffect(() => {
         if (focused) viewRef.current.animate({
-            0: { scale: 0.8, color: 'gray' },
-            1: { scale: 1.2, color: 'tomato' }
+            0: { scale: 0.8, color: colors.inactiveTint },
+            1: { scale: 1.2, color: colors.activeTint }
         });
         else viewRef.current.animate({
-            0: { scale: 1.2, color: 'tomato' },
-            1: { scale: 1, color: 'gray' }
+            0: { scale: 1.2, color: colors.activeTint },
+            1: { scale: 1, color: colors.inactiveTint }
         });
     }, [focused])
 
@@ -36,7 +39,7 @@ const TabButton = ({ Icon, activeIcon, inActiveIcon, onPress, accessibilityState
                 ref={viewRef}
                 duration={280}
                 style={styles.container}>
-                <Icon Icon={Icon} size={24} name={focused ? activeIcon : inActiveIcon} color={focused ? 'tomato' : 'gray'} />
+                <Icon Icon={Icon} size={24} name={focused ? activeIcon : inActiveIcon} color={focused ? colors.activeTint : colors.inactiveTint} />
             </Animatable.View>
         </TouchableWithoutFeedback>
     )

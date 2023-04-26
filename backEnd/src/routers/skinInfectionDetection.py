@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-import myfirebase
+import util.myfirebase as myfirebase
 
 from keras.models import load_model
 from skimage import io
@@ -39,18 +39,11 @@ def predict_class(image):
     predictions = (model.predict(
         img.reshape(1, 32, 32, 3)) * 100.0).round(2)
 
-    new_dict = {
-        classes[0]: predictions[0][0],
-        classes[1]: predictions[0][1],
-        classes[2]: predictions[0][2],
-        classes[3]: predictions[0][3],
-        classes[4]: predictions[0][4],
-        classes[5]: predictions[0][5],
-        classes[6]: predictions[0][6],
-        classes[7]: predictions[0][7]
-    }
+    pred_dict = {}
 
-    return new_dict
+    for x in classes:
+        pred_dict[classes[x]] = predictions[0][x]
+    return pred_dict
 
 
 @router.post("/")

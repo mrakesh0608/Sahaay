@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Pressable, StyleProp, ViewStyle, GestureResponderEvent } from 'react-native';
+import { Text, Pressable, StyleProp, ViewStyle, GestureResponderEvent, View } from 'react-native';
 
 export function ZoomBtn({
     title,
@@ -22,11 +22,17 @@ export function ZoomBtn({
                 padding: 12,
                 elevation: 2,
                 backgroundColor: '#2196F3',
-                transform: [{ scale: pressed ? 1.1 : 1 }]
+                transform: [{ scale: pressed ? 1.1 : 1 }],
+                flexDirection: 'row',
+                alignItems: 'center'
             }, style
             ]}
         >
-            {Icon && Icon}
+            {Icon &&
+                <View style={{ marginRight: 10 }}>
+                    {Icon}
+                </View>
+            }
             {title &&
                 <Text
                     style={{
