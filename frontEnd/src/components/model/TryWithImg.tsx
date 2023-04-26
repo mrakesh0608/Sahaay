@@ -20,7 +20,7 @@ export function TryWithImg({
         GET({
             path: `${serverAPI}/randomImg?dataset=${datasetName}`,
             cb: ({ data }) => {
-                console.log(data);
+                // console.log(data);
 
                 if (!data) return;
                 setUploadImg({ uri: data.randomImgURL });

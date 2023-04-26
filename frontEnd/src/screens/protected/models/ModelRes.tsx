@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -7,7 +7,7 @@ import { useThemeContext } from '#src/context/ThemeContext';
 import * as myfirebase from '#src/firebase';
 import { usePED } from '#src/hooks';
 
-import { Text, Image } from '#src/elements';
+import { Text, ImgViewer } from '#src/elements';
 import { MoreOptions } from '#src/components';
 import { SkinInfectionRes } from '#src/components/model/SkinInfectionRes';
 
@@ -71,7 +71,7 @@ export default function ModelRes({ route }) {
                     </View>
                     <View style={{ marginVertical: 20 }}>
                         <Text style={styles.prop}>Examination Image : </Text>
-                        <Image source={{ uri: data.img_url }} style={styles.uploadImgPreview} />
+                        <ImgViewer source={{ uri: data.img_url }} style={styles.uploadImgPreview} />
                     </View>
                     <View style={styles.propValContainer}>
                         <Text style={styles.prop}>Result : </Text>

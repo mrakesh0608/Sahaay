@@ -7,7 +7,7 @@ import { useFetch, useUploadImg } from '#src/hooks';
 import * as firebase from '#src/firebase';
 import { serverAPI } from '#src/utils';
 
-import { OR, SubmitBtn, Text, TransparentBtn, WhatsThis } from '#src/elements';
+import { OR, SubmitBtn, Text } from '#src/elements';
 import { TryWithImg } from './TryWithImg';
 
 export function ModelContainer(

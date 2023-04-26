@@ -45,13 +45,13 @@ function downloadFile(url: string) {
 }
 
 
-export function ImageViewer({
+export function ImgViewer({
     ...rest
 }: React.PropsWithChildren<ImageProps>) {
 
     const { colors } = useThemeContext();
 
-    const uri = rest.source.uri;
+    const uri = rest.source['uri'];
 
     return (
         <DialogCenter

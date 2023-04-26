@@ -6,6 +6,7 @@ import {
 import React, { useState } from 'react'
 
 import { useThemeContext } from '#src/context/ThemeContext';
+import { windowWidth } from '#src/utils';
 
 export function Image({
     source, style,
@@ -20,7 +21,15 @@ export function Image({
         <>
             <RNImage
                 source={source}
-                style={[style, isImgLoading && { display: 'none' }]}
+
+                style={[{
+                    width: windowWidth * 0.35,
+                    height: windowWidth * 0.35
+                },
+                    style,
+                isImgLoading && { display: 'none' }
+                ]}
+
                 onLoadStart={() => !isImgLoading && setIsImgLoading(true)}
                 onLoadEnd={() => isImgLoading && setIsImgLoading(false)}
 

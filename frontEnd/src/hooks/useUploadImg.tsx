@@ -5,7 +5,7 @@ import { MaterialIcons, MaterialCommunityIcons, Entypo, FontAwesome } from '@exp
 import { useThemeContext } from '#src/context/ThemeContext';
 import { ImgPicker, windowWidth } from '#src/utils';
 
-import { CapsuleBtn, BorderBtn, ImageViewer, DialogBottom } from '#src/elements';
+import { CapsuleBtn, BorderBtn, ImgViewer, DialogBottom } from '#src/elements';
 
 export function useUploadImg({
     initialImg = null
@@ -35,7 +35,7 @@ export function useUploadImg({
             <View style={styles.container}>
                 {uploadImg &&
                     <>
-                        <ImageViewer
+                        <ImgViewer
                             source={{ uri: uploadImg.uri }}
                             style={[styles.imgStyle, imgStyle]}
                         />

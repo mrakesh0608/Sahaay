@@ -6,7 +6,7 @@ import { capitalize, getAge, serverAPI, timeDiff, windowWidth } from "#src/utils
 import { useThemeContext } from "#src/context/ThemeContext";
 import { useFetch } from "#src/hooks";
 
-import { CenterView, ErrorText, ImageViewer, LoadingComp, Text } from "#src/elements";
+import { CenterView, ErrorText, ImgViewer, LoadingComp, Text } from "#src/elements";
 import { DefaultScreen, EmailVerifComp, MenuCard, UserEdit } from "#src/components";
 import { useAuthContext } from "#src/context/AuthContext";
 
@@ -63,7 +63,7 @@ export default function UserProfile({ route }) {
         <DefaultScreen>
             {uid === myuid && <UserEdit />}
             <View style={{ alignItems: 'center' }}>
-                <ImageViewer source={{ uri: data.photoURL }} style={{
+                <ImgViewer source={{ uri: data.photoURL }} style={{
                     width: windowWidth * 0.6,
                     height: windowWidth * 0.6,
                     borderRadius: 1000,
