@@ -1,7 +1,7 @@
 import React from "react";
 import {
     StyleSheet, StyleProp, ViewStyle, TextStyle, GestureResponderEvent,
-    TouchableOpacity, ActivityIndicator, ColorValue,
+    TouchableOpacity, ActivityIndicator, ColorValue, Keyboard,
 } from "react-native";
 
 import { useThemeContext } from '#src/context/ThemeContext';
@@ -32,7 +32,10 @@ export function MyBtn({
 
     return (
         <TouchableOpacity
-            onPress={onPress}
+            onPress={(event) => {
+                Keyboard.dismiss();
+                if (typeof onPress === 'function') onPress(event);
+            }}
             disabled={disabled}
             style={[
                 styles.btnContainer,

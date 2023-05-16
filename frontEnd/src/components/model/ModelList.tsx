@@ -12,33 +12,33 @@ export function ModelList() {
 
     return (
         <View style={{
-            marginVertical: 26
+            marginTop: 26
         }}>
             <Text style={{ fontSize: 20 }}>Models</Text>
             <ModelCard
                 title={'Prescription\nDigitization'}
                 imgSource={require('#assets/medical/prescription.png')}
-                onPress={() => navigate('PrescriptionDigit')}
+                onPress={() => navigate('PrescriptionDigit' as never)}
             />
             <ModelCard
                 title={'Brain Tumor\nDetection'}
                 imgSource={require('#assets/medical/brain.png')}
-                onPress={() => navigate('BrainTumorDet')}
+                onPress={() => navigate('BrainTumorDet' as never)}
             />
             <ModelCard
                 title={'Kidney Stone\nDetection'}
                 imgSource={require('#assets/medical/kidney-stone.png')}
-                onPress={() => navigate('KidneyStoneDet')}
+                onPress={() => navigate('KidneyStoneDet' as never)}
             />
             <ModelCard
                 title={'Skin Infection\nDetection'}
                 imgSource={require('#assets/medical/infection.png')}
-                onPress={() => navigate('SkinInfectionDet')}
+                onPress={() => navigate('SkinInfectionDet' as never)}
             />
             <ModelCard
                 title={'Calories\nEstimation'}
                 imgSource={require('#assets/medical/calories.png')}
-                onPress={() => navigate('CaloriesEstimation')}
+                onPress={() => navigate('CaloriesEstimation' as never)}
             />
         </View>
     );

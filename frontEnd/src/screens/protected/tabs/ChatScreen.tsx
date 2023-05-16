@@ -1,11 +1,11 @@
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { View, FlatList } from 'react-native'
 
-import { chatGPT } from '#src/utils';
+import { useThemeContext } from '#src/context/ThemeContext';
+import { chatGPTForChat as chatGPT } from '#src/utils';
 
 import { CardContainer, ChatMsg, ChatInput } from '#src/components';
 import { Text } from '#src/elements'
-import { useThemeContext } from '#src/context/ThemeContext';
 
 export default function ChatScreen() {
 
@@ -64,7 +64,7 @@ export default function ChatScreen() {
 
                     nestedScrollEnabled={true}
                     data={chats}
-                    keyExtractor={(item, index) => index}
+                    keyExtractor={(item, index) => index?.toString()}
                     renderItem={({ item }) =>
                         <ChatMsg chat={item} />
                     }

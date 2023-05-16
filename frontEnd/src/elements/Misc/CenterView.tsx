@@ -1,29 +1,23 @@
 import React from 'react';
-import { View, StyleSheet, ViewProps } from 'react-native';
+import { View, ViewProps } from 'react-native';
 
 import { useThemeContext } from '#src/context/ThemeContext';
 
 export function CenterView({ style, ...rest }: ViewProps) {
 
     const { colors } = useThemeContext();
-    const styles = makeStyles(colors);
 
     return (
         <View
-            style={[
-                styles.container,
+            style={[{
+                backgroundColor: colors.background,
+                flexGrow: 1,
+                justifyContent: 'center',
+                alignItems: 'center'
+            },
                 style
             ]}
             {...rest}
         />
     );
 }
-
-const makeStyles = (colors) => StyleSheet.create({
-    container: {
-        backgroundColor: colors.background,
-        flexGrow: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-})

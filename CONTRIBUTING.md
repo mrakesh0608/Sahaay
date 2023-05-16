@@ -32,22 +32,22 @@ If you have a suggestion that would make this better, please fork the repo and c
 ## Setup - Back End
 - Change directory into backend `cd Sahaay/backEnd`
 - Start Server using
-```
+```powershell
 uvicorn --app-dir src server:app --reload --host [your-host-ip or 127.0.0.1]
 ```
     
 <p align='center'>or</p> 
 
-```
+```powershell
 pipenv install
 pipenv run python src/server.py
 ```
 
-### Deploy Server to [Platform.sh](https://platform.sh/)
+### Deploy Server on [Platform.sh](https://platform.sh/)
 
 - Change directory into backend `cd Sahaay/backEnd`
 - commit your changes
-- platfrom push
+- Push your code to platform.sh using `platfrom push`
 
 
 Don't forget to give a star ⭐️ to this repository.

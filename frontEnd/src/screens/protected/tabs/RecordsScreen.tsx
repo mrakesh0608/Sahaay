@@ -10,6 +10,9 @@ import { useThemeContext } from '#src/context/ThemeContext';
 
 import { CardContainer, RecordCard } from '#src/components';
 import { CenterView, Text } from '#src/elements';
+import React from 'react';
+
+type orderType = 'desc' | 'asc'
 
 export default function RecordsScreen() {
 
@@ -18,7 +21,7 @@ export default function RecordsScreen() {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
 
-    const [order, setOrder] = useState('desc');
+    const [order, setOrder] = useState<orderType>('desc');
     const [refreshing, setRefreshing] = useState(false);
 
     const onRefresh = useCallback(() => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, ImageProps, StyleProp, View, ViewStyle } from 'react-native';
+import { Image, ImageProps, StyleProp, View, ViewStyle,ImageStyle } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
 import { useThemeContext } from '#src/context/ThemeContext';
@@ -12,7 +12,7 @@ export function UserImg({
 }: {
     url?: string,
     containerStyle?: StyleProp<ViewStyle>
-    imgStyle?: StyleProp<ImageProps>,
+    imgStyle?: StyleProp<ImageStyle>,
 
 }) {
     const { colors } = useThemeContext();

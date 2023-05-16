@@ -8,14 +8,19 @@ interface myProps extends TextInputProps {
 }
 
 export default function FormikTextInput({
-    formikProps, varName, ...rest
+    formikProps, varName, onChangeText, ...rest
 }: React.PropsWithChildren<myProps>) {
 
     if (!formikProps || !varName) return;
 
+    function handleOnChangeText(val: any) {
+        if (typeof onChangeText === 'function') onChangeText(val);
+        formikProps.setFieldValue(varName, val)
+    }
+
     return (
         <TextInput
-            onChangeText={formikProps.handleChange(varName)}
+            onChangeText={handleOnChangeText}
             value={formikProps.values[varName]}
             onBlur={formikProps.handleBlur(varName)}
 

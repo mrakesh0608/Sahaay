@@ -73,7 +73,4 @@ yarn-error.log
 web-build/
 dist/
 
-frontEnd/package-lock.json
-
-#python
-__pycache__
+package-lock.json

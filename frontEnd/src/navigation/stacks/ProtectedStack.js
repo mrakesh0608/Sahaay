@@ -15,8 +15,11 @@ import CaloriesEstimation from '#src/screens/protected/models/CaloriesEstimation
 
 import ModelRes from '#src/screens/protected/models/ModelRes';
 
+import DigitalPrescription from '#src/screens/protected/DigitalPrescription';
+import SearchMedicine from '#src/screens/protected/SearchMedicine';
 import AppInfoScreen from '#src/screens/protected/AppInfoScreen';
 import QRCodeScreen from '#src/screens/protected/QRCodeScreen';
+import SearchMedicineRes from '#src/screens/protected/SearchMedicineRes';
 
 const Stack = createStackNavigator();
 
@@ -72,6 +75,10 @@ export default function ProtectedStack() {
                     shadowColor: 'transparent',
                 },
             }} />
+
+            <Stack.Screen name='Search Medicine' component={SearchMedicine} />
+            <Stack.Screen name='Search Medicine Res' component={SearchMedicineRes} />
+            <Stack.Screen name='Digital Prescription' component={DigitalPrescription} />
             <Stack.Screen name='App info' component={AppInfoScreen} />
         </Stack.Navigator>
     );

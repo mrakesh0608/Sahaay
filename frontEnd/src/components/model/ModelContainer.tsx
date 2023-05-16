@@ -14,11 +14,13 @@ export function ModelContainer(
     {
         introTxt,
         serverPath,
-        datasetName
+        datasetName,
+        FooterComponet
     }: {
         introTxt?: string,
         serverPath: string,
-        datasetName: string
+        datasetName: string,
+        FooterComponet?: JSX.Element
     }) {
 
     const navigation = useNavigation();
@@ -78,6 +80,7 @@ export function ModelContainer(
                     isPending={isPending}
                     errTxt={error}
                 />
+                {FooterComponet}
             </View>
         </ScrollView>
     );

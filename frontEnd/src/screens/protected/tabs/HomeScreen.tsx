@@ -1,13 +1,14 @@
+import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 import { useThemeContext } from '#src/context/ThemeContext';
 import { useAuthContext } from '#src/context/AuthContext';
-
 import { Greet } from '#src/utils';
 
-import { DefaultScreen, ModelList, UserImg } from '#src/components';
+import { DefaultScreen, ModelList, ToolsList, UserImg } from '#src/components';
 import { Text } from '#src/elements';
-import { Ionicons } from '@expo/vector-icons';
+
 export default function HomeScreen({ navigation }) {
 
     const { user } = useAuthContext();
@@ -43,6 +44,7 @@ export default function HomeScreen({ navigation }) {
                 </View>
             </View>
             <ModelList />
+            <ToolsList />
         </DefaultScreen>
     );
 }

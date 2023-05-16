@@ -1,4 +1,6 @@
 export * from './chatGPT';
+export * from './chatGPTForChat';
+export * from './chatGPTForMedicine';
 export * from './constants';
 export * from './greet';
 export * from './haptics';

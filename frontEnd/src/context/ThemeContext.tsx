@@ -3,8 +3,7 @@ import { useColorScheme, StatusBar } from 'react-native';
 
 import { useAuthContext } from '#src/context/AuthContext';
 
-import AppLightTheme from '#src/styles/theme/appLightTheme';
-import AppDarkTheme from '#src/styles/theme/appDarkTheme';
+import { AppLightTheme, AppDarkTheme } from '#src/styles/Theme';
 
 const LightTheme = {
     theme: AppLightTheme,

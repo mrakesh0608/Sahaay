@@ -1,12 +1,14 @@
-import { Text } from '#src/elements';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import json from './skin-infection.json';
 import { capitalize } from '#src/utils';
 
-import json from './skin-infection.json';
+import { Text } from '#src/elements';
 
-export function SkinInfectionRes({ type }) {
-
+export function SkinInfectionRes({ type }: {
+    type: string
+}) {
     const data = json[type];
     // console.log(data, type);
 

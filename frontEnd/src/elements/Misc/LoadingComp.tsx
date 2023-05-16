@@ -1,3 +1,4 @@
+import React from 'react';
 import { ActivityIndicator } from 'react-native'
 
 import { useThemeContext } from '#src/context/ThemeContext';
@@ -5,7 +6,9 @@ import { useThemeContext } from '#src/context/ThemeContext';
 import { Text } from '../Text'
 import { CenterView } from './CenterView';
 
-export function LoadingComp({ title = 'Loading' }) {
+export function LoadingComp({ title = 'Loading' }: {
+    title?: string
+}) {
 
     const { colors } = useThemeContext();
 

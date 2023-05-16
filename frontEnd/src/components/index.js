@@ -12,6 +12,7 @@ export * from './misc/DefaultScreen';
 export * from './misc/ORCodeGenerator';
 export * from './misc/ORCodeScanner';
 export * from './misc/ShareApp';
+export * from './misc/ToolsList';
 
 export * from './model/ModelCard';
 export * from './model/ModelContainer';

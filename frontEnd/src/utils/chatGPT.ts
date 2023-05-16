@@ -7,32 +7,23 @@ export async function chatGPT({ txt }) {
             apiKey: remoteConfig().getValue('OPENAI_API_KEY').asString()
         }));
 
-        const check = await openai.createCompletion({
+        const completion = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: `give me the answer in boolean [0,1] if this sentence belongs to the medical field "${txt}"`,
+            prompt: txt,
             max_tokens: 2048,
         });
+        // console.log(JSON.stringify(completion,null,2));
 
-        const flag = check.data.choices[0].text.trim();
+        return {
+            data: (completion.data.choices[0].text).trim()
+        };
+    }
+    catch (error) {
+        if (error.response) console.log(error.response.status, error.response.data);
+        else console.log(error.message);
 
-        if ([1, "1", true, "True"].includes(flag)) {
-            const completion = await openai.createCompletion({
-                model: "text-davinci-003",
-                prompt: txt,
-                max_tokens: 2048,
-            });
-
-            // console.log(JSON.stringify(completion,null,2));
-            return (completion.data.choices[0].text).trim();
+        return {
+            err: error.message
         }
-        else return "Sorry, this question is not related to the medical field."
-    } catch (error) {
-        if (error.response) {
-            console.log(error.response.status);
-            console.log(error.response.data);
-        } else {
-            console.log(error.message);
-        }
-        return error.message;
     }
 }
