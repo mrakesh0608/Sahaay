@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect } from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
@@ -33,7 +34,7 @@ export default function ProtectedStack() {
             navigation.reset({
                 index: 0,
                 routes: [{ name: 'UserStack' }],
-            });
+            } as never);
         }
 
     }, [isNewUser])

@@ -8,7 +8,7 @@ export default function CaloriesEstimation() {
     return (
         <>
             <ModelContainer
-                introTxt={`\t\t\t\tCalories Estimation`}
+                introTxt='Calories Estimation'
 
                 serverPath='calories-estimation'
                 datasetName='calories'

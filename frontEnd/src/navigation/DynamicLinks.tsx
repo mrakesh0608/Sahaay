@@ -10,7 +10,7 @@ function processURL(url: string) {
     const regex = /[?&]([^=#]+)=([^&#]*)/g;
     const params = {};
 
-    let match;
+    let match: any[];
     while (match = regex.exec(url)) {
         params[match[1]] = match[2];
     }

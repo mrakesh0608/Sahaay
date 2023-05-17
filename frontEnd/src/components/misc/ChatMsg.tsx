@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React,{ useMemo } from 'react';
 import { View, TouchableOpacity } from 'react-native'
 import Clipboard from '@react-native-clipboard/clipboard';
 import { LoadingDots } from '@mrakesh0608/react-native-loading-dots';

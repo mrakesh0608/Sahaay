@@ -15,7 +15,7 @@ export function RecordCard({ record }) {
     const { navigate } = useNavigation();
 
     return (
-        <TouchableOpacity onPress={() => navigate('ModelRes', { id: record.id, data: { ...record } })}>
+        <TouchableOpacity onPress={() => navigate('ModelRes' as never, { id: record.id, data: { ...record } } as never)}>
             <CardContainer>
                 <View style={styles.container}>
                     <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{record.title}</Text>

@@ -4,6 +4,17 @@ import auth from '@react-native-firebase/auth';
 import * as firebase from '#src/firebase';
 import { useInitUser } from '#src/hooks/useInitUser';
 
+interface contextProps {
+    dispatch?: any,
+    user: any,
+    isNewUser: boolean,
+    theme: string | 'Light' | 'Dark',
+    dob: any,
+    gender: any,
+    bloodgroup: any,
+    otpLastTime?: any
+}
+
 const initialValues = {
     user: null,
     isNewUser: false,
@@ -13,7 +24,7 @@ const initialValues = {
     bloodgroup: ''
 }
 
-export const AuthContext = createContext(initialValues);
+export const AuthContext = createContext<contextProps>(initialValues);
 
 export function useAuthContext() {
 

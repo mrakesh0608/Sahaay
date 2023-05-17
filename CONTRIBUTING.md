@@ -8,7 +8,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 1. Fork or Clone the repo `git clone https://github.com/mrakesh0608/Sahaay.git` or `gh repo clone mrakesh0608/Sahaay`
 2. Create your Feature Branch `git checkout -b feature/[feature-name]`
-3. Commit your Changes `git commit -m 'Add some [feature-name]'`
+3. Commit your Changes `git commit -m 'New Feature : [feature-name]'`
 4. Push to the Branch `git push origin feature/[feature-name]`
 5. Open a Pull Request
 
@@ -17,8 +17,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 - Install dependencies `npm i`
 
 ### Development Build
-- To build development apk `npm run build-dev-apk`
-- Download development build apk from [Expo dev](https://expo.dev/)
+- For Android, download development build apk from this [link](https://expo.dev/artifacts/eas/bD7utgCUrxCCcTYNY74AgZ.apk).<div align='center'>OR</div>Build your own development apk using `npm run build-dev-apk` & download it from [Expo dev](https://expo.dev/).
 - Install development build apk in your Android device.
 - Start metro bundler `npm start`
 - Start metro bundler with empty cache `npm run start-c`
@@ -43,7 +42,7 @@ pipenv install
 pipenv run python src/server.py
 ```
 
-### Deploy Server on [Platform.sh](https://platform.sh/)
+### Deploy Server to [Platform.sh](https://platform.sh/)
 
 - Change directory into backend `cd Sahaay/backEnd`
 - commit your changes

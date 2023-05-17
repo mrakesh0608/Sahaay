@@ -1,11 +1,9 @@
-import { Text, Button, ToastAndroid } from 'react-native';
-import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
-
-import * as utils from '#src/utils';
 
 import { useAuthContext } from '#src/context/AuthContext';
 import { usePED } from '#src/hooks/usePED';
+import * as utils from '#src/utils';
 
 export function useGoogleOAuth() {
     const { isPending, setIsPending } = usePED();
@@ -34,7 +32,7 @@ export function useGoogleOAuth() {
             })
         } catch (error) {
             console.log(error);
-            ToastAndroid.show(error.message, ToastAndroid.SHORT);
+            utils.Toast(error.message)
             signOut();
         } finally {
             setIsPending(false);
@@ -44,29 +42,14 @@ export function useGoogleOAuth() {
     const signOut = async () => {
         try {
             await GoogleSignin.signOut();
-            // Remember to remove the user from your app's state as well
         } catch (error) {
             console.error(error);
         }
     };
 
-    function GoogleOAuthSignInBtn() {
-        if (user) return <Text>User already exist {user.email}</Text>
-        return (
-            <GoogleSigninButton
-                onPress={signIn}
-                style={{ alignSelf: 'center' }}
-            />
-        );
-    }
-
-    function GoogleOAuthSignOutBtn() {
-        if (!user) return <Text>User not exist {user.email}</Text>
-        return <Button title='signOut' onPress={signOut} />
-    }
-
     return {
-        user, signIn, signOut, isPending,
-        GoogleOAuthSignInBtn, GoogleOAuthSignOutBtn,
+        user,
+        isPending,
+        signIn, signOut,
     }
 }

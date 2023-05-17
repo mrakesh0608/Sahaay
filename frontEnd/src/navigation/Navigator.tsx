@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 
 import { useLoaderContext } from '#src/context/LoaderContext';

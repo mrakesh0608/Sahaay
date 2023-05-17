@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -24,7 +25,7 @@ export function UserInfoComp() {
     const { email, displayName, phoneNumber, metadata, emailVerified } = user;
 
     return (
-        <TouchableOpacity onPress={() => navigate('UserStack', { screen: 'User Profile', params: { uid: user.uid } })}>
+        <TouchableOpacity onPress={() => navigate('UserStack' as never, { screen: 'User Profile', params: { uid: user.uid } } as never)}>
             <CardContainer style={styles.container}>
                 <UserEdit />
                 <View style={styles.userImg}>

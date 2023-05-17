@@ -4,24 +4,38 @@
   <p align='center' style='margin:20px;'>
     <img alt="react native" src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
     <img alt="fast api" src="https://img.shields.io/badge/FastAPI-ghostwhite?style=for-the-badge&logo=fastapi">
-    <img alt="firebase" src="https://img.shields.io/badge/Firebase-red?style=for-the-badge&logo=Firebase&logoColor=gold">
+    <img alt="tensorflow" src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white">
+    <img alt="firebase" src="https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase">
     <br />
     <img alt="Version" src="https://img.shields.io/github/package-json/v/mrakesh0608/Sahaay?style=for-the-badge&color=green&filename=frontEnd%2Fpackage.json">
     <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg?style=for-the-badge" />
   </p>
 </div>
 
-At present there is no application , service or platform available which digitizes and analyzes Medical reports and Prescriptions as well as predicts underlying diseases and integrates with existing medical services.
+Sahaay is an application which Digitize, Analyze & Predict Medical Reports using Deep Learning. It provides a solution to digitize the handwritten prescriptions, lab reports and detect various diseases.
 
-This application provides a solution to analyze and digitize the handwritten prescriptions, lab reports and detect various diseases with close integration to the services already in use.
+## Main Features
+- Prescription Digitization
+- Brain Tumor Classification
+- Kidney Stone Classification
+- Skin Disease Classification
+- Calories Estimation (in development)
+- Digital Prescription
+- Search About Medicine
+
+## App Features
+- Dark Theme Mode
+- QR Code Scanner
+- Chat with an AI powered by ChatGPT regarding medical topics
+- Share your profile & reports with other users
 
 ## ⬇️ Download Android App
 - Download Sahaay app using this [link](https://expo.dev/artifacts/eas/nXK4Fj8S6WXwsNAg2GjChx.apk).
-
+- See screenshots of this app [here](./SCREENSHOTS.md).
 ## 🔧 Tools/Technologies Used
 
 - Frontend : React Native, Firebase
-- Backend : Fast API, Firebase
+- Backend : Fast API, TensorFlow, Firebase
 
 ## 🤝 Contributing 
 

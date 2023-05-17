@@ -85,7 +85,7 @@ export async function deleteReportById(id, cb) {
         .doc(id)
         .delete()
         .then(res => {
-            cb(null, res.data());
+            cb(null, res?.data());
         })
         .catch(error => {
             utils.ToastErrorOfFirebase(error);

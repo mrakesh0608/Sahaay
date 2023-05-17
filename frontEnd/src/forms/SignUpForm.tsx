@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Formik } from "formik";
 import * as yup from 'yup';
 
@@ -39,7 +41,7 @@ export default function SignUpForm({ isSigningUp, error, onSubmit }) {
 
                 <SubmitBtn
                     title={isSigningUp ? 'Signing Up' : 'Sign Up'}
-                    onPress={props.handleSubmit}
+                    onPress={() => props.handleSubmit}
                     isPending={isSigningUp}
                     disabled={props.dirty && (!props.isValid || isSigningUp)}
 

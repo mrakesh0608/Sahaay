@@ -8,12 +8,19 @@ import {
 import * as Font from 'expo-font';
 import remoteConfig from '@react-native-firebase/remote-config';
 
+interface contextProps {
+    compsLoaded: boolean,
+    fontsLoaded: boolean,
+    isLoading?: boolean,
+    dispatch?: any
+}
+
 const initialValues = {
     compsLoaded: false,
     fontsLoaded: false,
 }
 
-export const LoaderContext = createContext(initialValues);
+export const LoaderContext = createContext<contextProps>(initialValues);
 
 export function useLoaderContext() {
 

@@ -1,3 +1,4 @@
+import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 
 import UserEditScreen from '#src/screens/protected/UserEditScreen';
