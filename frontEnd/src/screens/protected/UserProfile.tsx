@@ -32,7 +32,6 @@ export function UserProfileCard({ Icon, IconName, onPress, title, desc, TitleRig
     );
 }
 
-
 export default function UserProfile({ route }) {
 
     const { colors } = useThemeContext();

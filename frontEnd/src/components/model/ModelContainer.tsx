@@ -30,6 +30,7 @@ export function ModelContainer(
     const { isPending, error, fetchData, data, setIsPending } = useFetch();
 
     useEffect(() => {
+        
         if (data) navigation.navigate('ModelRes' as never, { ...data } as never);
     }, [data])
 
@@ -64,7 +65,7 @@ export function ModelContainer(
             justifyContent: 'center',
         }}>
             <View style={{ justifyContent: 'center', alignSelf: 'center', padding: 20 }}>
-                <Text style={{ textAlign: 'justify', marginBottom: 20 }}>{introTxt}</Text>
+                <Text style={{ textAlign: 'justify', marginBottom: 20 }}>{`\t\t\t\t${introTxt}`}</Text>
 
                 <UploadImgComp />
                 <OR />

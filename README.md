@@ -1,14 +1,26 @@
 <div id="top" align="center">
-  <img src="https://raw.githubusercontent.com/mrakesh0608/Sahaay/master/frontEnd/assets/icon.png" alt="app-logo" style="background-color:#ffffff;border-radius:100px;"/>
-  <h3>Sahaay</h3>
-  <p align='center' style='margin:20px;'>
-    <img alt="react native" src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
-    <img alt="fast api" src="https://img.shields.io/badge/FastAPI-ghostwhite?style=for-the-badge&logo=fastapi">
-    <img alt="tensorflow" src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white">
-    <img alt="firebase" src="https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase">
+    <img src="https://raw.githubusercontent.com/mrakesh0608/Sahaay/master/frontEnd/assets/icon.png" alt="app-logo" style="background-color:#ffffff;border-radius:100px;"/>
+    <h3>Sahaay</h3>
+    <p align='center' style='margin:20px;'>
+    <a href='https://reactnative.dev'>
+        <img alt="react native" src="https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB">
+    </a>
+    <a href='https://fastapi.tiangolo.com'>
+        <img alt="fast api" src="https://img.shields.io/badge/FastAPI-ghostwhite?style=for-the-badge&logo=fastapi">
+    </a>
+    <a href='https://www.tensorflow.org'>
+        <img alt="tensorflow" src="https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white">
+    </a>
+    <a href='https://firebase.google.com'>
+        <img alt="firebase" src="https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase">
+    </a>
     <br />
-    <img alt="Version" src="https://img.shields.io/github/package-json/v/mrakesh0608/Sahaay?style=for-the-badge&color=green&filename=frontEnd%2Fpackage.json">
-    <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg?style=for-the-badge" />
+    <a href='#'>
+        <img alt="Version" src="https://img.shields.io/github/package-json/v/mrakesh0608/Sahaay?style=for-the-badge&color=green&filename=frontEnd%2Fpackage.json">
+    </a>
+    <a href='https://github.com/mrakesh0608/Sahaay/blob/master/LICENSE.md'>
+        <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg?style=for-the-badge" />
+    </a>
   </p>
 </div>
 

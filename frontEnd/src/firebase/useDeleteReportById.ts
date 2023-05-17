@@ -21,17 +21,15 @@ export function useDeleteReportById() {
         if (!auth().currentUser) return;
 
         firestore()
-            .collection('Users')
-            .doc(auth().currentUser.uid)
             .collection('Reports')
             .doc(id)
             .delete()
             .then(async res => {
                 setError(null);
-                setData(1); //ok
+                setData({"status":200}); //ok
             })
             .catch(async error => {
-                console.log(err);
+                console.log(error);
 
                 setData(null);
                 setError(await utils.showableErrorText(error));

@@ -11,7 +11,7 @@ def saveReport(uid, payload):
     payload['createdAt'] = firestore.SERVER_TIMESTAMP
 
     db = firestore.client()
-    coll_ref = db.collection('Users').document(uid).collection('Reports')
+    coll_ref = db.collection('Reports')
 
     res = coll_ref.add(payload)
 

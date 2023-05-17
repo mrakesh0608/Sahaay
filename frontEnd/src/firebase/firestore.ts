@@ -60,32 +60,13 @@ export async function getReportById(id, cb) {
     if (!auth().currentUser) return;
 
     firestore()
-        .collection('Users')
-        .doc(auth().currentUser.uid)
         .collection('Reports')
         .doc(id)
         .get()
         .then(res => {
-            cb(null, res.data());
-        })
-        .catch(error => {
-            utils.ToastErrorOfFirebase(error);
-            cb(error, null);
-        })
-}
-
-export async function deleteReportById(id, cb) {
-
-    if (!auth().currentUser) return;
-
-    firestore()
-        .collection('Users')
-        .doc(auth().currentUser.uid)
-        .collection('Reports')
-        .doc(id)
-        .delete()
-        .then(res => {
-            cb(null, res?.data());
+            const data = res.data();
+            if (data) cb(null, data);
+            else throw Error("Something Went Wrong")
         })
         .catch(error => {
             utils.ToastErrorOfFirebase(error);

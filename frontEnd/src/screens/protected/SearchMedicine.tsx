@@ -58,7 +58,7 @@ export default function SearchMedicine() {
 
     return (
         <FormContainer>
-            <Text style={{ textAlign: 'justify', marginBottom: 20 }}>{`Stay informed and take charge of your health by easily accessing all the details about the medicines prescribed by your doctor. Learn about its uses, dosage instructions, and potential side effects to have all the necessary information right at your fingertips.`}</Text>
+            <Text style={{ textAlign: 'justify', marginBottom: 20 }}>{`\t\t\t\tStay informed and take charge of your health by easily accessing all the details about the medicines prescribed by your doctor. Learn about its uses, dosage instructions, and potential side effects to have all the necessary information right at your fingertips.`}</Text>
             <Formik
                 initialValues={{ medicine: '' }}
                 validationSchema={validationSchema}

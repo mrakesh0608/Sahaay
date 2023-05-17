@@ -45,11 +45,9 @@ export function DynamicLinks() {
             navigate('UserStack' as never, { screen: 'User Profile', params } as never);
         }
         else if (pathname === '/report') {
-            alert('This Feature is Under Development')
-            // navigate('ModelRes' as never, { params } as never);
+            navigate('ModelRes' as never, params as never);
         }
         else console.log('Invalid Dynamic Link');
-
     }
 
     //When the app is in the running state

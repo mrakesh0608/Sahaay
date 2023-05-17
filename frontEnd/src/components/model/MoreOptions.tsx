@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 
@@ -8,7 +9,7 @@ import { useThemeContext } from '#src/context/ThemeContext';
 import { useDeleteReportById } from '#src/firebase';
 import { BtnContainer, DialogCenter, ShareBtn, ZoomBtn } from '#src/elements';
 
-export function MoreOptions({ id }) {
+export function MoreOptions({ id, report_uid }) {
 
     const { colors } = useThemeContext();
 
@@ -19,7 +20,7 @@ export function MoreOptions({ id }) {
     const { deleteReportById, data, isPending, error } = useDeleteReportById();
 
     useEffect(() => {
-        if (data) navigate('HomeTabs' as never);
+        if (data?.status === 200) navigate('HomeTabs' as never);
     }, [data])
 
     useEffect(() => {
@@ -43,20 +44,22 @@ export function MoreOptions({ id }) {
             }
             DialogContent={({ closeDialog }) =>
                 <>
-                    <BtnContainer>
-                        <ZoomBtn
-                            title='Delete Report'
-                            Icon={<MaterialCommunityIcons
-                                name="trash-can-outline"
-                                size={24} color={'white'}
-                            />}
-                            style={{ backgroundColor: 'red' }}
-                            onPress={() => {
-                                deleteReportById({ id });
-                                closeDialog();
-                            }}
-                        />
-                    </BtnContainer>
+                    {auth().currentUser.uid === report_uid &&
+                        <BtnContainer>
+                            <ZoomBtn
+                                title='Delete Report'
+                                Icon={<MaterialCommunityIcons
+                                    name="trash-can-outline"
+                                    size={24} color={'white'}
+                                />}
+                                style={{ backgroundColor: 'red' }}
+                                onPress={() => {
+                                    deleteReportById({ id });
+                                    closeDialog();
+                                }}
+                            />
+                        </BtnContainer>
+                    }
                     <BtnContainer>
                         <ShareBtn
                             title='Share'

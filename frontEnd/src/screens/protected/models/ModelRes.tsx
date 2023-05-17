@@ -7,7 +7,7 @@ import { useThemeContext } from '#src/context/ThemeContext';
 import * as myfirebase from '#src/firebase';
 import { usePED } from '#src/hooks';
 
-import { Text, ImgViewer } from '#src/elements';
+import { Text, ImgViewer, CenterView, ErrorText } from '#src/elements';
 import { MoreOptions } from '#src/components';
 import { SkinInfectionRes } from '#src/components/model/SkinInfectionRes';
 
@@ -19,14 +19,15 @@ export default function ModelRes({ route }) {
     const styles = makeStyles(colors);
 
     const { id, data: routeData } = route.params;
+    console.log(route.params);
 
     const { isPending, setIsPending, error, setError, data, setData } = usePED();
 
     useEffect(() => {
         navigation.setOptions({
-            headerRight: () => <MoreOptions id={id} />
+            headerRight: () => <MoreOptions id={id} report_uid={data?.uid} />
         });
-    }, [])
+    }, [id, data])
 
     useEffect(() => {
 
@@ -34,6 +35,7 @@ export default function ModelRes({ route }) {
             setData(routeData);
             return;
         }
+        console.log(id);
 
         myfirebase.getReportById(id, (err, data) => {
             console.log(err, data);
@@ -45,7 +47,15 @@ export default function ModelRes({ route }) {
                 setData(data);
             }
         })
-    }, [id])
+    }, [id, routeData])
+
+    if (error) {
+        return (
+            <CenterView>
+                <ErrorText>{error}</ErrorText>
+            </CenterView>
+        );
+    }
 
     return (
         <ScrollView contentContainerStyle={{
@@ -77,10 +87,14 @@ export default function ModelRes({ route }) {
                         <Text style={styles.prop}>Result : </Text>
                         <Text style={[styles.val, { color: data.isDetected ? 'red' : 'green' }]}>{data.result}</Text>
                     </View>
+                    <View style={styles.propValContainer}>
+                        <Text style={styles.prop}>Accuracy : </Text>
+                        <Text style={styles.val}>{`${data.percent?.toFixed(2)} %`}</Text>
+                    </View>
                     {data.title === 'Skin Infection Detection' && <SkinInfectionRes type={data.result} />}
+                    <Text style={{ alignSelf: 'center', marginVertical: 40, letterSpacing: 1.2 }}>----------  End of Report  ----------</Text>
                 </>
             }
-            <Text style={{ alignSelf: 'center', marginVertical: 40, letterSpacing: 1.2 }}>----------  End of Report  ----------</Text>
         </ScrollView>
     );
 }

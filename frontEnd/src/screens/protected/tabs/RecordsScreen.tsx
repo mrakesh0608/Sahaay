@@ -34,46 +34,50 @@ export default function RecordsScreen() {
     useEffect(() => {
         setLoading(true);
 
-        const subscriber = firestore()
-            .collection('Users')
-            .doc(auth().currentUser.uid)
+        const unsubscriber = firestore()
             .collection('Reports')
+            // .where('uid', '==', auth().currentUser.uid) //this clause has some bug
             .orderBy('createdAt', order)
             .onSnapshot(querySnap => {
+                try {
+                    if (!querySnap) return;
 
-                const processedData = {};
+                    const processedData = {};
 
-                if (!querySnap) return;
+                    querySnap.forEach(docSnap => {
 
-                querySnap.forEach(docSnap => {
+                        const val = docSnap.data()
+                        if (val.uid === auth().currentUser.uid) { //temp sol for where clause
 
-                    const val = docSnap.data()
+                            let date = getDate(val.createdAt.toDate());
 
-                    let date = getDate(val.createdAt.toDate());
+                            if (date === todayDate()) date = 'Today';
+                            else if (date === getDate(new Date(Date.now() - 864e5))) date = 'Yesterday';
 
-                    if (date === todayDate()) date = 'Today';
-                    else if (date === getDate(new Date(Date.now() - 864e5))) date = 'Yesterday';
+                            if (!processedData[date]) processedData[date] = [];
 
-                    if (!processedData[date]) processedData[date] = [];
-
-                    processedData[date].push({
-                        id: docSnap.id,
-                        ...val,
+                            processedData[date].push({
+                                id: docSnap.id,
+                                ...val,
+                            });
+                        }
                     });
-                });
 
-                const data = []
-                Object.keys(processedData).forEach(item => {
-                    data.push({
-                        date: item,
-                        data: processedData[item]
+                    const data = []
+                    Object.keys(processedData).forEach(item => {
+                        data.push({
+                            date: item,
+                            data: processedData[item]
+                        })
                     })
-                })
-                setData(data);
-                setLoading(false);
+                    setData(data);
+                } catch (error) {
+                    console.log(error);
+                }
+                finally { setLoading(false); }
             });
 
-        return subscriber;
+        return unsubscriber;
     }, [order]);
 
     if (loading) {
