@@ -10,6 +10,7 @@ import { usePED } from '#src/hooks';
 import { Text, ImgViewer, CenterView, ErrorText } from '#src/elements';
 import { MoreOptions } from '#src/components';
 import { SkinInfectionRes } from '#src/components/model/SkinInfectionRes';
+import { CaloriesEstimationRes } from '#src/components/model/CaloriesEstimationRes';
 
 export default function ModelRes({ route }) {
 
@@ -83,14 +84,19 @@ export default function ModelRes({ route }) {
                         <Text style={styles.prop}>Examination Image : </Text>
                         <ImgViewer source={{ uri: data.img_url }} style={styles.uploadImgPreview} />
                     </View>
-                    <View style={styles.propValContainer}>
-                        <Text style={styles.prop}>Result : </Text>
-                        <Text style={[styles.val, { color: data.isDetected ? 'red' : 'green' }]}>{data.result}</Text>
-                    </View>
-                    <View style={styles.propValContainer}>
-                        <Text style={styles.prop}>Accuracy : </Text>
-                        <Text style={styles.val}>{`${data.percent?.toFixed(2)} %`}</Text>
-                    </View>
+                    {data.title === 'Calories Estimation' ?
+                        <CaloriesEstimationRes data={data} /> :
+                        <>
+                            <View style={styles.propValContainer}>
+                                <Text style={styles.prop}>Result : </Text>
+                                <Text style={[styles.val, { color: data.isDetected ? 'red' : 'green' }]}>{data.result}</Text>
+                            </View>
+                            <View style={styles.propValContainer}>
+                                <Text style={styles.prop}>Accuracy : </Text>
+                                <Text style={styles.val}>{`${data.percent?.toFixed(2)} %`}</Text>
+                            </View>
+                        </>
+                    }
                     {data.title === 'Skin Infection Detection' && <SkinInfectionRes type={data.result} />}
                     <Text style={{ alignSelf: 'center', marginVertical: 40, letterSpacing: 1.2 }}>----------  End of Report  ----------</Text>
                 </>

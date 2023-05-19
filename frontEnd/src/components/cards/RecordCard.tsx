@@ -22,7 +22,7 @@ export function RecordCard({ record }) {
                     <Text style={{
                         color: record.isDetected ? colors.error : colors.success,
                         fontWeight: 'bold'
-                    }}>{record.isDetected ? 'Detected' : 'Normal'}</Text>
+                    }}>{record.title === 'Calories Estimation' ? record['nutrition']['calories'] : record.isDetected ? 'Detected' : 'Normal'}</Text>
                 </View>
                 <View style={styles.container}>
                     <Text style={styles.txt2}>{record.id}</Text>

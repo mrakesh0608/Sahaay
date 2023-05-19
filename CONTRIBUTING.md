@@ -17,7 +17,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 - Install dependencies `npm i`
 
 ### Development Build
-- For Android, download development build apk from this [link](https://expo.dev/artifacts/eas/bD7utgCUrxCCcTYNY74AgZ.apk).<div align='center'>OR</div>Build your own development apk using `npm run build-dev-apk` & download it from [Expo dev](https://expo.dev/).
+- For Android, download development build apk from this [link](https://expo.dev/artifacts/eas/46C15VEcskVvueo11M3TA5.apk).<div align='center'>OR</div>Build your own development apk using `npm run build-dev-apk` & download it from [Expo dev](https://expo.dev/).
 - Install development build apk in your Android device.
 - Start metro bundler `npm start`
 - Start metro bundler with empty cache `npm run start-c`

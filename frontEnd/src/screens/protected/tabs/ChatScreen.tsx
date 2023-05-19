@@ -58,7 +58,7 @@ export default function ChatScreen() {
             }}>
                 <Text style={{ alignSelf: 'center', color: colors.text }}>Chat with an assistant</Text>
             </View>
-            <Text style={{ alignSelf: 'center', marginVertical: 6, padding: 4, color: 'coral' }}>This chat history will be cleared when you close the app.</Text>
+            <Text style={{ alignSelf: 'center', marginVertical: 6, padding: 4, color: colors.activeTint }}>This chat history will be cleared when you close the app.</Text>
             <View style={{ flex: 0.8, flexGrow: 1 }}>
                 <FlatList
 
@@ -84,7 +84,7 @@ export default function ChatScreen() {
 
                     ListEmptyComponent={
                         <CardContainer>
-                            <Text>Chats that you send appear here</Text>
+                            <Text>The messages you send will show up here.</Text>
                         </CardContainer>
                     }
                 />

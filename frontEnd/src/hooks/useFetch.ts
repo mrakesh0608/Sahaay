@@ -48,13 +48,13 @@ export function useFetch() {
             const json = await res.json();
 
             // console.log(res);
-            // console.log(JSON.stringify(json, null, 2));
+            console.log(JSON.stringify(json, null, 2));
 
             if (json.data) {
                 setError(null);
                 setData(json.data);
             }
-            else throw Error(json.error.message);
+            else throw Error(json.error?.message);
         }
         catch (err) {
             console.log(err);

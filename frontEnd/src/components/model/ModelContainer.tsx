@@ -7,7 +7,7 @@ import { useFetch, useUploadImg } from '#src/hooks';
 import * as firebase from '#src/firebase';
 import { serverAPI } from '#src/utils';
 
-import { OR, SubmitBtn, Text } from '#src/elements';
+import { IntroText, OR, SubmitBtn, Text } from '#src/elements';
 import { TryWithImg } from './TryWithImg';
 
 export function ModelContainer(
@@ -65,8 +65,7 @@ export function ModelContainer(
             justifyContent: 'center',
         }}>
             <View style={{ justifyContent: 'center', alignSelf: 'center', padding: 20 }}>
-                <Text style={{ textAlign: 'justify', marginBottom: 20 }}>{`\t\t\t\t${introTxt}`}</Text>
-
+                <IntroText>{introTxt}</IntroText>
                 <UploadImgComp />
                 <OR />
                 <TryWithImg

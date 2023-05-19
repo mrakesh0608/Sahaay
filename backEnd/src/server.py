@@ -5,19 +5,23 @@ from fastapi.responses import HTMLResponse
 
 import util.myfirebase as myfirebase
 from routers import (
+    prescriptionDigitization as PD,
     kidneyStoneDetection as KSD,
     skinInfectionDetection as SID,
     brainTumorDetection as BTD,
     getUser,
     randomImg,
+    calorieEstimation as CE,
 )
 
 myfirebase.init()
 app = FastAPI()
 
+app.include_router(PD.router)
 app.include_router(BTD.router)
 app.include_router(KSD.router)
 app.include_router(SID.router)
+app.include_router(CE.router)
 app.include_router(getUser.router)
 app.include_router(randomImg.router)
 

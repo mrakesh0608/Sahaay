@@ -6,7 +6,7 @@ import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { BarCodeScanner, BarCodeScannerResult } from 'expo-barcode-scanner';
 import { Camera, FlashMode } from 'expo-camera';
 
-import { openUrl, uploadImage, windowWidth } from '#src/utils';
+import { openUrl, ImgPicker, windowWidth } from '#src/utils';
 import { ZoomBtn, Text, CapsuleBtn } from '#src/elements';
 
 const opacity = 'rgba(0, 0, 0, .5)';
@@ -58,7 +58,7 @@ export function QRCodeScanner() {
     }
 
     async function handleLocalCode() {
-        const res = await uploadImage('launchImageLibraryAsync')
+        const res = await ImgPicker('launchImageLibraryAsync')
 
         if (res.canceled) {
             console.log(res);
@@ -88,7 +88,7 @@ export function QRCodeScanner() {
             style={[StyleSheet.absoluteFill]}
         >
             <View style={styles.layerTop}>
-                <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Scan a Sahaay QR Code</Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'white' }}>Scan a Sahaay QR Code</Text>
             </View>
             <View style={styles.layerCenter}>
                 <View style={styles.layerSides} />

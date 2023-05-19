@@ -3,7 +3,7 @@ import { Entypo } from '@expo/vector-icons';
 
 import { BtnContainer, ZoomBtn } from '../Btns';
 import { DialogCenter } from './DialogCenter';
-import { Text } from '../Text';
+import { IntroText, Text } from '../Text';
 
 export function WhatsThis({ desc }: {
     desc: string
@@ -20,8 +20,8 @@ export function WhatsThis({ desc }: {
 
             DialogContent={({ closeDialog }) =>
                 <>
-                    <Text style={{ alignSelf: 'center', fontSize: 22, marginBottom: 20 }}>What's This !</Text>
-                    <Text style={{ textAlign: 'justify' }}>{desc}</Text>
+                    <Text style={{ alignSelf: 'center', fontSize: 22 }}>What's This !</Text>
+                    <IntroText>{desc}</IntroText>
                     <BtnContainer style={{ marginTop: 20 }}>
                         <ZoomBtn
                             title={'Ok'}

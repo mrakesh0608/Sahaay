@@ -27,12 +27,12 @@
 Sahaay is an application which Digitize, Analyze & Predict Medical Reports using Deep Learning. It provides a solution to digitize the handwritten prescriptions, lab reports and detect various diseases.
 
 ## Main Features
-- Prescription Digitization
+- Prescription Digitization (in development)
 - Brain Tumor Classification
 - Kidney Stone Classification
 - Skin Disease Classification
-- Calories Estimation (in development)
-- Digital Prescription
+- Calories Estimation
+- Digital Prescription (in development)
 - Search About Medicine
 
 ## App Features
@@ -42,7 +42,7 @@ Sahaay is an application which Digitize, Analyze & Predict Medical Reports using
 - Share your profile & reports with other users
 
 ## ⬇️ Download Android App
-- Download Sahaay app using this [link](https://expo.dev/artifacts/eas/nXK4Fj8S6WXwsNAg2GjChx.apk).
+- Download Sahaay app using this [link](https://expo.dev/artifacts/eas/qfrEemJyBC8d9EYU9bvyHX.apk).
 - See screenshots of this app [here](./SCREENSHOTS.md).
 ## 🔧 Tools/Technologies Used
 

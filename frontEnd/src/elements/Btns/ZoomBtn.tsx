@@ -29,7 +29,7 @@ export function ZoomBtn({
             ]}
         >
             {Icon &&
-                <View style={{ marginRight: 10 }}>
+                <View style={title && { marginRight: 10 }}>
                     {Icon}
                 </View>
             }

@@ -3,7 +3,7 @@ import { chatGPT } from './chatGPT';
 export async function chatGPTForChat({ txt }) {
 
     const { err, data: flag } = await chatGPT({
-        txt: `give answer true if quoted text related to health, hospital or medical field "${txt}" else false"`
+        txt: `give answer true if quoted text related to health, hospital, pharmacy or medical field "${txt}" else false"`
     });
 
     if (err) return err;

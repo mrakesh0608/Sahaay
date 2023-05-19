@@ -1,2 +1,3 @@
-export * from './Text';
 export * from './ErrorText';
+export * from './IntroText';
+export * from './Text';

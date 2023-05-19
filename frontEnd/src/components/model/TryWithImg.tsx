@@ -36,7 +36,7 @@ export function TryWithImg({
                     onPress={handleTryImg}
                     isPending={isPending}
                 />
-                <WhatsThis desc={`    "Try with sample image" takes a random sample image from server's storage which contains more than 500 images to demostrate how this model works.`} />
+                <WhatsThis desc={`"Try with sample image" takes a random sample image from server's storage which contains more than 500 images to demostrate how this model works.`} />
             </View>
             {error &&
                 <ErrorText>{error}</ErrorText>
