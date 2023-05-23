@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { View, TouchableOpacity, StyleSheet, } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -15,7 +15,7 @@ export function RecordCard({ record }) {
     const { navigate } = useNavigation();
 
     return (
-        <TouchableOpacity onPress={() => navigate('ModelRes' as never, { id: record.id, data: { ...record } } as never)}>
+        <TouchableOpacity onPress={() => navigate('Report' as never, { id: record.id, data: { ...record } } as never)}>
             <CardContainer>
                 <View style={styles.container}>
                     <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{record.title}</Text>

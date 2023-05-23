@@ -6,6 +6,7 @@ import { useInitUser } from '#src/hooks/useInitUser';
 
 interface contextProps {
     dispatch?: any,
+    role: string | 'patient' | 'doctor',
     user: any,
     isNewUser: boolean,
     theme: string | 'Light' | 'Dark',
@@ -21,7 +22,8 @@ const initialValues = {
     theme: 'Light',
     dob: '',
     gender: '',
-    bloodgroup: ''
+    bloodgroup: '',
+    role: 'patient'
 }
 
 export const AuthContext = createContext<contextProps>(initialValues);

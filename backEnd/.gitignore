@@ -105,3 +105,4 @@ venv.bak/
 .mypy_cache/
 .platform/local
 Pipfile.lock
+configs

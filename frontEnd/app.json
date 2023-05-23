@@ -52,7 +52,7 @@
             "@react-native-firebase/auth",
             "@react-native-google-signin/google-signin",
             "expo-image-picker",
-            "./configs/withAndroidVerifiedLinksWorkaround"
+            "./plugins/withAndroidVerifiedLinksWorkaround"
         ],
         "extra": {
             "eas": {

@@ -15,9 +15,14 @@ If you have a suggestion that would make this better, please fork the repo and c
 ## Setup - Front End
 - Change directory into frontend `cd Sahaay/frontEnd`
 - Install dependencies `npm i`
+- Copy your configuration files into configs folder
+    - It contains 2 files.
+    - Rename to `google-services.json` for Android.
+    - Rename to `GoogleService-Info.plist` for IOS.
+
 
 ### Development Build
-- For Android, download development build apk from this [link](https://expo.dev/artifacts/eas/46C15VEcskVvueo11M3TA5.apk).<div align='center'>OR</div>Build your own development apk using `npm run build-dev-apk` & download it from [Expo dev](https://expo.dev/).
+- For Android, download development build apk from this [link](https://expo.dev/artifacts/eas/f1XcZvGjKjD47iykSFr7xt.apk).<div align='center'>OR</div>Build your own development apk using `npm run build-dev-apk` & download it from [Expo dev](https://expo.dev/).
 - Install development build apk in your Android device.
 - Start metro bundler `npm start`
 - Start metro bundler with empty cache `npm run start-c`
@@ -30,16 +35,21 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 ## Setup - Back End
 - Change directory into backend `cd Sahaay/backEnd`
+- Copy your configuration files into configs folder
+    - It contains 2 files.
+    - Rename to `gCloud.json` for Google's Vision API
+    - Rename to `serviceAccount.json` for rest applications
 - Start Server using
 ```powershell
-uvicorn --app-dir src server:app --reload --host [your-host-ip or 127.0.0.1]
+# If all packages are already installed in your system
+uvicorn --app-dir src server:app --reload --host [your-host-ip]
 ```
     
 <p align='center'>or</p> 
 
 ```powershell
 pipenv install
-pipenv run python src/server.py
+pipenv run uvicorn --app-dir src server:app --reload --host [your-host-ip]
 ```
 
 ### Deploy Server to [Platform.sh](https://platform.sh/)

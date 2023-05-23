@@ -6,12 +6,14 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+google-cloud-vision = "*"
 fastapi = "*"
-uvicorn = "*"
 firebase-admin = "*"
+openai = "*"
 opencv-python = "*"
 scikit-image = "*"
 tensorflow = "*"
+uvicorn = "*"
 
 [requires]
 python_version = "3.11"

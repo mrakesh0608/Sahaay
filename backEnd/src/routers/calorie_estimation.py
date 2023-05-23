@@ -63,6 +63,7 @@ def main(item: Item):
 
         nut = json["results"][0]["items"][0]["nutrition"]
 
+        # convert SI Unit to human readable units & concat unit
         doc_id = myfirebase.saveReport(
             uid,
             {

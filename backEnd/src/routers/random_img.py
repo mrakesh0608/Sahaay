@@ -23,7 +23,7 @@ async def main(dataset: str):
             path = "Kidney-Stone-Classification/contents/dataset/test"
             sub_folder = ["Normal", "Stone", "Cyst", "Tumor"]
 
-        elif dataset == "skin-infection":
+        elif dataset == "skin-disease":
             path = "Skin-Infection-Classification/contents/Dataset/test"
             sub_folder = [
                 "Acne and Rosacea Photos",

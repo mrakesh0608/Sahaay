@@ -9,7 +9,7 @@ interface optinalProps {
     noDefaultDialogContainerStyle?: boolean,
 }
 
-export interface DialogCenterProps extends DialogProps, Partial<optinalProps> { } 
+export interface DialogCenterProps extends DialogProps, Partial<optinalProps> { }
 
 export function DialogCenter({
     dialogContainerStyle,
@@ -45,7 +45,7 @@ export function DialogCenter({
                 }).start();
             }}
 
-            onCloseDialog={(cb) => {
+            onCloseDialog={(cb: any) => {
                 Animated.timing(scaleValue, {
                     toValue: 0,
                     duration: 250,

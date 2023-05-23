@@ -1,17 +1,27 @@
 import * as ImagePicker from 'expo-image-picker';
 
-export async function ImgPicker(type: string) {
+export async function ImgPicker({
+    type, freeSizeImg = false
+}: {
+    type: 'launchImageLibraryAsync' | 'launchCameraAsync',
+    freeSizeImg?: boolean
+}) {
     try {
+        console.log(freeSizeImg);
+
         if (!['launchImageLibraryAsync', 'launchCameraAsync'].includes(type)) type = 'launchImageLibraryAsync'
 
         if (!type) throw Error('Invalid type')
 
-        const result = await ImagePicker[type]({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        const options = {
             allowsEditing: true,
-            aspect: [1, 1],
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
             quality: 1,
-        });
+        }
+
+        if (!freeSizeImg) options['aspect'] = [1, 1]
+
+        const result = await ImagePicker[type](options);
         // console.log(result);
 
         return {

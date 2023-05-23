@@ -1,26 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 
-function processURL(url: string) {
-
-    const k = new URL(url);
-
-    const regex = /[?&]([^=#]+)=([^&#]*)/g;
-    const params = {};
-
-    let match: any[];
-    while (match = regex.exec(url)) {
-        params[match[1]] = match[2];
-    }
-
-    return ({
-        hostname: k.hostname,
-        pathname: k.pathname,
-        params
-    });
-}
+import { processURL } from '#src/utils';
 
 export function DynamicLinks() {
 
@@ -32,10 +14,10 @@ export function DynamicLinks() {
             return;
         }
 
-        console.log('Dynamic Link Props:', link)
+        // console.log('Dynamic Link Props:', link)
 
         const processedURL = processURL(link.url)
-        console.log(processedURL);
+        // console.log(processedURL);
 
         if (processedURL.hostname !== 'sahaay.page.link') return;
 
@@ -45,7 +27,7 @@ export function DynamicLinks() {
             navigate('UserStack' as never, { screen: 'User Profile', params } as never);
         }
         else if (pathname === '/report') {
-            navigate('ModelRes' as never, params as never);
+            navigate('Report' as never, params as never);
         }
         else console.log('Invalid Dynamic Link');
     }

@@ -11,6 +11,7 @@ import { useThemeContext } from '#src/context/ThemeContext';
 import { CardContainer, RecordCard } from '#src/components';
 import { CenterView, Text } from '#src/elements';
 import React from 'react';
+import { usePED } from '#src/hooks';
 
 type orderType = 'desc' | 'asc'
 
@@ -19,7 +20,8 @@ export default function RecordsScreen() {
     const { colors } = useThemeContext();
 
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState([]);
+
+    const { error, setError, data, setData } = usePED([]);
 
     const [order, setOrder] = useState<orderType>('desc');
     const [refreshing, setRefreshing] = useState(false);
@@ -73,6 +75,7 @@ export default function RecordsScreen() {
                     setData(data);
                 } catch (error) {
                     console.log(error);
+                    setError(error.message);
                 }
                 finally { setLoading(false); }
             });
@@ -87,7 +90,15 @@ export default function RecordsScreen() {
             </CenterView>
         );
     }
-
+    if (error) {
+        return (
+            <CenterView>
+                <CardContainer>
+                    <Text style={{ color: 'red', fontWeight: 'bold' }}>{error}</Text>
+                </CardContainer>
+            </CenterView>
+        );
+    }
     if (!data.length) {
         return (
             <CenterView>
@@ -133,7 +144,6 @@ export default function RecordsScreen() {
             refreshControl={
                 <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }
-
             ListFooterComponent={
                 <View style={{
                     alignSelf: 'center',

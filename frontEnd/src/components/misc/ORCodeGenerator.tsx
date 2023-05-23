@@ -11,7 +11,11 @@ import { useAuthContext } from '#src/context/AuthContext';
 import { LoadingComp, ShareBtn, Text, TransparentBtn } from '#src/elements';
 import { SpringView } from '#src/elements/Misc/SpringView';
 
-export function QRCodeGenerator() {
+export function QRCodeGenerator({
+    shareTxt
+}: {
+    shareTxt?: string
+}) {
 
     const { colors } = useThemeContext();
     const { user } = useAuthContext();
@@ -64,7 +68,7 @@ export function QRCodeGenerator() {
                     logoBorderRadius={25}
                 />
             </SpringView>
-            <Text style={{ textAlign: 'center', marginVertical: 40 }}>{`Share your code with someone, they can\nscan it with their Sahaay or any QR code scanner\nto see your profile in Sahaay app.`}</Text>
+            <Text style={{ textAlign: 'center', marginVertical: 40 }}>{shareTxt ? shareTxt : `Share your code with someone, they can\nscan it with their Sahaay or any QR code scanner\nto see your profile in Sahaay app.`}</Text>
             <ShareBtn ShareOptions={ShareOptions} />
             <TransparentBtn
                 title='Reset QR Code'

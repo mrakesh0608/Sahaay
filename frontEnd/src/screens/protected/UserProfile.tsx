@@ -6,9 +6,10 @@ import { capitalize, getAge, serverAPI, timeDiff, windowWidth } from "#src/utils
 import { useThemeContext } from "#src/context/ThemeContext";
 import { useFetch } from "#src/hooks";
 
-import { CenterView, ErrorText, ImgViewer, LoadingComp, Text } from "#src/elements";
+import { CapsuleBtn, CenterView, ErrorText, ImgViewer, LoadingComp, Text } from "#src/elements";
 import { DefaultScreen, EmailVerifComp, MenuCard, UserEdit } from "#src/components";
 import { useAuthContext } from "#src/context/AuthContext";
+import { useNavigation } from "@react-navigation/native";
 
 export function UserProfileCard({ Icon, IconName, onPress, title, desc, TitleRightComp }: {
     Icon?: any,
@@ -34,6 +35,7 @@ export function UserProfileCard({ Icon, IconName, onPress, title, desc, TitleRig
 
 export default function UserProfile({ route }) {
 
+    const { navigate } = useNavigation();
     const { colors } = useThemeContext();
     const { user } = useAuthContext();
     const { uid: myuid } = user;
@@ -106,6 +108,13 @@ export default function UserProfile({ route }) {
                 IconName="phone"
                 Icon={FontAwesome}
             />
+            {'I am Doctor' && myuid !== uid &&
+                <CapsuleBtn
+                    title="Write Prescription"
+                    TextLeftComp={() => <MaterialCommunityIcons name="prescription" size={24} color={colors.text} />}
+                    onPress={() => navigate('Digital Prescription Form' as never, { data: { ...data } } as never)}
+                />
+            }
         </DefaultScreen>
     );
 }

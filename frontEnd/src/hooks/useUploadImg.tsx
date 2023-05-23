@@ -8,9 +8,11 @@ import { ImgPicker, windowWidth } from '#src/utils';
 import { CapsuleBtn, BorderBtn, ImgViewer, DialogBottom } from '#src/elements';
 
 export function useUploadImg({
-    initialImg = null
+    initialImg = null,
+    freeSizeImg = false
 }: {
-    initialImg?: ImageURISource
+    initialImg?: ImageURISource,
+    freeSizeImg?: boolean
 }) {
 
     const { colors } = useThemeContext();
@@ -20,7 +22,7 @@ export function useUploadImg({
 
     async function uploadImage(type: any) {
 
-        const res = await ImgPicker(type);
+        const res = await ImgPicker({ type, freeSizeImg });
 
         if (!res.canceled) setUploadImg(res.assets[0]);
         else setUploadImg(initialImg)

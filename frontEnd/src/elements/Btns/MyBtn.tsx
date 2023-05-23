@@ -43,7 +43,7 @@ export function MyBtn({
                 (disabled || isPending) && styles.disabled
             ]}
         >
-            {TextLeftComp && <TextLeftComp />}
+            {TextLeftComp && <TextLeftComp colors={colors} />}
             {title &&
                 <Text style={[styles.btnText, textStyle]}>{title}</Text>
             }
@@ -55,7 +55,7 @@ export function MyBtn({
                     style={{ marginLeft: 10 }}
                 />
             }
-            {TextRightComp && <TextRightComp />}
+            {TextRightComp && <TextRightComp colors={colors} />}
         </TouchableOpacity>
     )
 }

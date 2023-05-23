@@ -15,23 +15,25 @@ export function ModelContainer(
         introTxt,
         serverPath,
         datasetName,
-        FooterComponet
+        FooterComponet,
+        freeSizeImg = false
     }: {
         introTxt?: string,
         serverPath: string,
         datasetName: string,
-        FooterComponet?: JSX.Element
+        FooterComponet?: JSX.Element,
+        freeSizeImg?: boolean
     }) {
 
     const navigation = useNavigation();
     const { user } = useAuthContext();
 
-    const { uploadImg, setUploadImg, UploadImgComp } = useUploadImg({});
+    const { uploadImg, setUploadImg, UploadImgComp } = useUploadImg({ freeSizeImg });
     const { isPending, error, fetchData, data, setIsPending } = useFetch();
 
     useEffect(() => {
-        
-        if (data) navigation.navigate('ModelRes' as never, { ...data } as never);
+
+        if (data) navigation.navigate('Report' as never, { ...data } as never);
     }, [data])
 
     async function getRes() {
@@ -74,7 +76,7 @@ export function ModelContainer(
                 />
 
                 <SubmitBtn
-                    title={'Get Result'}
+                    title={isPending ? 'Generating' : 'Generate Report'}
                     onPress={getRes}
                     disabled={!uploadImg}
                     isPending={isPending}

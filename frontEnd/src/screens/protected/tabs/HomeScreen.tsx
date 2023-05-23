@@ -39,7 +39,7 @@ export default function HomeScreen({ navigation }) {
                     <Ionicons
                         name="qr-code-outline"
                         size={26} color={colors.text}
-                        onPress={() => navigation.navigate('QRCode')}
+                        onPress={() => navigation.navigate('QR Code')}
                     />
                 </View>
             </View>

@@ -5,13 +5,13 @@ from fastapi.responses import HTMLResponse
 
 import util.myfirebase as myfirebase
 from routers import (
-    prescriptionDigitization as PD,
-    kidneyStoneDetection as KSD,
-    skinInfectionDetection as SID,
-    brainTumorDetection as BTD,
+    brain_tumor_detection as BTD,
+    calorie_estimation as CE,
     getUser,
-    randomImg,
-    calorieEstimation as CE,
+    kidney_stone_detection as KSD,
+    prescription_digitization as PD,
+    random_img,
+    skin_disease_detection as SDD,
 )
 
 myfirebase.init()
@@ -20,10 +20,10 @@ app = FastAPI()
 app.include_router(PD.router)
 app.include_router(BTD.router)
 app.include_router(KSD.router)
-app.include_router(SID.router)
+app.include_router(SDD.router)
 app.include_router(CE.router)
 app.include_router(getUser.router)
-app.include_router(randomImg.router)
+app.include_router(random_img.router)
 
 
 @app.api_route(
@@ -38,5 +38,5 @@ if __name__ == "__main__":
     port = os.getenv("PORT") or 8080
     uvicorn.run(app, port=int(port))
 
-# For Dev, run uvicorn --app-dir src server:app --reload --host 192.168.0.112
+# For Dev, run pipenv run uvicorn --app-dir src server:app --reload --host 192.168.0.103
 # change host add according to your wifi

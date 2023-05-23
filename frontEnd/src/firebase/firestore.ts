@@ -1,6 +1,5 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-
 import * as utils from '#src/utils';
 
 export async function initNewUser(payload) {
@@ -67,6 +66,23 @@ export async function getReportById(id, cb) {
             const data = res.data();
             if (data) cb(null, data);
             else throw Error("Something Went Wrong")
+        })
+        .catch(error => {
+            utils.ToastErrorOfFirebase(error);
+            cb(error, null);
+        })
+}
+
+export async function addReport(payload: any, cb: any) {
+
+    if (!auth().currentUser) return;
+    payload['createdAt'] = firestore.FieldValue.serverTimestamp();
+
+    firestore()
+        .collection('Reports')
+        .add({ ...payload })
+        .then(res => {
+            cb(null, { status: 200, id: res.id });
         })
         .catch(error => {
             utils.ToastErrorOfFirebase(error);

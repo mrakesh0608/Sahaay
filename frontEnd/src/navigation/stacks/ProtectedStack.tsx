@@ -9,18 +9,18 @@ import UserStack from '#src/navigation/stacks/UserStack';
 import HomeTabs from '#src/navigation/tabs/HomeTabs';
 
 import PrescriptionDigit from '#src/screens/protected/models/PrescriptionDigit';
-import SkinInfectionDet from '#src/screens/protected/models/SkinInfectionDet';
 import KidneyStoneDet from '#src/screens/protected/models/KidneyStoneDet';
 import BrainTumorDet from '#src/screens/protected/models/BrainTumorDet';
+import SkinDiseaseDet from '#src/screens/protected/models/SkinDiseaseDet';
 import CaloriesEstimation from '#src/screens/protected/models/CaloriesEstimation';
-
-import ModelRes from '#src/screens/protected/models/ModelRes';
 
 import DigitalPrescription from '#src/screens/protected/DigitalPrescription';
 import SearchMedicine from '#src/screens/protected/SearchMedicine';
 import AppInfoScreen from '#src/screens/protected/AppInfoScreen';
 import QRCodeScreen from '#src/screens/protected/QRCodeScreen';
 import SearchMedicineRes from '#src/screens/protected/SearchMedicineRes';
+import DigitalPrescriptionForm from '#src/screens/protected/DigitalPrescriptionForm';
+import ReportScreen from '#src/screens/protected/ReportScreen';
 
 const Stack = createStackNavigator();
 
@@ -42,45 +42,40 @@ export default function ProtectedStack() {
     return (
         <Stack.Navigator initialRouteName={isNewUser ? 'UserStack' : 'HomeTabs'}>
 
-            <Stack.Screen name='HomeTabs' component={HomeTabs} options={{
-                headerShown: false
-            }} />
+            <Stack.Screen name='HomeTabs' component={HomeTabs}
+                options={{
+                    headerShown: false
+                }}
+            />
+            <Stack.Screen name='UserStack' component={UserStack}
+                options={{
+                    headerShown: false
+                }}
+            />
 
-            <Stack.Screen name='UserStack' component={UserStack} options={{
-                headerShown: false
-            }} />
+            <Stack.Screen name='Prescription Digitization' component={PrescriptionDigit} />
+            <Stack.Screen name='Brain Tumor Detection' component={BrainTumorDet} />
+            <Stack.Screen name='Kidney Stone Detection' component={KidneyStoneDet} />
+            <Stack.Screen name='Skin Disease Detection' component={SkinDiseaseDet} />
+            <Stack.Screen name='Calories Estimation' component={CaloriesEstimation} />
 
-            <Stack.Screen name='PrescriptionDigit' component={PrescriptionDigit} options={{
-                title: 'Prescription Digitization'
-            }} />
-            <Stack.Screen name='BrainTumorDet' component={BrainTumorDet} options={{
-                title: 'Brain Tumor Detection'
-            }} />
-            <Stack.Screen name='KidneyStoneDet' component={KidneyStoneDet} options={{
-                title: 'Kidney Stone Detection'
-            }} />
-            <Stack.Screen name='SkinInfectionDet' component={SkinInfectionDet} options={{
-                title: 'Skin Infection Detection'
-            }} />
-            <Stack.Screen name='CaloriesEstimation' component={CaloriesEstimation} options={{
-                title: 'Calories Estimation'
-            }} />
-
-            <Stack.Screen name='ModelRes' component={ModelRes} options={{
-                title: 'Report',
-            }} />
-
-            <Stack.Screen name='QRCode' component={QRCodeScreen} options={{
-                title: 'QR Code',
-                headerStyle: {
-                    shadowColor: 'transparent',
-                },
-            }} />
-
-            <Stack.Screen name='Search Medicine' component={SearchMedicine} />
-            <Stack.Screen name='Search Medicine Res' component={SearchMedicineRes} />
             <Stack.Screen name='Digital Prescription' component={DigitalPrescription} />
-            <Stack.Screen name='App info' component={AppInfoScreen} />
+            <Stack.Screen name='Search Medicine' component={SearchMedicine} />
+
+            <Stack.Screen name='Digital Prescription Form' component={DigitalPrescriptionForm} />
+            <Stack.Screen name='Search Medicine Result' component={SearchMedicineRes} />
+
+            <Stack.Screen name='Report' component={ReportScreen} />
+
+            <Stack.Screen name='QR Code' component={QRCodeScreen}
+                options={{
+                    headerStyle: {
+                        shadowColor: 'transparent',
+                    },
+                }}
+            />
+
+            <Stack.Screen name='App Info' component={AppInfoScreen} />
         </Stack.Navigator>
     );
 }

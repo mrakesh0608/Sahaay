@@ -15,6 +15,6 @@ export async function showableErrorText(error: any) {
     return error.message.slice(error.message.indexOf(']') + 2);
 }
 
-export async function ToastErrorOfFirebase(error) {
+export async function ToastErrorOfFirebase(error: any) {
     Toast(await showableErrorText(error));
 }

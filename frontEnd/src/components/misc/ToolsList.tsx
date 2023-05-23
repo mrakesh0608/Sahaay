@@ -12,9 +12,9 @@ export function ToolsList() {
 
     return (
         <View style={{
-            marginVertical: 26
+            // marginVertical: 26
         }}>
-            <Text style={{ fontSize: 20 }}>Tools</Text>
+            {/* <Text style={{ fontSize: 20 }}>Tools</Text> */}
             <ModelCard
                 title={'Digital\nPrescription'}
                 imgSource={require('#assets/medical/digital-prescription.png')}

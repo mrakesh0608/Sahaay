@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import json from './skin-infection.json';
+import json from './skin-disease.json';
 import { capitalize } from '#src/utils';
 
 import { Text } from '#src/elements';

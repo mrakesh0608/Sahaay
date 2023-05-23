@@ -63,7 +63,7 @@ export default function SearchMedicine() {
                 initialValues={{ medicine: '' }}
                 validationSchema={validationSchema}
                 onSubmit={async (val: any, actions) => {
-                    if (searchTerm) navigate('Search Medicine Res' as never, { ...val } as never)
+                    if (searchTerm) navigate('Search Medicine Result' as never, { ...val } as never)
                 }}
             >
                 {props => <>

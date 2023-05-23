@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
     StyleProp, ViewStyle,
     View, Modal,
-    Pressable, TouchableOpacity, TouchableWithoutFeedback, Animated
+    Pressable, TouchableOpacity, TouchableWithoutFeedback, Animated, ScrollView
 } from 'react-native';
 
 export interface DialogProps {
@@ -62,7 +62,9 @@ export function Dialog({
                 >
                     <TouchableWithoutFeedback>
                         <Animated.View style={[dialogContainerStyle, animatedCardStyle]}>
-                            <DialogContent closeDialog={closeDialog} />
+                            <ScrollView>
+                                <DialogContent closeDialog={closeDialog} />
+                            </ScrollView>
                         </Animated.View>
                     </TouchableWithoutFeedback>
                 </Pressable>
