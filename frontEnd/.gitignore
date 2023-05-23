@@ -74,3 +74,4 @@ web-build/
 dist/
 
 package-lock.json
+configs
