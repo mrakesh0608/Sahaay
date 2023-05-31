@@ -18,7 +18,7 @@ export const AppLightTheme = {
         background: '#F9F8FB',
 
         card2: 'lightgreen',
-        activeTint: '#10847E',
+        activeTint: '#1098C8',
         inactiveTint: 'gray',
         placeholder: 'gray',
         nearBackground: 'lightgray',

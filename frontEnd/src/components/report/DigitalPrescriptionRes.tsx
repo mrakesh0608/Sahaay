@@ -13,7 +13,7 @@ export function DigitalPrescriptionRes({ data }: {
 
     if (typeof data !== 'object') return;
 
-    console.log(JSON.stringify(data, null, 2));
+    // console.log(JSON.stringify(data, null, 2));
 
     return <>
         <View style={styles.propValContainer}>

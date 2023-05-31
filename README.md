@@ -42,7 +42,7 @@ Sahaay is an application which Digitize, Analyze & Predict Medical Reports using
 - Share your profile & reports with other users
 
 ## ⬇️ Download Android App
-- Download Sahaay app using this [link](https://expo.dev/artifacts/eas/bPMpoC94ycbrSUm9U9LgfF.apk).
+- Download Sahaay app using this [link](https://github.com/mrakesh0608/Sahaay/releases/download/v0.1.0/Sahaay.apk).
 - See screenshots of this app [here](./SCREENSHOTS.md).
 ## 🔧 Tools/Technologies Used
 

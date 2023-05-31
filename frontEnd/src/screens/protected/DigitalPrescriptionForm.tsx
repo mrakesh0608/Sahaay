@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { Formik } from "formik";
 import * as yup from 'yup';
 import auth from '@react-native-firebase/auth';
@@ -163,14 +163,16 @@ export default function DigitalPrescriptionForm({ route }) {
                             />
                         }
                         DialogContent={({ closeDialog }) =>
-                            <MedicationForm
-                                close={closeDialog}
-                                submit={(list) => {
-                                    console.log(list);
-                                    const mList = props.values['medicationList']
-                                    mList.push({ ...list })
-                                    props.setFieldValue('medicationList', [...mList])
-                                }} />
+                            <ScrollView>
+                                <MedicationForm
+                                    close={closeDialog}
+                                    submit={(list) => {
+                                        console.log(list);
+                                        const mList = props.values['medicationList']
+                                        mList.push({ ...list })
+                                        props.setFieldValue('medicationList', [...mList])
+                                    }} />
+                            </ScrollView>
                         }
                     />
                     <SubmitBtn

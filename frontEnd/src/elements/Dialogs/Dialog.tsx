@@ -62,9 +62,7 @@ export function Dialog({
                 >
                     <TouchableWithoutFeedback>
                         <Animated.View style={[dialogContainerStyle, animatedCardStyle]}>
-                            <ScrollView>
-                                <DialogContent closeDialog={closeDialog} />
-                            </ScrollView>
+                            <DialogContent closeDialog={closeDialog} />
                         </Animated.View>
                     </TouchableWithoutFeedback>
                 </Pressable>

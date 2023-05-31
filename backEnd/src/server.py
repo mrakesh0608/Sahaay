@@ -5,22 +5,26 @@ from fastapi.responses import HTMLResponse
 
 import util.myfirebase as myfirebase
 from routers import (
-    brain_tumor_detection as BTD,
+    brain_tumor_classification as BTC,
     calorie_estimation as CE,
     getUser,
-    kidney_stone_detection as KSD,
+    kidney_stone_classification as KSC,
     prescription_digitization as PD,
     random_img,
-    skin_disease_detection as SDD,
+    skin_disease_classification as SDC,
 )
+
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path="configs/.env")
 
 myfirebase.init()
 app = FastAPI()
 
 app.include_router(PD.router)
-app.include_router(BTD.router)
-app.include_router(KSD.router)
-app.include_router(SDD.router)
+app.include_router(BTC.router)
+app.include_router(KSC.router)
+app.include_router(SDC.router)
 app.include_router(CE.router)
 app.include_router(getUser.router)
 app.include_router(random_img.router)

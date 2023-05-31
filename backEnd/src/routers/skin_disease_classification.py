@@ -8,7 +8,7 @@ from keras.models import load_model
 from skimage import io
 import cv2
 
-router = APIRouter(prefix="/skin-disease-detection", tags=["skin"])
+router = APIRouter(prefix="/skin-disease-classification", tags=["skin"])
 
 
 class Item(BaseModel):

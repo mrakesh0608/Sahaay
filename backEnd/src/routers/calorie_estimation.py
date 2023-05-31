@@ -1,13 +1,19 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
-
+import os
 import util.myfirebase as myfirebase
-
+import util.readable_units as r_units
 import requests
 from PIL import Image
 import io
 
-url = "https://api-2445582032290.production.gw.apicast.io/v1/foodrecognition/full?user_key=47661fd0c69175a5f2c7b4b3e060e8a0"
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path="configs/.env")
+
+key = os.getenv("CALORIE_MAMA")
+
+url = f"https://api-2445582032290.production.gw.apicast.io/v1/foodrecognition/pg?user_key={key}"
 
 router = APIRouter(prefix="/calories-estimation", tags=["img"])
 
@@ -15,12 +21,6 @@ router = APIRouter(prefix="/calories-estimation", tags=["img"])
 class Item(BaseModel):
     uid: str
     img_url: str
-
-
-def int_to_str(num):
-    num = round(num, 2)
-    num = f"{float(num):g}"
-    return str(num)
 
 
 @router.post("/")
@@ -54,15 +54,16 @@ def main(item: Item):
 
             # Check the response
             if response.status_code == 200:
-                print("Image uploaded successfully.")
                 json = response.json()
             else:
                 print("Error uploading the image:", response.text)
+                raise Exception(response.text)
         else:
             print("Error fetching the image:", response.status_code)
+            raise Exception("Internal Server Error")
 
         nut = json["results"][0]["items"][0]["nutrition"]
-
+        print(json["results"][0]["items"][0])
         # convert SI Unit to human readable units & concat unit
         doc_id = myfirebase.saveReport(
             uid,
@@ -71,23 +72,11 @@ def main(item: Item):
                 "img_url": img_url,
                 "is_food": json["is_food"],
                 "food_name": json["results"][0]["items"][0]["name"],
-                "nutrition": {
-                    "calcium": int_to_str(nut["calcium"] * 1000000) + " mg",
-                    "calories": int_to_str(nut["calories"]) + " kcal",
-                    "dietary fiber": int_to_str(nut["dietaryFiber"] * 1000) + " g",
-                    "iron": int_to_str(nut["iron"] * 1000000) + " μg",
-                    "potassium": int_to_str(nut["potassium"] * 1000) + " mg",
-                    "protein": int_to_str(nut["protein"] * 1000) + " g",
-                    "sodium": int_to_str(nut["sodium"] * 1000000) + " mg",
-                    "total fat": int_to_str(nut["totalFat"] * 1000) + " g",
-                    "vitamin A": int_to_str(nut["vitaminA"] * 1000000) + " μg",
-                    "sugar": int_to_str(nut["sugars"] * 1000) + " g",
-                    "total carbohydrates": int_to_str(nut["totalCarbs"] * 1000) + " g",
-                },
+                "nutrition": r_units.convert_SI_to_human_units(nut),
             },
         )
 
         return {"data": {"id": doc_id}}
     except Exception as e:
-        print("catch err", e)
+        print("err", e)
         return {"error": {"message": e.__str__()}}

@@ -1,7 +1,7 @@
 import remoteConfig from '@react-native-firebase/remote-config';
 import { Configuration, OpenAIApi } from 'openai';
 
-export async function chatGPT({ txt }) {
+export async function chatGPT({ prompt }) {
     try {
         const openai = new OpenAIApi(new Configuration({
             apiKey: remoteConfig().getValue('OPENAI_API_KEY').asString()
@@ -9,7 +9,7 @@ export async function chatGPT({ txt }) {
 
         const completion = await openai.createCompletion({
             model: "text-davinci-003",
-            prompt: txt,
+            prompt: prompt,
             max_tokens: 2048,
         });
         // console.log(JSON.stringify(completion,null,2));

@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
-import auth from '@react-native-firebase/auth';
-import { useNavigation } from '@react-navigation/native';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
+import { useNavigation } from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
+import {
+    CapsuleBtn, DialogCenter, ErrorText, ShareBtn
+} from '#src/elements';
 import { useThemeContext } from '#src/context/ThemeContext';
-
 import { useDeleteReportById } from '#src/firebase';
-import { BtnContainer, DialogCenter, ShareBtn, ZoomBtn } from '#src/elements';
 
 export function MoreOptions({ id, report_uid }) {
 
@@ -17,11 +18,16 @@ export function MoreOptions({ id, report_uid }) {
 
     const [link, setLink] = useState(null);
 
-    const { deleteReportById, data, isPending, error } = useDeleteReportById();
+    const { deleteReportById, isPending, error } = useDeleteReportById();
 
-    useEffect(() => {
-        if (data?.status === 200) navigate('HomeTabs' as never);
-    }, [data])
+    function handleDelete({ cb }) {
+        deleteReportById(id, (err, data) => {
+            if (data?.status === 200) {
+                cb();
+                navigate('HomeTabs' as never);
+            }
+        })
+    }
 
     useEffect(() => {
         (async () => {
@@ -45,31 +51,37 @@ export function MoreOptions({ id, report_uid }) {
             DialogContent={({ closeDialog }) =>
                 <>
                     {auth().currentUser.uid === report_uid &&
-                        <BtnContainer>
-                            <ZoomBtn
+                        <>
+                            <CapsuleBtn
                                 title='Delete Report'
-                                Icon={<MaterialCommunityIcons
-                                    name="trash-can-outline"
-                                    size={24} color={'white'}
-                                />}
-                                style={{ backgroundColor: 'red' }}
+                                TextLeftComp={() =>
+                                    <MaterialCommunityIcons
+                                        name="trash-can-outline"
+                                        size={24} color={'white'}
+                                    />
+                                }
+                                isPending={isPending}
+                                containerStyle={{ backgroundColor: 'red' }}
+                                textStyle={{ color: 'white' }}
+                                ActivityIndicatorColor={'white'}
                                 onPress={() => {
-                                    deleteReportById({ id });
-                                    closeDialog();
+                                    handleDelete({
+                                        cb: closeDialog
+                                    })
                                 }}
+
                             />
-                        </BtnContainer>
+                            <ErrorText>{error}</ErrorText>
+                        </>
                     }
-                    <BtnContainer>
-                        <ShareBtn
-                            title='Share'
-                            ShareOptions={{
-                                title: "Report",
-                                subject: 'Sahaay Report',
-                                message: `Hey, check my report\n${link}`
-                            }}
-                        />
-                    </BtnContainer>
+                    <ShareBtn
+                        title='Share'
+                        ShareOptions={{
+                            title: "Report",
+                            subject: 'Sahaay Report',
+                            message: `Hey, check my report\n${link}`
+                        }}
+                    />
                 </>
             }
         />

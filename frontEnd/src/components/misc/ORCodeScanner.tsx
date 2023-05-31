@@ -58,7 +58,7 @@ export function QRCodeScanner() {
     }
 
     async function handleLocalCode() {
-        const res = await ImgPicker('launchImageLibraryAsync')
+        const res = await ImgPicker({ type: "launchImageLibraryAsync" })
 
         if (res.canceled) {
             console.log(res);

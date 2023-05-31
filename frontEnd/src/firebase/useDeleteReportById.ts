@@ -8,14 +8,13 @@ import { usePED } from '#src/hooks/usePED';
 export function useDeleteReportById() {
 
     const {
-        isPending, error, data,
-        setIsPending, setError, setData,
+        isPending, error,
+        setIsPending, setError,
     } = usePED();
 
-    async function deleteReportById({ id }) {
+    async function deleteReportById({ id }, cb) {
 
         setIsPending(true);
-        setData(null);
         setError(null);
 
         if (!auth().currentUser) return;
@@ -26,16 +25,16 @@ export function useDeleteReportById() {
             .delete()
             .then(async res => {
                 setError(null);
-                setData({"status":200}); //ok
+                cb(null, { "status": 200 }); //ok
             })
             .catch(async error => {
                 console.log(error);
 
-                setData(null);
+                cb({ "status": 500 }, null);
                 setError(await utils.showableErrorText(error));
             })
             .finally(() => setIsPending(false))
 
     }
-    return { deleteReportById, data, isPending, error };
+    return { deleteReportById, isPending, error };
 }

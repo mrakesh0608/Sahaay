@@ -8,7 +8,7 @@ from keras.models import load_model
 from skimage import io
 import cv2
 
-router = APIRouter(prefix="/brain-tumor-detection", tags=["brain"])
+router = APIRouter(prefix="/brain-tumor-classification", tags=["brain"])
 
 
 class Item(BaseModel):
@@ -49,9 +49,7 @@ async def main(item: Item):
                 "title": "Brain Tumor Detection",
                 "result": label,
                 "img_url": img_url,
-                "isDetected": True
-                if label != "Tumor Not Detected"
-                else False,
+                "isDetected": True if label != "Tumor Not Detected" else False,
                 "accuracy": accuracy,
             },
         )

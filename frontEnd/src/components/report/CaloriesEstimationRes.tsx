@@ -10,7 +10,7 @@ export function CaloriesEstimationRes({ data }: {
     if (typeof data === 'object') {
 
         const nut = data['nutrition']
-        console.log(JSON.stringify(nut, null, 2));
+        // console.log(JSON.stringify(nut, null, 2));
 
         return <>
             <View style={styles.propValContainer}>

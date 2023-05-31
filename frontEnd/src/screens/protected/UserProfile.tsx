@@ -7,7 +7,7 @@ import { useThemeContext } from "#src/context/ThemeContext";
 import { useFetch } from "#src/hooks";
 
 import { CapsuleBtn, CenterView, ErrorText, ImgViewer, LoadingComp, Text } from "#src/elements";
-import { DefaultScreen, EmailVerifComp, MenuCard, UserEdit } from "#src/components";
+import { DefaultScreen, DeleteMyAccount, EmailVerifComp, MenuCard, UserEdit } from "#src/components";
 import { useAuthContext } from "#src/context/AuthContext";
 import { useNavigation } from "@react-navigation/native";
 
@@ -115,6 +115,7 @@ export default function UserProfile({ route }) {
                     onPress={() => navigate('Digital Prescription Form' as never, { data: { ...data } } as never)}
                 />
             }
+            {myuid === uid ? < DeleteMyAccount /> : null}
         </DefaultScreen>
     );
 }

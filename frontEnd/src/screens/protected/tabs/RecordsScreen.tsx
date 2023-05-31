@@ -49,7 +49,7 @@ export default function RecordsScreen() {
                     querySnap.forEach(docSnap => {
 
                         const val = docSnap.data()
-                        if (val.uid === auth().currentUser.uid) { //temp sol for where clause
+                        // if (val.uid === auth().currentUser.uid) { //temp sol for where clause
 
                             let date = getDate(val.createdAt.toDate());
 
@@ -62,7 +62,7 @@ export default function RecordsScreen() {
                                 id: docSnap.id,
                                 ...val,
                             });
-                        }
+                        // }
                     });
 
                     const data = []

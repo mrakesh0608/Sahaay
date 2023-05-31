@@ -28,3 +28,4 @@ export * from './user/ThemeComp';
 export * from './user/UserEdit';
 export * from './user/UserImg';
 export * from './user/UserInfoComp';
+export * from './user/DeleteMyAccount';

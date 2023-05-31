@@ -8,7 +8,7 @@ from keras.models import load_model
 from skimage import io
 import cv2
 
-router = APIRouter(prefix="/kidney-stone-detection", tags=["kidney"])
+router = APIRouter(prefix="/kidney-stone-classification", tags=["kidney"])
 
 
 class Item(BaseModel):

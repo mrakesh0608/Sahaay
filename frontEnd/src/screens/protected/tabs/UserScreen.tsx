@@ -14,7 +14,7 @@ export default function UserScreen() {
             <ThemeComp />
             <MenuCard
                 title='App Info'
-                onPress={() => navigate('App info' as never)}
+                onPress={() => navigate('App Info' as never)}
                 Icon={({ color }) =>
                     <MaterialCommunityIcons
                         name='information-outline'

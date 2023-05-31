@@ -15,6 +15,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 ## Setup - Front End
 - Change directory into frontend `cd Sahaay/frontEnd`
 - Install dependencies `npm i`
+- To install the [EAS CLI](https://expo.dev/eas) for builds `npm i -g eas-cli`
 - Copy your configuration files into configs folder
     - It contains 2 files.
     - Rename to `google-services.json` for Android.
@@ -22,7 +23,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 
 ### Development Build
-- For Android, download development build apk from this [link](https://expo.dev/artifacts/eas/f1XcZvGjKjD47iykSFr7xt.apk).<div align='center'>OR</div>Build your own development apk using `npm run build-dev-apk` & download it from [Expo dev](https://expo.dev/).
+- For Android, download development build apk from this [link](https://github.com/mrakesh0608/Sahaay/releases/download/v0.1.0/Sahaay-Dev.apk).<div align='center'>OR</div>Build your own development apk using `npm run build-dev-apk` & download it from [Expo dev](https://expo.dev/).
 - Install development build apk in your Android device.
 - Start metro bundler `npm start`
 - Start metro bundler with empty cache `npm run start-c`
@@ -52,11 +53,11 @@ pipenv install
 pipenv run uvicorn --app-dir src server:app --reload --host [your-host-ip]
 ```
 
-### Deploy Server to [Platform.sh](https://platform.sh/)
+<!-- ### Deploy Server to [Platform.sh](https://platform.sh/)
 
 - Change directory into backend `cd Sahaay/backEnd`
 - commit your changes
-- Push your code to platform.sh using `platfrom push`
+- Push your code to platform.sh using `platfrom push` -->
 
 
 Don't forget to give a star ⭐️ to this repository.

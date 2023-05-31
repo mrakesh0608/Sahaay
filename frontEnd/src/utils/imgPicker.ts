@@ -7,7 +7,6 @@ export async function ImgPicker({
     freeSizeImg?: boolean
 }) {
     try {
-        console.log(freeSizeImg);
 
         if (!['launchImageLibraryAsync', 'launchCameraAsync'].includes(type)) type = 'launchImageLibraryAsync'
 

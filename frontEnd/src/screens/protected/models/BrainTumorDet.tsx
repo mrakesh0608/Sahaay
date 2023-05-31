@@ -6,7 +6,7 @@ export default function BrainTumorDet() {
         <ModelContainer
             introTxt='A brain tumor is a growth of abnormal cells in the brain. Deep learning models are used to detect the brain tumor by taking the images of magnetic resonance imaging(MRI).'
 
-            serverPath='brain-tumor-detection'
+            serverPath='brain-tumor-classification'
             datasetName='brain-tumor'
         />
     );
