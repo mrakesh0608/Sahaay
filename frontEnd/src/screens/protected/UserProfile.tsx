@@ -37,7 +37,7 @@ export default function UserProfile({ route }) {
 
     const { navigate } = useNavigation();
     const { colors } = useThemeContext();
-    const { user } = useAuthContext();
+    const { user, role } = useAuthContext();
     const { uid: myuid } = user;
 
     const { uid } = route.params;
@@ -77,6 +77,13 @@ export default function UserProfile({ route }) {
                 }}>{data['displayName']}</Text>
                 <Text style={{ color: 'gray', fontSize: 12, marginBottom: 10 }}>Joined {timeDiff(data.createdAt)}</Text>
             </View>
+            {role === 'doctor' && myuid === uid ?
+                <UserProfileCard
+                    title={'I am a Doctor'}
+                    IconName="doctor"
+                    Icon={Fontisto}
+                />
+                : null}
             <UserProfileCard
                 title={data['bloodgroup']}
                 IconName={'blood-drop'}
@@ -108,7 +115,7 @@ export default function UserProfile({ route }) {
                 IconName="phone"
                 Icon={FontAwesome}
             />
-            {'I am Doctor' && myuid !== uid &&
+            {role === 'doctor' && myuid !== uid &&
                 <CapsuleBtn
                     title="Write Prescription"
                     TextLeftComp={() => <MaterialCommunityIcons name="prescription" size={24} color={colors.text} />}

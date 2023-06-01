@@ -23,6 +23,7 @@ export * from './model/TryWithImg';
 export * from './user/BloodGroupPicker';
 export * from './user/EmailVerifComp';
 export * from './user/GenderPicker';
+export * from './user/RolePicker';
 export * from './user/SignOutComp';
 export * from './user/ThemeComp';
 export * from './user/UserEdit';

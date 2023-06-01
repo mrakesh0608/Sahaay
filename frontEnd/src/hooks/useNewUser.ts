@@ -60,7 +60,8 @@ export function useNewUser() {
             await firebase.updateUser({
                 dob: values.dob,
                 gender: values.gender,
-                bloodgroup: values.bloodgroup
+                bloodgroup: values.bloodgroup,
+                role: values.role
             });
 
             await firebase.reloadUser();

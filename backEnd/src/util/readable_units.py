@@ -1,10 +1,19 @@
-from util.casetoHumanReadable import camelcase_to_human
+import re
+
+
+def camelcase_to_human(variable_name):
+    # Use regular expression to split the variable name
+    words = re.findall(r"(?:^|[A-Z])[a-z]*", variable_name)
+    # Join the words with spaces and convert to lowercase
+    human_readable = " ".join(words).lower()
+    return human_readable
 
 
 def int_to_str(num):
     num = round(num, 2)
     num = f"{float(num):g}"
     return str(num)
+
 
 # This conversion has some incorrect values
 def convert_SI_to_human_units(data):

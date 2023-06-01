@@ -4,16 +4,17 @@ import { Formik } from "formik";
 import * as yup from 'yup';
 
 import { useAuthContext } from '#src/context/AuthContext';
+
+import FormikTextInput from '#src/forms/FormikTextInput';
 import { useUploadImg } from '#src/hooks';
 import { windowWidth } from '#src/utils';
 
-import { BloodGroupPicker, GenderPicker } from '#src/components';
-import FormikTextInput from '#src/forms/FormikTextInput';
 import { DatePicker, SubmitBtn } from '#src/elements';
+import { BloodGroupPicker, GenderPicker, RolePicker } from '#src/components';
 
 export default function NewUserForm({ isPending, error, onSubmit }) {
 
-    const { dob, gender = '', bloodgroup = '' } = useAuthContext();
+    const { dob, gender = '', bloodgroup = '', role } = useAuthContext();
     const { photoURL = '', displayName = '', phoneNumber = '', email = '' } = auth().currentUser;
 
     const { uploadImg, UploadImgComp } = useUploadImg({ initialImg: photoURL ? { uri: photoURL } : null });
@@ -21,7 +22,8 @@ export default function NewUserForm({ isPending, error, onSubmit }) {
     const initialValues = {
         displayName, phoneNumber, email,
         gender, bloodgroup,
-        dob: dob ? dob.toDate() : ''
+        dob: dob ? dob.toDate() : '',
+        role: role ? role : 'patient'
     };
 
     return (
@@ -88,8 +90,13 @@ export default function NewUserForm({ isPending, error, onSubmit }) {
                         onChange={(val: string) => props.setFieldValue('bloodgroup', val)}
                         errTxt={props.touched['bloodgroup'] && props.errors['bloodgroup']?.toString()}
                     />
+                    <RolePicker
+                        value={props.values['role']}
+                        onChange={(val: string) => props.setFieldValue('role', val)}
+                        errTxt={props.touched['role'] && props.errors['role']?.toString()}
+                    />
                     <SubmitBtn
-                        title={isPending ? 'Saving ...' : 'Save'}
+                        title={isPending ? 'Saving' : 'Save'}
                         onPress={() => props.handleSubmit()}
                         disabled={isPending || !props.isValid}
 
@@ -110,4 +117,5 @@ const validationSchema = yup.object({
     dob: yup.string().notRequired(),
     gender: yup.string().required("Required"),
     bloodgroup: yup.string().notRequired(),
+    role: yup.string().notRequired()
 })

@@ -9,7 +9,7 @@ export async function chatGPTForChat({ txt }) {
     if (err) return err;
 
     if (flag.includes('true') || flag.includes('True')) {
-        const { err, data } = await chatGPT({ prompt });
+        const { err, data } = await chatGPT({ prompt: txt });
 
         if (err) return err;
         return data;

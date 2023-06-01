@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 
 import json from './skin-disease.json';
-import { capitalize } from '#src/utils';
+import { openUrl } from '#src/utils';
 
 import { Text } from '#src/elements';
 
@@ -16,27 +16,31 @@ export function SkinInfectionRes({ type }: {
         return (
             <>
                 {Object.keys(data).map((item, index) =>
-                    <View style={styles.propValContainer} key={index}>
-                        <Text style={styles.prop}>{capitalize(item)} : </Text>
-                        <Text style={styles.val}>{data[item]}</Text>
-                    </View>
-
+                    typeof data[item] === 'string' ?
+                        <View key={index}>
+                            <Text
+                                style={{
+                                    textAlign: 'justify',
+                                    fontSize: 16,
+                                    textTransform: 'capitalize',
+                                    // paddingVertical: 10,
+                                }}>{item?.trim()} : </Text >
+                            <Text
+                                style={[{
+                                    textAlign: 'justify',
+                                    fontSize: 16,
+                                    paddingVertical: 10
+                                }, [
+                                    "treatement-1", "treatement-2"
+                                ].includes(item) && { color: 'blue' }
+                                ]}
+                                onPress={() => {
+                                    if (["treatement-1", "treatement-2"].includes(item)) openUrl({ url: data[item] })
+                                }}
+                            >{data[item]?.trim()}</Text>
+                        </View>
+                        : null
                 )}
             </>
         );
 }
-
-const styles = StyleSheet.create({
-    propValContainer: {
-        flexDirection: 'row',
-        marginVertical: 20
-    },
-    prop: {
-        fontSize: 16
-    },
-    val: {
-        marginLeft: 10,
-        fontSize: 16,
-        flexShrink: 1, //to wrap text to next line
-    },
-})
